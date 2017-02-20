@@ -1,0 +1,47 @@
+<h3>add a product infooooooo</h3>
+<h5>general info</h5>
+<div class="row">
+    <form class="col s12">
+        	<div class="input-field col s6">
+        		{{input type="text" class="validate" value=type}}
+        		<label for="type">provide product type here</label>
+        	</div>
+    </form>
+</div>
+
+<h5>product descriptions</h5>
+<div class="row">
+    <div class="input-field col s3">
+        {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productDescriptionLocale  content=productDescriptionLocalesList prompt="Please choose a language..." }} {{/md-select}}
+    </div>
+</div>
+<dir class="row">
+    <div class="input-field col s6">
+        {{textarea class="materialize-textarea" placeholder="add your product description here" value=productDescription}}
+    </div>
+</dir>
+<div class="row">
+    <a class="waves-effect waves-light btn" {{action 'addDescription'}}>add description</a>
+</div>
+<div class="row">
+<h6> descriptions so far:</h6>
+{{#md-table content=productDescriptions class='responsive-table' as |row|}}
+  {{md-table-col row=row valueBindingPath='locale'}}
+  {{md-table-col row=row valueBindingPath='description'}}
+{{/md-table}}
+</div>
+
+
+<div class="row">
+    <a class="waves-effect waves-light btn" {{action 'saveProduct'}}>save!</a>
+</div>
+<div class="row">
+  {{md-input value="I love material design."
+      label='Example with color specification'
+      icon="material-icons"
+      validate=true}}
+</div>
+
+{{outlet}}
+
+
