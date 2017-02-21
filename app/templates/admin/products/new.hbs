@@ -1,0 +1,157 @@
+<div class="row">
+     <div class="col s12">
+        <h3>add a product</h3>
+        <h4>general info</h4>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productType  content=productTypesList prompt="please provide a type..." }} {{/md-select}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{input type="text" class="validate" value=productPriceAmount focus-out='addPrice' type="number" validate=true}}
+                        <label for="type">product price in euro</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{input type="text" class="validate" value=productRanking type="number" validate=true}}
+                        <label for="type">product ranking, ranging from 0 (high) to ....</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=productType  content=productAudiences prompt="please provide a type..." }} {{/md-select}}
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <h4>product names</h4>
+        A product can have multiple names, varying over language.
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productNameLocale  content=localesList prompt="Please choose a language..." }} {{/md-select}}
+                    </div>
+                </div>
+                <dir class="row textarea">
+                    <div class="input-field col s6">
+                        {{input type="text" class="validate" value=productName}}
+                        <label for="type">provide a product name</label>
+                    </div>
+                </dir>
+                <div class="row">
+                    <div class="input-field col s6 push-s5">
+                        <a class="waves-effect waves-light btn" {{action 'addName'}}>add name</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <h5>overview product names</h5>
+                {{#md-table content=productNames class='striped responsive-table' as |row|}}
+                    {{md-table-col row=row valueBindingPath='locale'}}
+                    {{md-table-col row=row valueBindingPath='name'}}
+                {{/md-table}}
+            </div>
+        </div>
+
+
+        <h4>product descriptions</h4>
+        A product can have multiple descriptions, varying over language.
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productDescriptionLocale  content=localesList prompt="Please choose a language..." }} {{/md-select}}
+                    </div>
+                </div>
+                <dir class="row textarea">
+                {{md-textarea label='add your product description here' value=productDescription class="input-field col s12 m6"}}
+                </dir>
+        <div class="row">
+        <div class="input-field col s6 push-s5">
+            <a class="waves-effect waves-light btn" {{action 'addDescription'}}>add description</a>
+        </div>
+        </div>
+        </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <h5>overview product descriptions</h5>
+                {{#md-table content=productDescriptions class='striped responsive-table' as |row|}}
+                  {{md-table-col row=row valueBindingPath='locale'}}
+                  {{md-table-col row=row valueBindingPath='description'}}
+                {{/md-table}}
+            </div>
+        </div>
+
+
+        <h4>product sizes</h4>
+        A product can have multiple sizes.
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productSize
+                      content=sizesList prompt="Please select a size" }} {{/md-select}}
+                    </div>
+                </div>
+        <div class="row">
+        <div class="input-field col s6 push-s5">
+            <a class="waves-effect waves-light btn" {{action 'addSize'}}>add size</a>
+        </div>
+        </div>
+        </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <h5>overview product sizes</h5>
+                {{#md-table content=productSizes class='striped responsive-table' as |row|}}
+                  {{md-table-col row=row valueBindingPath='sizeName'}}
+                {{/md-table}}
+            </div>
+        </div>
+
+
+        <h4>product images</h4>
+        A product has multiple images.
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productImageType  content=imageTypesList prompt="please provide an image type..." }} {{/md-select}}
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    {{file-upload url=fileUploadEndpoint validationAction=imageUploadValidation uploadSuccessAction=imageUploadSuccess uploadFailedAction=imageUploadFail}}
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <h5>overview product images</h5>
+                {{#md-table content=productImages as |row|}}
+                    {{#md-table-col row=row key='type' header='type'}}
+                        {{row.id}}
+                    {{/md-table-col}}
+                    {{#md-table-col row=row key='name' header='images'}}
+                        <img src="{{row.accessURL}}">
+                    {{/md-table-col}}
+                {{/md-table}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 push-s5">
+                <a class="waves-effect waves-light btn" {{action 'storeProduct'}}>save!</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{outlet}}

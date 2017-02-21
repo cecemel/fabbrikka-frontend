@@ -4,6 +4,14 @@ $roboto-font-path: '../assets/';
 // Materialize styles
 @import "materialize";
 
+.container{
+	width: 100%;
+}
+
 nav .brand-logo {
     margin-left: 1%;
+}
+
+.row .textarea{
+	padding-left: 0px;
 }

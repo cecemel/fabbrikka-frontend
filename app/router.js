@@ -12,6 +12,16 @@ Router.map(function() {
   this.route('products', function() {
     this.route('new');
   });
+
+  this.route('admin', function() {
+    this.route('products', function() {
+      this.route('new');
+    });
+
+    this.route('product-audiences', function() {
+      this.route('new');
+    });
+  });
 });
 
 export default Router;

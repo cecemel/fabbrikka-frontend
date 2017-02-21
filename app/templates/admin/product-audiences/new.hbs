@@ -1,0 +1,8 @@
+<h1>add product audience</h1>
+
+{{md-input label='audience name'  value=model.name class="col s12" }}
+{{md-input label='label' value=model.label class="col s12" }}
+{{md-input label='description' value=model.description class="col s12" }}
+{{#link-to 'admin.product-audiences'}}{{md-btn text='back'}}{{/link-to}}
+{{#md-btn text='Add' action='save'  actionArg=model}}{{/md-btn}}
+{{outlet}}
