@@ -8,7 +8,9 @@ export default Ember.Controller.extend({
         productPrice: {},
         productImages: [],
         productSizes: [],
-	    productType: "",
+        productAudienceDSObjects: [],
+	    
+        productType: "",
         productPriceAmount: "",
         productRanking: "", 
         productImageType: "",
@@ -17,13 +19,15 @@ export default Ember.Controller.extend({
 	    productDescriptionLocale: "",
         productNameLocale: "",
         productName: "",
+        productAudienceID: "",
+
+
         fileUploadHost: config.APP.backendHost, 
         fileUploadEndpoint: config.APP.backendHost + "/files",
 	    localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
         productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
         imageTypesList: [{"value": "primary"}, {"value": "detail"}],
         sizesList: [{"value": "S"}, {"value": "M"}, {"value": "L"}],
-        productAudiencesList: [],
         
         imageUploadValidation: Ember.computed(() => {
           return Ember.run.bind(this, () => {
@@ -97,5 +101,10 @@ export default Ember.Controller.extend({
                 this.productPrice["amount"] = this.productPriceAmount;
                 this.productPrice["currency"] = "EUR";
             },
+
+            addAudience: function(){
+                let audience = this.store.findRecord('product-audience', this.productAudienceID);
+                this.productAudienceDSObjects.pushObject(audience);
+            }
     	}
 	});

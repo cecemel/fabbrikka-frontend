@@ -13,6 +13,10 @@ export default Ember.Route.extend({
       }).catch( function() {
         alert("Creation of product-audience failed");
       });
-    }
+    }, 
+    deactivate: function() {
+      let model = this.controllerFor('admin.product-audiences.new').get('model');
+      model.rollbackAttributes();
+    },
   }
 });

@@ -21,11 +21,6 @@
                         <label for="type">product ranking, ranging from 0 (high) to ....</label>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s6">
-                    {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=productType  content=productAudiences prompt="please provide a type..." }} {{/md-select}}
-                    </div>
-                </div>
             </form>
         </div>
 
@@ -118,6 +113,34 @@
                 {{/md-table}}
             </div>
         </div>
+
+
+        <h4>product audiences </h4>
+        A product can have multiple audiences, like, men, women, children....
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=productAudienceID  content=model.productAudiences prompt="please provide an audience..." }} {{/md-select}}
+                    </div>
+                </div>
+        <div class="row">
+        <div class="input-field col s6 push-s5">
+            <a class="waves-effect waves-light btn" {{action 'addAudience'}}>add audience</a>
+        </div>
+        </div>
+        </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <h5>overview product audiences</h5>
+                {{#md-table content=productAudienceDSObjects class='striped responsive-table' as |row|}}
+                  {{md-table-col row=row valueBindingPath='label'}}
+                  {{md-table-col row=row valueBindingPath='name'}}
+                {{/md-table}}
+            </div>
+        </div>
+
 
 
         <h4>product images</h4>

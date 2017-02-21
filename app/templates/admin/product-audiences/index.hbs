@@ -1,6 +1,8 @@
-<h1> overview product audiences </h1> 
+<h1>overview product audiences </h1> 
 
 {{#link-to 'admin.product-audiences.new'}}{{md-btn text='add'}}{{/link-to}}
+
+{{#if model.length}}
 {{#md-table content=model as |row|}}
   {{md-table-col row=row valueBindingPath='name'}}
   {{md-table-col row=row valueBindingPath='label'}}
@@ -9,6 +11,7 @@
     {{md-btn class='teal white-text' text='delete' action='delete' actionArg=row.id}}
   {{/md-table-col}}
 {{/md-table}}
+{{/if}}
 
 
 {{outlet}}
