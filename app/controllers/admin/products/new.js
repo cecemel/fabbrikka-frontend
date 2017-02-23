@@ -26,7 +26,6 @@ export default Ember.Controller.extend({
 	    localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
         productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
         imageTypesList: [{"value": "primary"}, {"value": "detail"}],
-        sizesList: [{"value": "S"}, {"value": "M"}, {"value": "L"}],
         
         imageUploadValidation: Ember.computed(function(){
           return Ember.run.bind(this, () => {
