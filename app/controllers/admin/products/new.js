@@ -86,11 +86,14 @@ export default Ember.Controller.extend({
                     "productAudiences": this.productAudiences,
                     "productSizes": this.productSizes});
             	this.product.save().then(function(product){
-                   return self.storeNewRelations(product, 'productDescriptions', self.productDescriptions)
-                    .then(self.storeNewRelations(product, 'productNames', self.productNames))
-                    .then(self.storeNewRelations(product, 'productPrice', self.productPrice))
-                    .then(self.storeNewRelations(product, 'productImages', self.productImages))
-                    .then(self.storeNewRelations(product, 'productSizes', self.productSizes));
+                   return Ember.RSVP.Promise.all(
+                    [ self.storeNewRelations(product, 'productDescriptions', self.productDescriptions)
+                    , self.storeNewRelations(product, 'productNames', self.productNames)
+                    , self.storeNewRelations(product, 'productPrice', self.productPrice)
+                    , self.storeNewRelations(product, 'productImages', self.productImages)
+                    , self.storeNewRelations(product, 'productSizes', self.productSizes)])
+                }).then(function(data){
+                    console.log(data);
                 });
         	},
 
