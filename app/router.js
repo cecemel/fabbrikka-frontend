@@ -21,6 +21,10 @@ Router.map(function() {
     this.route('product-audiences', function() {
       this.route('new');
     });
+
+    this.route('product-sizes', function() {
+      this.route('new');
+    });
   });
 });
 

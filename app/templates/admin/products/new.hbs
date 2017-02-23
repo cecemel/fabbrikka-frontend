@@ -94,8 +94,7 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=productSize
-                      content=sizesList prompt="Please select a size" }} {{/md-select}}
+                    {{#md-select optionLabelPath="content.sizeName" optionValuePath="content.id" value=productSizeID  content=model.productSizes prompt="please provide a size" }} {{/md-select}}
                     </div>
                 </div>
         <div class="row">
@@ -134,13 +133,12 @@
         <div class="row">
             <div class="input-field col s6">
                 <h5>overview product audiences</h5>
-                {{#md-table content=productAudienceDSObjects class='striped responsive-table' as |row|}}
+                {{#md-table content=productAudiences class='striped responsive-table' as |row|}}
                   {{md-table-col row=row valueBindingPath='label'}}
                   {{md-table-col row=row valueBindingPath='name'}}
                 {{/md-table}}
             </div>
         </div>
-
 
 
         <h4>product images</h4>

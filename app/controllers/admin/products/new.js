@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
         productPrice: {},
         productImages: [],
         productSizes: [],
-        productAudienceDSObjects: [],
+        productAudiences: [],
 	    
         productType: "",
         productPriceAmount: "",
@@ -40,7 +40,8 @@ export default Ember.Controller.extend({
 
         imageUploadSuccess: Ember.computed(function(){
           return Ember.run.bind(this, (data) => {
-            this.productImages.pushObject({accessURL : this.fileUploadHost + data.links.self + "/download", type: this.productImageType});
+            this.createRecordLocally('productImages', 'product-image', 
+                {accessURL : this.fileUploadHost + data.links.self + "/download", type: this.productImageType});
           });
         }),
 
@@ -50,16 +51,28 @@ export default Ember.Controller.extend({
           });
         }),
 
-        storePropertyCollection: function(modelName, property, parentObj, objCollection){
-            for (var obj of objCollection) {
-                this.storeProperty(modelName, property, parentObj, obj);
+        createRecordLocally: function(controllerProperty, modelName, data){
+            let record = this.get('store').createRecord(modelName, data);
+            let currentPoperty = this.get(controllerProperty);
+            if(Ember.isArray(currentPoperty)){
+                currentPoperty.pushObject(record);
+                return;
             }
+            this.set(controllerProperty, record);
         },
 
-        storeProperty: function(modelName, property, parentObj, obj){
-            let record = this.get('store').createRecord(modelName, obj);
-            this.parentObj.get(property).pushObject(record);
-            this.parentObj.save().then(function () {
+        storeNewRelations: function(parent, propertyName, data){
+            if(Ember.isEmpty(data) || Object.keys(data).length === 0){
+                return;
+            }
+            if(!Ember.isArray(data)){
+                parent.set(propertyName, data);
+                data.save();
+                return;
+            }
+            data.map(
+            record => {
+                parent.get(propertyName).pushObject(record);
                 record.save();
             });
         },
@@ -67,43 +80,46 @@ export default Ember.Controller.extend({
 	    actions: {
 
             storeProduct: function() {
-	    		this.product = this.store.createRecord('product', {"type": this.productType, "ranking": this.productRanking});
-            	this.product.save();
-
-                this.storePropertyCollection('product-description', 'productDescriptions', this.product, this.productDescriptions);
-                this.storePropertyCollection('product-name', 'productNames', this.product, this.productNames);
-                this.storePropertyCollection('product-price', 'productPrice', this.product, [this.productPrice]);
-                this.storePropertyCollection('product-image', 'productImages', this.product, this.productImages);
-                this.storePropertyCollection('product-size', 'productsizes', this.product, this.productSizes);
-
+                let self = this;
+	    		this.product = this.store.createRecord('product', 
+                    {"type": this.productType, 
+                    "ranking": this.productRanking,
+                    "productAudiences": this.productAudiences,
+                    "productSizes": this.productSizes});
+            	this.product.save().then(function(product){
+                    self.storeNewRelations(product, 'productDescriptions', self.productDescriptions);
+                    self.storeNewRelations(product, 'productNames', self.productNames);
+                    self.storeNewRelations(product, 'productPrice', self.productPrice);
+                    self.storeNewRelations(product, 'productImages', self.productImages);
+                    self.storeNewRelations(product, 'productSizes', self.productSizes);
+                });
         	},
 
         	addDescription: function(){
-        	   this.productDescriptions.pushObject({locale: this.productDescriptionLocale, 
-        			description: this.productDescription});
-
-               this.set('productDescription', '');
+                this.createRecordLocally('productDescriptions', 'product-description', 
+                    {locale: this.productDescriptionLocale, description: this.productDescription});
+                this.set('productDescription', '');
         	},
 
             addName: function(){
-               this.productNames.pushObject({locale: this.productNameLocale, 
-                    name: this.productName});
-               this.set('productName', ''); 
+                this.createRecordLocally('productNames', 'product-name', {locale: this.productNameLocale, name: this.productName});
+                this.set('productName', ''); 
             },
 
             addSize: function(){
-               this.productSizes.pushObject({sizeName: this.productSize});
-               this.set('productSize', ''); 
+                //this is an already existing list
+                let size = this.store.peekRecord('product-size', this.productSizeID);
+                this.productSizes.pushObject(size);
             },
 
             addPrice: function(){
-                this.productPrice["amount"] = this.productPriceAmount;
-                this.productPrice["currency"] = "EUR";
+                this.createRecordLocally('productPrice', 'product-price', {"amount": this.productPriceAmount, "currency": "EUR"});
             },
 
             addAudience: function(){
-                let audience = this.store.findRecord('product-audience', this.productAudienceID);
-                this.productAudienceDSObjects.pushObject(audience);
+                //this is an already existing list
+                let audience = this.store.peekRecord('product-audience', this.productAudienceID);
+                this.productAudiences.pushObject(audience);
             }
     	}
 	});
