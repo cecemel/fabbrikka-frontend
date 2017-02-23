@@ -42,11 +42,11 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    ENV.APP.backendHost="http://playground.ruizdearcaute.com:6969"
+    ENV.APP.backendHost="http://playground.ruizdearcaute.com:6970"
   }
 
   if (environment === 'production') {
-
+   ENV.APP.backendHost="http://playground.ruizdearcaute.com:6970/api"
   }
 
   return ENV;
