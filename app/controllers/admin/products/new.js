@@ -63,18 +63,17 @@ export default Ember.Controller.extend({
 
         storeNewRelations: function(parent, propertyName, data){
             if(Ember.isEmpty(data) || Object.keys(data).length === 0){
-                return;
+                return Ember.RSVP.Promise.resolve(true);
             }
             if(!Ember.isArray(data)){
                 parent.set(propertyName, data);
-                data.save();
-                return;
+                return data.save(); //returns promise
             }
-            data.map(
+            return Ember.RSVP.Promise.all(data.map(
             record => {
                 parent.get(propertyName).pushObject(record);
-                record.save();
-            });
+                return record.save();
+            }));
         },
 
 	    actions: {
@@ -87,11 +86,11 @@ export default Ember.Controller.extend({
                     "productAudiences": this.productAudiences,
                     "productSizes": this.productSizes});
             	this.product.save().then(function(product){
-                    self.storeNewRelations(product, 'productDescriptions', self.productDescriptions);
-                    self.storeNewRelations(product, 'productNames', self.productNames);
-                    self.storeNewRelations(product, 'productPrice', self.productPrice);
-                    self.storeNewRelations(product, 'productImages', self.productImages);
-                    self.storeNewRelations(product, 'productSizes', self.productSizes);
+                   return self.storeNewRelations(product, 'productDescriptions', self.productDescriptions)
+                    .then(self.storeNewRelations(product, 'productNames', self.productNames))
+                    .then(self.storeNewRelations(product, 'productPrice', self.productPrice))
+                    .then(self.storeNewRelations(product, 'productImages', self.productImages))
+                    .then(self.storeNewRelations(product, 'productSizes', self.productSizes));
                 });
         	},
 
