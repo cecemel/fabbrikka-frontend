@@ -20,8 +20,7 @@ export default Ember.Controller.extend({
         productNameLocale: "",
         productName: "",
         productAudienceID: "",
-
-
+        hello: "ruiz",
         fileUploadHost: config.APP.backendHost, 
         fileUploadEndpoint: config.APP.backendHost + "/files",
 	    localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
@@ -29,7 +28,7 @@ export default Ember.Controller.extend({
         imageTypesList: [{"value": "primary"}, {"value": "detail"}],
         sizesList: [{"value": "S"}, {"value": "M"}, {"value": "L"}],
         
-        imageUploadValidation: Ember.computed(() => {
+        imageUploadValidation: Ember.computed(function(){
           return Ember.run.bind(this, () => {
             if (Ember.isEmpty(this.productImageType)) {
               alert("please provide an image type");
@@ -39,13 +38,13 @@ export default Ember.Controller.extend({
           });
         }),
 
-        imageUploadSuccess: Ember.computed(() => {
+        imageUploadSuccess: Ember.computed(function(){
           return Ember.run.bind(this, (data) => {
             this.productImages.pushObject({accessURL : this.fileUploadHost + data.links.self + "/download", type: this.productImageType});
           });
         }),
 
-        imageUploadFail: Ember.computed(() => {
+        imageUploadFail: Ember.computed(function(){
           return Ember.run.bind(this, (jqXHR, textStatus) => {
             alert("image upload failed:" + textStatus);
           });
