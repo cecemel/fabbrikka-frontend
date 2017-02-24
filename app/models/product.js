@@ -8,6 +8,7 @@ export default DS.Model.extend({
 	productImages: DS.hasMany('product-image', {inverse: 'product'}),
 	productPrice: DS.belongsTo('product-price', {inverse: 'product'}),
 	productSizes: DS.hasMany('product-size', {inverse: 'products'}),
-	productAudiences: DS.hasMany('product-audience'),
+	productAudiences: DS.hasMany('product-audience', {inverse: 'products'}),
+
 	
 });
