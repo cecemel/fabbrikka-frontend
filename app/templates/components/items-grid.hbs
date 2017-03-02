@@ -1,0 +1,9 @@
+{{#each rows as |row|}}
+	<div class="row">
+    		{{#each row as |rowItem|}}
+    		<div class="col s12 l4 m4">
+      			{{component itemComponentName item=rowItem onClickLinkTo=onClickLinkTo}}
+      		</div>
+   			{{/each}}
+	</div>
+{{/each}}

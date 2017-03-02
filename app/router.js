@@ -11,6 +11,7 @@ Router.map(function() {
 
   this.route('products', function() {
     this.route('new');
+    this.route('details', { path: '/:id/details' });
   });
 
   this.route('admin', function() {
@@ -26,6 +27,7 @@ Router.map(function() {
       this.route('new');
     });
   });
+  this.route('shopping-cart', function() {});
 });
 
 export default Router;

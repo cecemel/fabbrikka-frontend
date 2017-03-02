@@ -92,7 +92,7 @@ export default Ember.Controller.extend({
                     , self.storeNewRelations(product, 'productImages', self.productImages)
                     , self.storeNewRelations(product, 'productSizes', self.productSizes)])
                 }).then(function(data){
-                    console.log(data);
+                    self.transitionToRoute('admin.products')
                 });
         	},
 

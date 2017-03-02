@@ -1,0 +1,17 @@
+  <div class="row">
+  	<div class="col s12 m12 l8">
+	  	{{#swiper-container updateFor=images pagination=true slidesPerView=2 spaceBetween=3 centered=true}}
+	  		{{#each images as |image|}}
+	  			{{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
+    		{{/each}}
+  		{{/swiper-container}}
+  	</div>
+  	<div class="col s12 m12 l4">
+    <h3>{{name}}</h3>
+    <p> {{{description}}} </p> 
+    <h4>{{price}}</h4>
+    {{#md-select optionLabelPath="content.sizeName" optionValuePath="content.id" value=productSizeID  content=data.productSizes prompt="choose size" }} {{/md-select}}
+
+    <a class="waves-effect waves-light btn" {{action 'addToCart' data.id productSizeID}}>add to card</a>
+	</div>  
+  </div>
