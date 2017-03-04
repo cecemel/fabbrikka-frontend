@@ -3,6 +3,10 @@ import Ember from 'ember';
 export default Ember.Service.extend({
 	store: Ember.inject.service('store'),
 	cart: null,
+  totalObserver: Ember.observer('cart.shoppingCartItems.@each.quantity', function(){
+        Ember.run.once(this, this._setTotal);
+      }),
+  total: 0,
 
 	init() {
     let self = this;
@@ -10,7 +14,7 @@ export default Ember.Service.extend({
     let cart = self.get('store').createRecord('shopping-cart');
     cart.save()
     .then(function(){
-      self.set('cart', cart)
+      self.set('cart', cart);
       });
   	},
 
@@ -51,7 +55,7 @@ export default Ember.Service.extend({
 
 	empty(){
     this.get('cart').get('shoppingCartItems').then((items) => {
-      let promises = []
+      let promises = [];
 
       items.forEach((item) => {
         promises.push(item.destroyRecord());
@@ -62,4 +66,41 @@ export default Ember.Service.extend({
       });
     })
 	},
-});
+
+  _setTotal(){
+    //does not work
+    // let dataPromise = this.get('store').
+    //findRecord('shopping-cart', this.get('cart').get('id'), 
+    //{include: 'shoppingCartItems,shoppingCartItems.product,shoppingCartItems.product.productPrice'});
+    // dataPromise.then((data) => {
+    //   console.log('foo');
+    // })
+    let quantities = [];
+    this.get('cart').get('shoppingCartItems').then((items) => {
+        let promises = items.map((item) => {
+          
+          quantities.push(item.get('quantity'))
+          
+          return item.get('product')
+          .then((product) => {
+            return product.get('productPrice')
+          })
+          .then((price) => {
+            return price.get('amount');
+          });
+        });
+        return Ember.RSVP.Promise.all(promises);
+     })
+
+    .then((productPrices) => {
+      let total = productPrices.reduce((acc, val, index) => {
+        return acc + (parseFloat(val) * parseFloat(quantities[index]));
+      }, 0);
+      this.set('total', total);
+    })
+  }
+})
+
+
+
+

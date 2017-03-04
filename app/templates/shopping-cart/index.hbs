@@ -1,15 +1,15 @@
 <div class="row">
 <h2>shopping cart</h2>
-	<div class="col s12 m8 l8">
+	<div class="col s12 m6 l6">
 	<h3>items</h3>
 		{{#each cartService.cart.shoppingCartItems as |row|}}
 		  {{shopping-cart-overview-item item=row}}
 		{{/each}}
 	</div>
-		<div class="col s12 m4 l4">
+	<div class="col s12 m5 l5 push-m1 push-l1">
 		<h3>subtotals</h3>
 		<div class="row">
-			<span><b>Total: </b> 100</span>
+			<span><b>Total: </b> {{total}}</span>
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
@@ -17,7 +17,7 @@
 		    </div>
 		</div>
 		<div class="row">
-			<a class="waves-effect waves-light btn" {{action 'addToCart' data.id productSizeID}}>shop more!</a>
+			{{#link-to 'index' class="waves-effect waves-light btn"}}shop more!{{/link-to}}
 			<a class="waves-effect waves-light btn" {{action 'addToCart' data.id productSizeID}}>checkout!</a>
 		</div>
 	</div>

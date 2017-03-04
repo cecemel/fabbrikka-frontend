@@ -1,24 +1,27 @@
 <div class="row">
-	<div class="col s3 m3">
-		<img src={{image}} style="width: 100%"/>
-	</div>
-	<div class="col s9 m9">
-	<h5> {{name}} </h5>
-		<div class="row">
-			<div class="col s3 m3 l3">
-				{{#md-select optionLabelPath="content.sizeName" optionValuePath="content.id" value=size content=availibleSizes label='size' change=(action 'update' item.id size quantity)}}  {{/md-select}}
+	<div class="col s12 m10 l10">
+		<div class="col s12 m3">
+			<img src={{image}} style='width:100%'/>
+		</div>
+		<div class="col s12 m9 l9">
+		<h5> {{name}} </h5>
+			<div class="row">
+				<div class="col s4 m4 l4">
+					{{#md-select optionLabelPath="content.sizeName" optionValuePath="content.id" value=size content=availibleSizes label='size' change=(action 'update' item.id size quantity)}}  {{/md-select}}
+				</div>
+				<div class="col s4 m4 l4">
+				 	{{md-input value=quantity label='amount' type="number" class="col s12" validate=true focusOut=(action 'update' item.id size quantity)}}
+				</div>
+				<div class="col s3 m3 l3">
+				 <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
+				 	<i class="material-icons">delete</i>
+				 </a>
+				 </div>
 			</div>
-			<div class="col s3 m3 l3">
-			 	{{md-input value=quantity label='amount' type="number" class="col s12" validate=true focusOut=(action 'update' item.id size quantity)}}
-			</div>
-			<div class="col s3 m3 l3">
-			 <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
-			 	<i class="material-icons">delete</i>
-			 </a>
-			 </div>
 		</div>
 	</div>
 
 </div>
-
 {{yield}}
+
+
