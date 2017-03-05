@@ -1,24 +1,28 @@
 <div class="row">
 <h2>shopping cart</h2>
-	<div class="col s12 m6 l6">
-	<h3>items</h3>
-		{{#each cartService.cart.shoppingCartItems as |row|}}
-		  {{shopping-cart-overview-item item=row}}
-		{{/each}}
-	</div>
-	<div class="col s12 m5 l5 push-m1 push-l1">
-		<h3>subtotals</h3>
-		<div class="row">
-			<span><b>Total: </b> {{total}}</span>
+	{{#if hasItems}}
+		<div class="col s12 m6 l6">
+		<h3>items</h3>
+			{{#each cartService.cart.shoppingCartItems as |row|}}
+			  {{shopping-cart-overview-item item=row}}
+			{{/each}}
 		</div>
-		<div class="row">
-			<div class="input-field col s6">
-				<input placeholder="enter your voucher code" type="text" class="validate">
-		    </div>
+		<div class="col s12 m5 l5 push-m1 push-l1">
+			<h3>subtotals</h3>
+			<div class="row">
+				<span><b>Total: </b> {{total}}</span>
+			</div>
+			<div class="row">
+				<div class="input-field col s6">
+					<input placeholder="enter your voucher code" type="text" class="validate">
+			    </div>
+			</div>
+			<div class="row">
+				{{#link-to 'index' class="waves-effect waves-light btn"}}shop more!{{/link-to}}
+				<a class="waves-effect waves-light btn" {{action 'addToCart' data.id productSizeID}}>checkout!</a>
+			</div>
 		</div>
-		<div class="row">
-			{{#link-to 'index' class="waves-effect waves-light btn"}}shop more!{{/link-to}}
-			<a class="waves-effect waves-light btn" {{action 'addToCart' data.id productSizeID}}>checkout!</a>
-		</div>
-	</div>
+	{{else}}
+	<h3> oooh seems you haven't any items... yet </h3>
+	{{/if}}
 </div>

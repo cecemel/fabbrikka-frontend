@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'fabbrikka-frontend',
     environment: environment,
-    rootURL: '/',
+    rootURL: '/app/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
