@@ -9,10 +9,10 @@ export default Ember.Controller.extend({
         productImages: [],
         productSizes: [],
         productAudiences: [],
-	    
+
         productType: "",
         productPriceAmount: "",
-        productRanking: "", 
+        productRanking: "",
         productImageType: "",
         productSize: "",
 	    productDescription: "",
@@ -20,13 +20,12 @@ export default Ember.Controller.extend({
         productNameLocale: "",
         productName: "",
         productAudienceID: "",
-        hello: "ruiz",
-        fileUploadHost: config.APP.backendHost, 
+        fileUploadHost: config.APP.backendHost,
         fileUploadEndpoint: config.APP.backendHost + "/files",
 	    localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
         productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
         imageTypesList: [{"value": "primary"}, {"value": "detail"}],
-        
+
         imageUploadValidation: Ember.computed(function(){
           return Ember.run.bind(this, () => {
             if (Ember.isEmpty(this.productImageType)) {
@@ -39,7 +38,7 @@ export default Ember.Controller.extend({
 
         imageUploadSuccess: Ember.computed(function(){
           return Ember.run.bind(this, (data) => {
-            this.createRecordLocally('productImages', 'product-image', 
+            this.createRecordLocally('productImages', 'product-image',
                 {accessURL : this.fileUploadHost + data.links.self + "/download", type: this.productImageType});
           });
         }),
@@ -79,8 +78,8 @@ export default Ember.Controller.extend({
 
             storeProduct: function() {
                 let self = this;
-	    		this.product = this.store.createRecord('product', 
-                    {"type": this.productType, 
+	    		this.product = this.store.createRecord('product',
+                    {"type": this.productType,
                     "ranking": this.productRanking,
                     "productAudiences": this.productAudiences,
                     "productSizes": this.productSizes});
@@ -97,14 +96,14 @@ export default Ember.Controller.extend({
         	},
 
         	addDescription: function(){
-                this.createRecordLocally('productDescriptions', 'product-description', 
+                this.createRecordLocally('productDescriptions', 'product-description',
                     {locale: this.productDescriptionLocale, description: this.productDescription});
                 this.set('productDescription', '');
         	},
 
             addName: function(){
                 this.createRecordLocally('productNames', 'product-name', {locale: this.productNameLocale, name: this.productName});
-                this.set('productName', ''); 
+                this.set('productName', '');
             },
 
             addSize: function(){

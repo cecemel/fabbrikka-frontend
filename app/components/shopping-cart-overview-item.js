@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend({	
+export default Ember.Component.extend({
 	cartService: Ember.inject.service('shopping-cart'),
-	primaryImages: Ember.computed.filterBy('item.product.productImages', 'type', 'primary'), 
+	primaryImages: Ember.computed.filterBy('item.product.productImages', 'type', 'primary'),
 	name: Ember.computed.reads('item.product.productNames.firstObject.name'),
 	price: Ember.computed.reads('item.product.productPrice.amount'),
 	image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 		},
 
 		update: function(id, sizeId, quantity){
-			this.get('cartService').updateItem(id, sizeId, quantity)
+			this.get('cartService').updateItem(id, sizeId, quantity);
 		}
 	}
 });
