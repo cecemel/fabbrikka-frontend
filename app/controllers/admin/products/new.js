@@ -2,8 +2,8 @@ import Ember from 'ember';
 import config from 'fabbrikka-frontend/config/environment';
 
 export default Ember.Controller.extend({
-	    product: {},
-	    productDescriptions: [],
+        product: {},
+        productDescriptions: [],
         productNames: [],
         productPrice: {},
         productImages: [],
@@ -15,14 +15,14 @@ export default Ember.Controller.extend({
         productRanking: "",
         productImageType: "",
         productSize: "",
-	    productDescription: "",
-	    productDescriptionLocale: "",
+        productDescription: "",
+        productDescriptionLocale: "",
         productNameLocale: "",
         productName: "",
         productAudienceID: "",
         fileUploadHost: config.APP.backendHost,
         fileUploadEndpoint: config.APP.backendHost + "/files",
-	    localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
+        localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
         productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
         imageTypesList: [{"value": "primary"}, {"value": "detail"}],
 
@@ -74,16 +74,16 @@ export default Ember.Controller.extend({
             }));
         },
 
-	    actions: {
+        actions: {
 
             storeProduct: function() {
                 let self = this;
-	    		this.product = this.store.createRecord('product',
+                this.product = this.store.createRecord('product',
                     {"type": this.productType,
                     "ranking": this.productRanking,
                     "productAudiences": this.productAudiences,
                     "productSizes": this.productSizes});
-            	this.product.save().then(function(product){
+                this.product.save().then(function(product){
                    return Ember.RSVP.Promise.all(
                     [ self.storeNewRelations(product, 'productDescriptions', self.productDescriptions)
                     , self.storeNewRelations(product, 'productNames', self.productNames)
@@ -93,13 +93,13 @@ export default Ember.Controller.extend({
                 }).then(function(data){
                     self.transitionToRoute('admin.products')
                 });
-        	},
+            },
 
-        	addDescription: function(){
+            addDescription: function(){
                 this.createRecordLocally('productDescriptions', 'product-description',
                     {locale: this.productDescriptionLocale, description: this.productDescription});
                 this.set('productDescription', '');
-        	},
+            },
 
             addName: function(){
                 this.createRecordLocally('productNames', 'product-name', {locale: this.productNameLocale, name: this.productName});
@@ -121,5 +121,5 @@ export default Ember.Controller.extend({
                 let audience = this.store.peekRecord('product-audience', this.productAudienceID);
                 this.productAudiences.pushObject(audience);
             }
-    	}
-	});
+        }
+    });

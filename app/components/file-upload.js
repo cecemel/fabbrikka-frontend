@@ -8,7 +8,7 @@ export default EmberUploader.FileField.extend({
     });
 
     if(!this.get('validationAction')()){
-    	return;
+        return;
     }
 
     if (!Ember.isEmpty(files)) {

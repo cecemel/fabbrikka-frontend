@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     delete(index) {
       this.store.findRecord('product-size', index, { backgroundReload: false }).then(function(entry) {
       entry.destroyRecord();
-  	});
+    });
   }
 }
 });

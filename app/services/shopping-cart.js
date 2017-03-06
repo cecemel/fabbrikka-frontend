@@ -18,48 +18,48 @@ export default Ember.Service.extend({
             self.get('store').findRecord('product-size', sizeId)
             ]);
         })
-	    .then((items) =>{
-	      let shoppingCartItem = self.get('store').createRecord('shopping-cart-item',
-	          {"quantity": quantity,
-	           "product": items[0],
-	           "size": items[1],
-	           "shoppingCart": self.get('cart')
-	        });
-	      return shoppingCartItem.save();
-	     });
+        .then((items) =>{
+          let shoppingCartItem = self.get('store').createRecord('shopping-cart-item',
+              {"quantity": quantity,
+               "product": items[0],
+               "size": items[1],
+               "shoppingCart": self.get('cart')
+            });
+          return shoppingCartItem.save();
+         });
      },
 
-	updateItem(id, sizeId, quantity){
-	    let self = this;
-	    Ember.RSVP.Promise.all([self.get('store').findRecord('shopping-cart-item', id),
-	                            self.get('store').findRecord('product-size', sizeId),
-	                          ])
-	    .then((items) => {
-	      items[0].set("quantity", quantity);
-	      items[0].set("size", items[1]);
-	      return items[0].save();
-	    });
-	},
+    updateItem(id, sizeId, quantity){
+        let self = this;
+        Ember.RSVP.Promise.all([self.get('store').findRecord('shopping-cart-item', id),
+                                self.get('store').findRecord('product-size', sizeId),
+                              ])
+        .then((items) => {
+          items[0].set("quantity", quantity);
+          items[0].set("size", items[1]);
+          return items[0].save();
+        });
+    },
 
-	removeItem(id){
-	    this.get('store').findRecord('shopping-cart-item', id).then((item) =>{
-	      return item.destroyRecord();
-	    });
-	},
+    removeItem(id){
+        this.get('store').findRecord('shopping-cart-item', id).then((item) =>{
+          return item.destroyRecord();
+        });
+    },
 
-	empty(){
-	    this.get('cart').get('shoppingCartItems').then((items) => {
-	      let promises = [];
+    empty(){
+        this.get('cart').get('shoppingCartItems').then((items) => {
+          let promises = [];
 
-	      items.forEach((item) => {
-	        promises.push(item.destroyRecord());
-	      });
+          items.forEach((item) => {
+            promises.push(item.destroyRecord());
+          });
 
-	      return Ember.RSVP.Promise.all(promises).then(()=>{
-	        return this.get('cart').destroyRecord();
-	      });
-	    });
-	},
+          return Ember.RSVP.Promise.all(promises).then(()=>{
+            return this.get('cart').destroyRecord();
+          });
+        });
+    },
 
     _initCart(){
         let self = this;
