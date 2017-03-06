@@ -68,7 +68,7 @@ export default Ember.Service.extend({
             return cart.save()
                 .then(() => {
                     self.set('cart', cart);
-                    return Ember.RSVP.Promise.resolve(true);
+                    return Ember.RSVP.Promise.resolve(self.get('cart'));
                 });
         }
         return Ember.RSVP.Promise.resolve(self.get('cart'));

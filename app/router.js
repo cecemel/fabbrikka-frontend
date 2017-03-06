@@ -28,6 +28,7 @@ Router.map(function() {
     });
   });
   this.route('shopping-cart', function() {});
+  this.route('checkout', function() {});
 });
 
 export default Router;

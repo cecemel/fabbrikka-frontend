@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 			let image = images.find(function(image){
 				return image.get('type') == "primary";
 			});
-			self.set('primaryImageURL', image.get("accessURL"))	
+			self.set('primaryImageURL', image.get("accessURL"));
 		});
 	},
 
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 	setPrice: function(item){
 		let self = this;
 		item.get('productPrice').then(function(price){
-			self.set("price", price.get("amount") + " €")
+			self.set("price", price.get("amount") + " €");
 		});
 	},
 
