@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:checkout/index', 'Unit | Controller | checkout/index', {
+moduleFor('controller:shopping-cart/checkout', 'Unit | Controller | shopping cart/checkout', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

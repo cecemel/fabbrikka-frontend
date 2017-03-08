@@ -21,6 +21,12 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       backendHost: ""
+    },
+    "place-autocomplete": {
+       key: 'AIzaSyD8SUmgYvE2yOjNr0BeKO90ptR68hFFHNQ',
+    },
+    stripe: {
+       publishableKey: 'pk_test_Od5jsn7vV50m8Y8OBf6ebmN5'
     }
   };
 

@@ -27,8 +27,9 @@ Router.map(function() {
       this.route('new');
     });
   });
-  this.route('shopping-cart', function() {});
-  this.route('checkout', function() {});
+  this.route('shopping-cart', function() {
+    this.route('checkout');
+  });
 });
 
 export default Router;

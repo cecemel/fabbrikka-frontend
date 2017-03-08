@@ -17,7 +17,7 @@ nav .brand-logo {
 }
 
 .card .card-image .card-title .right{
-    float: right;	
+    float: right;
 }
 
 .parallax-container {
@@ -26,4 +26,46 @@ nav .brand-logo {
 
 .product-details-caroussel{
 	width: 100%
+}
+
+.place-autocomplete--input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #9e9e9e;
+}
+.place-autocomplete--input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #9e9e9e;
+   opacity:  1;
+}
+.place-autocomplete--input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #9e9e9e;
+   opacity:  1;
+}
+.place-autocomplete--input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #9e9e9e;
+}
+
+
+/**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }

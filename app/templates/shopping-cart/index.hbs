@@ -19,7 +19,7 @@
 			</div>
 			<div class="row">
 				{{#link-to 'index' class="waves-effect waves-light btn"}}shop more!{{/link-to}}
-				<a class="waves-effect waves-light btn" {{action 'addToCart' data.id productSizeID}}>checkout!</a>
+                {{#link-to 'shopping-cart.checkout' class="waves-effect waves-light btn"}}checkout!{{/link-to}}
 			</div>
 		</div>
 	{{else}}
