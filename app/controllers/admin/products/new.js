@@ -85,13 +85,13 @@ export default Ember.Controller.extend({
                     "productSizes": this.productSizes});
                 this.product.save().then(function(product){
                    return Ember.RSVP.Promise.all(
-                    [ self.storeNewRelations(product, 'productDescriptions', self.productDescriptions)
-                    , self.storeNewRelations(product, 'productNames', self.productNames)
-                    , self.storeNewRelations(product, 'productPrice', self.productPrice)
-                    , self.storeNewRelations(product, 'productImages', self.productImages)
-                    , self.storeNewRelations(product, 'productSizes', self.productSizes)])
-                }).then(function(data){
-                    self.transitionToRoute('admin.products')
+                     [ self.storeNewRelations(product, 'productDescriptions', self.productDescriptions),
+                       self.storeNewRelations(product, 'productNames', self.productNames),
+                       self.storeNewRelations(product, 'productPrice', self.productPrice),
+                       self.storeNewRelations(product, 'productImages', self.productImages),
+                       self.storeNewRelations(product, 'productSizes', self.productSizes)]);
+                }).then(function(/*data*/){
+                  self.transitionToRoute('admin.products');
                 });
             },
 

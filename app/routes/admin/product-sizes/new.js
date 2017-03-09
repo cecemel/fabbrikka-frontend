@@ -8,7 +8,7 @@ export default Ember.Route.extend({
   actions: {
     save(model) {
       var self = this;
-      return model.save().then( function(model) {
+      return model.save().then( function(/*model*/) {
         self.transitionTo( "admin.product-sizes");
       }).catch( function() {
         alert("Creation of product-size failed");
