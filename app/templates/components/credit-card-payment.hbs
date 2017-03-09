@@ -1,17 +1,28 @@
 <div class='row'>
     <div class='col s12'>
+        {{#if hasRendered}}
         <div class="form-row">
-            <label for="card-element">
-                Credit or debit card
-            </label>
-            <div id="card-element">
-                <!-- a Stripe Element will be inserted here. -->
-            </div>
-            <!-- Used to display form errors -->
+            <label for="card-element">Credit or debit card </label>
+            <div id="card-element"></div>
             <div id="card-errors"></div>
         </div>
         <button>Submit Payment</button>
-    </div>
+        {{else}}
+        <div class="preloader-wrapper small active">
+            <div class="spinner-layer spinner-green-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+</div>
 </div>
 
 

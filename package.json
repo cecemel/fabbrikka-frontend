@@ -60,6 +60,5 @@
   },
   "private": true,
   "dependencies": {
-    "ember-stripe-service": "^4.4.2"
   }
 }
