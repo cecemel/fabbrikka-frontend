@@ -11,7 +11,7 @@ export default Ember.Component.extend({
     getImages: function(item){
         let self = this;
         item.get('productImages').then(function(images){
-            let filtered = images.filter(function(image){
+            let filtered = images.filter(function(/*image*/){
                 return true;
             });
             self.set('images', filtered);
@@ -35,7 +35,7 @@ export default Ember.Component.extend({
     setPrice: function(item){
         let self = this;
         item.get('productPrice').then(function(price){
-            self.set("price", price.get("amount") + " €")
+          self.set("price", price.get("amount") + " €");
         });
     },
 

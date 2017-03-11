@@ -9,6 +9,4 @@ export default DS.Model.extend({
     productPrice: DS.belongsTo('product-price', {inverse: 'product'}),
     productSizes: DS.hasMany('product-size', {inverse: 'products'}),
     productAudiences: DS.hasMany('product-audience', {inverse: 'products'}),
-
-    
 });
