@@ -1,25 +1,26 @@
 <h2>check out</h2>
+
 <div class="row">
     <div class="col s12 l6 m12">
         <h4>delivery address</h4>
         <div class="input-field col s12">
             <i class="material-icons prefix">face</i>
-            <input  type="text" class="validate autocomplete" name="fname">
+            <input  type="text" class="validate autocomplete" name="fname" value={{fullName}}>
             <label for="fname">full name</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">email</i>
-            <input type="email" class="validate autocomplete">
+            <input type="email" class="validate autocomplete" value={{email}}>
             <label for="email" data-error="wrong" data-success="right">email</label>
         </div>
         <div class="input-field col s8 m10">
             <i class="material-icons prefix">home</i>
-            <input type="text" class="validate autocomplete">
+            <input type="text" class="validate autocomplete" value={{street}}>
             <label for="street" data-error="wrong" data-success="right">street</label>
         </div>
         <div class="input-field col s4 m2 right">
-            <input type="text" class="validate autocomplete">
-            <label for="streetNumber" data-error="wrong" data-success="right">number, bus</label>
+            <input type="text" class="validate autocomplete" value={{houseNumber}}>
+            <label for="houseNumber" data-error="wrong" data-success="right">number, bus</label>
         </div>
         {{place-autocomplete-field value=city
             inputFieldClass='input-field col s8 m8'
@@ -35,36 +36,22 @@
 
     </div>
     <div class="col s12 l6 m12">
-        <h4>payment method</h4>
-        {{#md-card-collapsible }}
-    {{#md-collapsible icon="mdi-creditcard"
-        title="credit card"}}
+        <h4>order summary</h4>
+        {{checkout-cart-overview}}
 
-        {{credit-card-payment}}
+        <h4>payment</h4>
+        {{#md-select optionLabelPath="content.name" optionValuePath="content.value" value=chosenPaymentMethod
+            content=paymentMethods prompt="Please choose your payment method..." }}
+        {{/md-select}}
+
+        {{#if (equal-strings chosenPaymentMethod "visa")}}
+            {{credit-card-payment}}
+        {{/if}}
+        {{#if (equal-strings chosenPaymentMethod "bancontact")}}
+            {{bancontact-payment}}
+        {{/if}}
 
 
-
-
-    {{/md-collapsible}}
-    {{#md-collapsible icon="mdi-maps-place"
-        title="bancontact"}}
-
-        Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat.
-    {{/md-collapsible}}
-    {{#md-collapsible icon="mdi-social-whatshot"
-        title="ideal"}}
-
-        Lorem ipsum dolor sit amet, consectetur
-        adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat.
-    {{/md-collapsible}}
-{{/md-card-collapsible}}
     </div>
 </div>
 {{outlet}}
