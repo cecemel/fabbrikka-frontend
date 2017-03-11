@@ -25,6 +25,9 @@ module.exports = function(environment) {
     "place-autocomplete": {
        key: 'AIzaSyD8SUmgYvE2yOjNr0BeKO90ptR68hFFHNQ',
     },
+    stripe: {
+        key: 'pk_test_Od5jsn7vV50m8Y8OBf6ebmN5'
+    },
   };
 
   if (environment === 'development') {

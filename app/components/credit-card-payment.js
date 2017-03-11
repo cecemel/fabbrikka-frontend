@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'fabbrikka-frontend/config/environment';
 
 export default Ember.Component.extend({
     scriptDownloaded: false,
@@ -26,7 +27,7 @@ export default Ember.Component.extend({
 
     mountCart(){
         // taken from https://stripe.com/docs/elements
-        let stripe = new Stripe('pk_test_Od5jsn7vV50m8Y8OBf6ebmN5');
+        let stripe = new Stripe(config.stripe.key);
         // Create an instance of Elements
         let elements = stripe.elements();
 
