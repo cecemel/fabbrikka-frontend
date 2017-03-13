@@ -4,6 +4,19 @@ $roboto-font-path: '../assets/';
 // Materialize styles
 @import "materialize";
 
+@font-face {
+    font-family: 'CooperHewittLight';
+        src: url('https://fontlibrary.org/assets/fonts/cooper-hewitt/cbff2bac99d77efd80f9b17689bcfc8c/c673f1bd7106775b5ebee40d17c71750/CooperHewittLight.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html {
+  font-family: 'CooperHewittLight';
+}
+
+
 .container{
 	width: 100%;
 }
@@ -42,3 +55,54 @@ nav .brand-logo {
 .place-autocomplete--input:-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #9e9e9e;
 }
+
+.cart-table-td label {
+    display: none;
+}
+
+.cart-table-td-div-image-text{
+    text-align: center;
+    font-size: large;
+    font-style: italic;
+}
+
+.cart-table-td .select-wrapper {
+    margin-top: 22.5px;
+}
+
+.cart-table-td-div-image {
+    margin: 0 auto;
+    width: 100px;
+    // margin-left: 0px;
+    // margin-right: -70px;
+}
+
+
+.cart-table-td-div-image img {
+    width: 100%;
+}
+
+.checkout-total-hd {
+    font-weight: bold;
+    text-align: left;
+}
+
+.checkout-total-gran-total {
+    font-weight: bold;
+    text-align: left;
+    font-size: large;
+}
+
+.checkout-total-d {
+    float: right;
+    margin-right: 25%;
+}
+
+.fabb-main{
+    min-height: 500px;
+}
+  @media #{$small-and-down} {
+      .cart-table-td-div-image{
+          width: 100px;
+      }
+  }
