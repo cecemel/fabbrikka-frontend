@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Materialize from 'materialize';
 
 export default Ember.Component.extend({
     cartService: Ember.inject.service('shopping-cart'),
@@ -64,7 +65,10 @@ export default Ember.Component.extend({
 
     actions: {
         addToCart(id, sizeId){
-            this.get('cartService').addItem(id, sizeId, 1);
+            this.get('cartService').addItem(id, sizeId, 1).then(() => {
+                Materialize.toast("+1 sweater, thanks!", 4000, 'rounded');
+                this.$('.detail-go-to-cart').addClass('scale-in');
+            });
         }
     }
 
