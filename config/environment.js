@@ -52,7 +52,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-   ENV.APP.backendHost="http://playground.ruizdearcaute.com:6970/api"
+   ENV.APP.backendHost="http://fabb-test.ruizdearcaute.com"
   }
 
   return ENV;
