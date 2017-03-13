@@ -11,7 +11,7 @@ export default Ember.Service.extend({
 
      addItem(id, sizeId, quantity){
          let self = this;
-         self._initCart()
+         return self._initCart()
         .then(() => {
             return Ember.RSVP.Promise.all([
             self.get('store').findRecord('product', id),
@@ -31,7 +31,7 @@ export default Ember.Service.extend({
 
     updateItem(id, sizeId, quantity){
         let self = this;
-        Ember.RSVP.Promise.all([self.get('store').findRecord('shopping-cart-item', id),
+        return Ember.RSVP.Promise.all([self.get('store').findRecord('shopping-cart-item', id),
                                 self.get('store').findRecord('product-size', sizeId),
                               ])
         .then((items) => {
@@ -42,13 +42,13 @@ export default Ember.Service.extend({
     },
 
     removeItem(id){
-        this.get('store').findRecord('shopping-cart-item', id).then((item) =>{
+        return this.get('store').findRecord('shopping-cart-item', id).then((item) =>{
           return item.destroyRecord();
         });
     },
 
     empty(){
-        this.get('cart').get('shoppingCartItems').then((items) => {
+        return this.get('cart').get('shoppingCartItems').then((items) => {
           let promises = [];
 
           items.forEach((item) => {

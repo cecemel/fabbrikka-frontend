@@ -4,6 +4,6 @@ export default Ember.Component.extend({
 
     didInsertElement: function() {
         this.$(".dropdown-button").dropdown();
-        this.$(".button-collapse").sideNav();
+        this.$(".button-collapse").sideNav({closeOnClick: true});
     }
 });

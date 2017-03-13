@@ -11,14 +11,12 @@ $roboto-font-path: '../assets/';
     font-style: normal;
 }
 
-
 html {
   font-family: 'CooperHewittLight';
 }
 
-
 .container{
-	width: 100%;
+	width: 99%;
 }
 
 nav .brand-logo {
@@ -101,8 +99,20 @@ nav .brand-logo {
 .fabb-main{
     min-height: 500px;
 }
+
+.menu-shopping-cart{
+    margin-right: 1%;
+}
+
+.toast {
+    background-color: #9C27B0;
+}
   @media #{$small-and-down} {
       .cart-table-td-div-image{
           width: 100px;
+      }
+
+      .container{
+      	width: 97%;
       }
   }
