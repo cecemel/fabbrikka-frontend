@@ -1,0 +1,22 @@
+
+    <td>
+        <div class="cart-table-td-div-image">
+            <img src={{image}}/>
+        </div>
+        <div class="cart-table-td-div-image-text">{{name}}</div>
+    </td>
+    <td>
+    {{#md-select class="cart-table-td col s10" optionLabelPath="content.sizeName" optionValuePath="content.id" value=size content=availibleSizes label='size' change=(action 'update' item.id size quantity)}}  {{/md-select}}
+</td>
+<td>
+    {{md-input value=quantity label='amount' type="number" class="cart-table-td col s10" validate=true focusOut=(action 'update' item.id size quantity)}}
+</td>
+    <td>
+        <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
+           <i class="material-icons">delete</i>
+        </a>
+    </td>
+
+
+
+{{yield}}
