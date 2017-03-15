@@ -3,40 +3,38 @@ import Ember from 'ember';
 export default Ember.Service.extend({
     store: Ember.inject.service('store'),
     cart: null,
-    totalObserver: Ember.observer('cart.shoppingCartItems.@each.quantity', function(){
-        Ember.run.once(this, this._setTotals);
-     }),
+    totalObserver: Ember.observer('cart.shoppingCartItems.@each.quantity',
+                                  'cart.shoppingCartItems.@each.productVariant',
+                                  function(){Ember.run.once(this, this._setTotals);}),
      total: 0,
      totalItems: 0,
 
-     addItem(id, sizeId, quantity){
+     addItem(id, quantity){
          let self = this;
          return self._initCart()
         .then(() => {
             return Ember.RSVP.Promise.all([
-            self.get('store').findRecord('product', id),
-            self.get('store').findRecord('product-size', sizeId)
+            self.get('store').findRecord('product-variant', id),
             ]);
         })
         .then((items) =>{
           let shoppingCartItem = self.get('store').createRecord('shopping-cart-item',
               {"quantity": quantity,
-               "product": items[0],
-               "size": items[1],
+               "productVariant": items[0],
                "shoppingCart": self.get('cart')
             });
           return shoppingCartItem.save();
          });
      },
 
-    updateItem(id, sizeId, quantity){
+    updateItem(id, variantId, quantity){
         let self = this;
         return Ember.RSVP.Promise.all([self.get('store').findRecord('shopping-cart-item', id),
-                                self.get('store').findRecord('product-size', sizeId),
+                                self.get('store').findRecord('product-variant', variantId),
                               ])
         .then((items) => {
           items[0].set("quantity", quantity);
-          items[0].set("size", items[1]);
+          items[0].set("productVariant", items[1]);
           return items[0].save();
         });
     },
@@ -76,6 +74,7 @@ export default Ember.Service.extend({
 
     _setTotals(){
         //TODO: fix this -> mapping is not working
+        //TODO: UPDATE: I know how now, but too lazy
         //does not work
         // let dataPromise = this.get('store').
         //findRecord('shopping-cart', this.get('cart').get('id'),
@@ -83,25 +82,22 @@ export default Ember.Service.extend({
         // dataPromise.then((data) => {
         //console.log('foo');
         // })
-        let quantities = [];
-        this.get('cart').get('shoppingCartItems').then((items) => {
-            this.set('totalItems', items.length);
-            let promises = items.map((item) => {
-                    quantities.push(item.get('quantity'));
-                    let promiseInst = item.get('product')
-                    .then((product) => {
-                        return product.get('productPrice');
-                    })
-                    .then((price) => {
-                        return price.get('amount');
-                    });
-                    return promiseInst;
-                });
-            return Ember.RSVP.Promise.all(promises);
-        })
-        .then((productPrices) => {
-            let total = productPrices.reduce((acc, val, index) => {
-                return acc + (parseFloat(val) * parseFloat(quantities[index]));
+        let subTotals = [];
+        this.get('cart').get('shoppingCartItems')
+                        .then((items) => {
+                            this.set('totalItems', items.length);
+                            let promises = items.map((item) => {
+                                    let quantity = item.get('quantity');
+                                    return item.get('productVariant')
+                                                .then((product) => {
+                                                    subTotals.push(parseFloat(product.get('price')) * parseFloat(quantity));
+                                                });
+                                            });
+                            return Ember.RSVP.Promise.all(promises);
+                        })
+        .then(() => {
+            let total = subTotals.reduce((acc, val) => {
+                return acc + val;
             }, 0);
             this.set('total', total);
         });
