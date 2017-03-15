@@ -6,66 +6,47 @@ export default Ember.Component.extend({
 
     didRender() {
     this._super(...arguments);
-    this.$('select').material_select();
+    this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
     },
 
-    getImages: function(item){
+    productVariants: Ember.computed.reads('data.productVariants'),
+    sizes: Ember.computed.mapBy('productVariants', 'size'),
+    uniqueSizes: Ember.computed.uniqBy('sizes', 'id'),
+    selectedSizeId: Ember.computed.reads('uniqueSizes.firstObject.id'),
+
+    //sets the variant based on future multiple criteria
+    selectedVariant: Ember.computed('selectedSizeId', function(){
         let self = this;
-        item.get('productImages').then(function(images){
-            let filtered = images.filter(function(/*image*/){
-                return true;
-            });
-            self.set('images', filtered);
+        return this.get('productVariants').find(function(e){
+             return e.get('size').get('id') === self.get('selectedSizeId');
         });
-    },
+    }),
 
-    setName: function(item){
-        let self = this;
-        item.get('productNames').then(function(names){
-            self.set('name', names.get("length") && names.nextObject(0).get('name'));
-        });
-    },
+    images: Ember.computed.reads('data.productImages'),
 
-    setDescription: function(item){
-        let self = this;
-        item.get('productDescriptions').then(function(names){
-            self.set('description', names.get("length") && names.nextObject(0).get('description'));
-        });
-    },
+    productName: Ember.computed.filterBy('data.productNames','locale', 'en_US'),
+    name:  Ember.computed('productName', function(){
+      return this.get('productName.firstObject.name');
+    }),
 
-    setPrice: function(item){
-        let self = this;
-        item.get('productPrice').then(function(price){
-          self.set("price", price.get("amount") + " €");
-        });
-    },
+    price: Ember.computed('selectedVariant', function(){
+        let variant = this.get('selectedVariant');
 
-    setSizes: function(item){
-        let self = this;
-        item.get('productSizes').then(function(sizes){
-            self.set('sizes', sizes);
-        });
-    },
+        if(Ember.isEmpty(variant) || Object.keys(variant).length === 0){
+            return '';
+        }
+        return variant.get('price') + '€';
 
-    sizes: [],
-    images: [],
-    name: "",
-    price: "",
-    description: "",
-    productSizeID: "",
+    }),
 
-    init(){
-        this._super(...arguments);
-        this.getImages(this.get('data'));
-        this.setName(this.get('data'));
-        this.setPrice(this.get('data'));
-        this.setDescription(this.get('data'));
-        this.setSizes(this.get('data'));
-    },
+    productDescription: Ember.computed.filterBy('data.productDescriptions','locale', 'en_US'),
+    description: Ember.computed('productDescription', function(){
+      return this.get('productDescription.firstObject.description');
+    }),
 
     actions: {
-        addToCart(id, sizeId){
-            this.get('cartService').addItem(id, sizeId, 1).then(() => {
+        addToCart(){
+            this.get('cartService').addItem(this.get('selectedVariant').get('id'), 1).then(() => {
                 Materialize.toast("+1 sweater, thanks!", 4000, 'rounded');
                 this.$('.detail-go-to-cart').addClass('scale-in');
             });
