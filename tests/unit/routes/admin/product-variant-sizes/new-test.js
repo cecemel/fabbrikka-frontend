@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:admin/product-sizes/index', 'Unit | Route | admin/product sizes/index', {
+moduleFor('route:admin/product-variant-sizes/new', 'Unit | Route | admin/product variant sizes/new', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
