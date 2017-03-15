@@ -1,3 +1,4 @@
+//Needs refactor, come on gimme a break was my first ember stuff...
 import Ember from 'ember';
 import config from 'fabbrikka-frontend/config/environment';
 
@@ -5,21 +6,10 @@ export default Ember.Controller.extend({
         product: {},
         productDescriptions: [],
         productNames: [],
-        productPrice: {},
         productImages: [],
-        productSizes: [],
         productAudiences: [],
+        productVariants:[],
 
-        productType: "",
-        productPriceAmount: "",
-        productRanking: "",
-        productImageType: "",
-        productSize: "",
-        productDescription: "",
-        productDescriptionLocale: "",
-        productNameLocale: "",
-        productName: "",
-        productAudienceID: "",
         fileUploadHost: config.APP.backendHost,
         fileUploadEndpoint: config.APP.backendHost + "/files",
         localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
@@ -49,7 +39,7 @@ export default Ember.Controller.extend({
           });
         }),
 
-        createRecordLocally: function(controllerProperty, modelName, data){
+        createRecordLocally(controllerProperty, modelName, data){
             let record = this.get('store').createRecord(modelName, data);
             let currentPoperty = this.get(controllerProperty);
             if(Ember.isArray(currentPoperty)){
@@ -59,7 +49,7 @@ export default Ember.Controller.extend({
             this.set(controllerProperty, record);
         },
 
-        storeNewRelations: function(parent, propertyName, data){
+        storeNewRelations(parent, propertyName, data){
             if(Ember.isEmpty(data) || Object.keys(data).length === 0){
                 return Ember.RSVP.Promise.resolve(true);
             }
@@ -75,50 +65,43 @@ export default Ember.Controller.extend({
         },
 
         actions: {
-
-            storeProduct: function() {
+            storeProduct(productType, productRanking, productAudiences, productSizes) {
                 let self = this;
                 this.product = this.store.createRecord('product',
-                    {"type": this.productType,
-                    "ranking": this.productRanking,
-                    "productAudiences": this.productAudiences,
-                    "productSizes": this.productSizes});
+                    {"type": productType,
+                    "ranking": productRanking,
+                    "productAudiences": productAudiences,
+                    "productSizes": productSizes});
                 this.product.save().then(function(product){
                    return Ember.RSVP.Promise.all(
                      [ self.storeNewRelations(product, 'productDescriptions', self.productDescriptions),
                        self.storeNewRelations(product, 'productNames', self.productNames),
-                       self.storeNewRelations(product, 'productPrice', self.productPrice),
                        self.storeNewRelations(product, 'productImages', self.productImages),
-                       self.storeNewRelations(product, 'productSizes', self.productSizes)]);
-                }).then(function(/*data*/){
+                       self.storeNewRelations(product, 'productVariants', self.productVariants)]);
+                }).then(() => {
                   self.transitionToRoute('admin.products');
                 });
             },
 
-            addDescription: function(){
+            addDescription(productDescriptionLocale, productDescription){
                 this.createRecordLocally('productDescriptions', 'product-description',
-                    {locale: this.productDescriptionLocale, description: this.productDescription});
+                    {locale: productDescriptionLocale, description: productDescription});
                 this.set('productDescription', '');
             },
 
-            addName: function(){
-                this.createRecordLocally('productNames', 'product-name', {locale: this.productNameLocale, name: this.productName});
+            addName(productNameLocale, productName){
+                this.createRecordLocally('productNames', 'product-name', {locale: productNameLocale, name: productName});
                 this.set('productName', '');
             },
 
-            addSize: function(){
-                //this is an already existing list
-                let size = this.store.peekRecord('product-size', this.productSizeID);
-                this.productSizes.pushObject(size);
+            addVariant(productVariantSizeId, productVariantPrice){
+                    let size = this.store.peekRecord('product-variant-size', productVariantSizeId);
+                    this.createRecordLocally('productVariants', 'product-variant', {size: size, price: productVariantPrice});
+                    this.set('productVariantPrice', '');
             },
 
-            addPrice: function(){
-                this.createRecordLocally('productPrice', 'product-price', {"amount": this.productPriceAmount, "currency": "EUR"});
-            },
-
-            addAudience: function(){
-                //this is an already existing list
-                let audience = this.store.peekRecord('product-audience', this.productAudienceID);
+            addAudience(productAudienceID){
+                let audience = this.store.peekRecord('product-audience', productAudienceID);
                 this.productAudiences.pushObject(audience);
             }
         }

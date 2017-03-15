@@ -11,19 +11,12 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        {{input type="text" class="validate" value=productPriceAmount focus-out='addPrice' type="number" validate=true}}
-                        <label for="type">product price in euro</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s6">
                         {{input type="text" class="validate" value=productRanking type="number" validate=true}}
                         <label for="type">product ranking, ranging from 0 (high) to ....</label>
                     </div>
                 </div>
             </form>
         </div>
-
 
         <h4>product names</h4>
         A product can have multiple names, varying over language.
@@ -42,7 +35,7 @@
                 </dir>
                 <div class="row">
                     <div class="input-field col s6 push-s5">
-                        <a class="waves-effect waves-light btn" {{action 'addName'}}>add name</a>
+                        <a class="waves-effect waves-light btn" {{action 'addName' productNameLocale productName}}>add name</a>
                     </div>
                 </div>
             </form>
@@ -72,7 +65,7 @@
                 </dir>
         <div class="row">
         <div class="input-field col s6 push-s5">
-            <a class="waves-effect waves-light btn" {{action 'addDescription'}}>add description</a>
+            <a class="waves-effect waves-light btn" {{action 'addDescription' productDescriptionLocale productDescription}}>add description</a>
         </div>
         </div>
         </form>
@@ -87,28 +80,30 @@
             </div>
         </div>
 
-
-        <h4>product sizes</h4>
-        A product can have multiple sizes.
+        <h4> product variants </h4>
+        A product can have multiple variants, e.g. over size or color. This might affect the price.
         <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s6">
-                    {{#md-select optionLabelPath="content.sizeName" optionValuePath="content.id" value=productSizeID  content=model.productSizesList prompt="please provide a size" }} {{/md-select}}
-                    </div>
-                </div>
+            <div class="input-field col s3">
+                {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=productVariantSizeId  content=model.productSizesList prompt="please provide a size" }} {{/md-select}}
+            </div>
+        </div>
         <div class="row">
-        <div class="input-field col s6 push-s5">
-            <a class="waves-effect waves-light btn" {{action 'addSize'}}>add size</a>
+            <div class="input-field col s3">
+                {{input type="text" class="validate" value=productVariantPrice type="number" validate=true}}
+                <label for="type">product price in euro</label>
+            </div>
         </div>
-        </div>
-        </form>
+        <div class="row">
+            <div class="input-field col s3 push-s5">
+                <a class="waves-effect waves-light btn" {{action 'addVariant' productVariantSizeId productVariantPrice}}>add variant</a>
+            </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <h5>overview product sizes</h5>
-                {{#md-table content=productSizes class='striped responsive-table' as |row|}}
-                  {{md-table-col row=row valueBindingPath='sizeName'}}
+                <h5>overview product variants</h5>
+                {{#md-table content=productVariants class='striped responsive-table' as |row|}}
+                {{md-table-col row=row valueBindingPath='size.name'}}
+                  {{md-table-col row=row valueBindingPath='price'}}
                 {{/md-table}}
             </div>
         </div>
@@ -125,7 +120,7 @@
                 </div>
         <div class="row">
         <div class="input-field col s6 push-s5">
-            <a class="waves-effect waves-light btn" {{action 'addAudience'}}>add audience</a>
+            <a class="waves-effect waves-light btn" {{action 'addAudience' productAudienceID}}>add audience</a>
         </div>
         </div>
         </form>
@@ -170,7 +165,7 @@
         </div>
         <div class="row">
             <div class="input-field col s6 push-s5">
-                <a class="waves-effect waves-light btn" {{action 'storeProduct'}}>save!</a>
+                <a class="waves-effect waves-light btn" {{action 'storeProduct' productType productRanking productAudiences productSizes}}>save!</a>
             </div>
         </div>
     </div>
