@@ -23,7 +23,7 @@ Router.map(function() {
       this.route('new');
     });
 
-    this.route('product-sizes', function() {
+    this.route('product-variant-sizes', function() {
       this.route('new');
     });
   });
