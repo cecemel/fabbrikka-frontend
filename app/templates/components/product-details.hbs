@@ -10,7 +10,6 @@
     <h3>{{name}}</h3>
     <p> {{{description}}} </p>
     <h4>{{price}}</h4>
-    <label>pick a size</label>
     {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=selectedSizeId  content=uniqueSizes prompt="choose size" }} {{/md-select}}
 
     <a class="waves-effect waves-light btn" {{action 'addToCart'}}>add to cart</a>
