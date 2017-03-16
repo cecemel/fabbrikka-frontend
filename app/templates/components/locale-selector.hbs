@@ -1,0 +1,31 @@
+<!-- Dropdown Structure -->
+<ul id="locale-selector" class="dropdown-content">
+  <li>
+      <a href="#!" {{action 'setLocale' 'be' 'FR'}}>
+          <img src="assets/images/flag-placeholder.png" class="flag flag-be" alt="be"/>
+          -
+          FR
+     </a>
+  </li>
+  <li>
+      <a href="#!" {{action 'setLocale' 'be' 'NL'}}>
+          <img src="assets/images/flag-placeholder.png" class="flag flag-be" alt="be"/>
+          -
+          NL
+     </a>
+  </li>
+  <li>
+      <a href="#!" {{action 'setLocale' 'gb'}}>
+          <img src="assets/images/flag-placeholder.png" class="flag flag-gb" alt="gb"/>
+      </a>
+  </li>
+</ul>
+<a class="locale-selector" href="#!" data-activates="locale-selector">
+    <img src="assets/images/flag-placeholder.png" class="flag flag-{{countryCode}}" alt="{{countryCode}}"/>
+    {{#if languageCode}}
+    -{{languageCode}}
+    {{/if}}
+    <i class="material-icons right">arrow_drop_down</i>
+</a>
+
+{{yield}}

@@ -1,0 +1,31 @@
+/*!
+ * Generated with CSS Flag Sprite generator (https://www.flag-sprites.com/)
+ */
+
+.flag {
+    display: inline-block;
+    width: 16px;
+    height: 11px;
+    background: url('flags.png') no-repeat;
+}
+
+
+.flag.flag-nl {
+    background-position: 0 -11px;
+}
+
+.flag.flag-be {
+    background-position: 0 0;
+}
+
+.flag.flag-um {
+    background-position: -16px -11px;
+}
+
+.flag.flag-fr {
+    background-position: -16px 0;
+}
+
+.flag.flag-gb {
+    background-position: -32px 0;
+}

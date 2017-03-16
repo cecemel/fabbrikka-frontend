@@ -4,6 +4,11 @@ $roboto-font-path: '../assets/';
 // Materialize styles
 @import "materialize";
 
+
+//flag sprites
+//@import "../assets/flags/flags.png";
+@import "../assets/flags/flags.min.css";
+
 @font-face {
     font-family: 'CooperHewittLight';
         src: url('https://fontlibrary.org/assets/fonts/cooper-hewitt/cbff2bac99d77efd80f9b17689bcfc8c/c673f1bd7106775b5ebee40d17c71750/CooperHewittLight.otf') format('opentype');
@@ -107,12 +112,18 @@ nav .brand-logo {
 .toast {
     background-color: #9C27B0;
 }
-  @media #{$small-and-down} {
-      .cart-table-td-div-image{
-          width: 100px;
-      }
 
-      .container{
-      	width: 97%;
-      }
+.menu-locale-selector{
+    margin-right: 25px;
+}
+
+@media #{$small-and-down} {
+  .cart-table-td-div-image{
+      width: 100px;
   }
+
+  .container{
+  	width: 97%;
+  }
+
+}
