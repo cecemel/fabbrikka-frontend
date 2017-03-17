@@ -1,29 +1,31 @@
 <!-- Dropdown Structure -->
 <ul id="locale-selector" class="dropdown-content">
   <li>
-      <a href="#!" {{action 'setLocale' 'be' 'FR'}}>
+      <a href="#!" {{action 'setLocale' 'be' 'fr'}}>
           <img src="assets/images/flag-placeholder.png" class="flag flag-be" alt="be"/>
           -
-          FR
+          fr
      </a>
   </li>
   <li>
-      <a href="#!" {{action 'setLocale' 'be' 'NL'}}>
+      <a href="#!" {{action 'setLocale' 'be' 'nl'}}>
           <img src="assets/images/flag-placeholder.png" class="flag flag-be" alt="be"/>
           -
-          NL
+          nl
      </a>
   </li>
   <li>
-      <a href="#!" {{action 'setLocale' 'gb'}}>
+      <a href="#!" {{action 'setLocale' 'gb' 'en'}}>
           <img src="assets/images/flag-placeholder.png" class="flag flag-gb" alt="gb"/>
+          -
+          gb
       </a>
   </li>
 </ul>
 <a class="locale-selector" href="#!" data-activates="locale-selector">
-    <img src="assets/images/flag-placeholder.png" class="flag flag-{{countryCode}}" alt="{{countryCode}}"/>
-    {{#if languageCode}}
-    -{{languageCode}}
+    <img src="assets/images/flag-placeholder.png" class="flag flag-{{country}}" alt="{{country}}"/>
+    {{#if language}}
+    -{{language}}
     {{/if}}
     <i class="material-icons right">arrow_drop_down</i>
 </a>

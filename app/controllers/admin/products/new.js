@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 
         fileUploadHost: config.APP.backendHost,
         fileUploadEndpoint: config.APP.backendHost + "/files",
-        localesList: [{"value": "en_US"}, {"value": "nl_BE"}],
+        localesList: [{"value": "en-gb"}, {"value": "nl-be"}],
         productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
         imageTypesList: [{"value": "primary"}, {"value": "detail"}],
 
