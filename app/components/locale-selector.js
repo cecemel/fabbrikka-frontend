@@ -6,12 +6,16 @@ export default Ember.Component.extend({
     country: "gb",
     language: "en",
 
+    id: Ember.computed('elementId', function() {
+        return `${this.get('elementId')}-locale-selector`;
+    }),
+
     init(){
         this._super(...arguments);
         this._setLocaleString(this.get("localeTracker").getLocale());
     },
 
-    didInsertElement: function() {
+    didInsertElement() {
         this.$(".locale-selector").dropdown();
     },
 
@@ -27,5 +31,9 @@ export default Ember.Component.extend({
         let split = locale.split("-");
         this.set("language", split[0]);
         this.set("country", split[1]);
-    }
+    },
+
+    _localeObserver: Ember.observer("localeTracker.locale",function(){
+        this._setLocaleString(this.get("localeTracker.locale"));
+    })
 });

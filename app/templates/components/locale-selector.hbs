@@ -1,5 +1,5 @@
 <!-- Dropdown Structure -->
-<ul id="locale-selector" class="dropdown-content">
+<ul id={{id}} class="dropdown-content">
   <li>
       <a href="#!" {{action 'setLocale' 'be' 'fr'}}>
           <img src="assets/images/flag-placeholder.png" class="flag flag-be" alt="be"/>
@@ -18,11 +18,11 @@
       <a href="#!" {{action 'setLocale' 'gb' 'en'}}>
           <img src="assets/images/flag-placeholder.png" class="flag flag-gb" alt="gb"/>
           -
-          gb
+          en
       </a>
   </li>
 </ul>
-<a class="locale-selector" href="#!" data-activates="locale-selector">
+<a class="locale-selector" href="#!" data-activates={{id}}>
     <img src="assets/images/flag-placeholder.png" class="flag flag-{{country}}" alt="{{country}}"/>
     {{#if language}}
     -{{language}}
