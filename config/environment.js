@@ -20,7 +20,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      backendHost: ""
+      backendHost: "",
+      localeGuesser: "/fabbrikka-locale-guesser/locales"
     },
     "place-autocomplete": {
        key: 'AIzaSyD8SUmgYvE2yOjNr0BeKO90ptR68hFFHNQ',
@@ -37,6 +38,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.backendHost="http://localhost";
+    ENV.APP.localeGuesser="http://localhost/fabbrikka-locale-guesser/locales";
   }
 
   if (environment === 'test') {
