@@ -1,0 +1,14 @@
+<div id={{id}} class="modal">
+  <div class="modal-content">
+    <h3>hello!</h3>
+    <h4>please select a language</h4>
+    <div class=row>
+        {{#each localeSelections as |lang|}}
+            <div class="col s12 m3">
+                <a href="" class=" modal-action modal-close waves-effect waves-green btn-flat" {{action 'setLocale' lang.locale}}>{{lang.label}}</a>
+            </div>
+        {{/each}}
+    </div>
+  </div>
+</div>
+{{yield}}
