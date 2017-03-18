@@ -13,7 +13,6 @@ module.exports = function(defaults) {
       nodeSass: nodeSass // Workaround for ember-cli-sass bug https://github.com/aexmachina/ember-cli-sass/issues/117
     }
   });
-
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //
