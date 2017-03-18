@@ -3,16 +3,18 @@ import Materialize from 'materialize';
 
 export default Ember.Component.extend({
     cartService: Ember.inject.service('shopping-cart'),
-
-    didRender() {
-    this._super(...arguments);
-    this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
-    },
+    localeTracker: Ember.inject.service(),
+    locale: Ember.computed.reads("localeTracker.locale"),
 
     productVariants: Ember.computed.reads('data.productVariants'),
     sizes: Ember.computed.mapBy('productVariants', 'size'),
     uniqueSizes: Ember.computed.uniqBy('sizes', 'id'),
     selectedSizeId: Ember.computed.reads('uniqueSizes.firstObject.id'),
+
+    didRender() {
+    this._super(...arguments);
+    this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
+    },
 
     //sets the variant based on future multiple criteria
     selectedVariant: Ember.computed('selectedSizeId', function(){
@@ -24,9 +26,12 @@ export default Ember.Component.extend({
 
     images: Ember.computed.reads('data.productImages'),
 
-    productName: Ember.computed.filterBy('data.productNames','locale', 'en_US'),
-    name:  Ember.computed('productName', function(){
-      return this.get('productName.firstObject.name');
+    productNames: Ember.computed.reads('data.productNames'),
+    name: Ember.computed('locale', 'productNames', function(){
+        let productName = this.get('productNames').find(function(e){
+          return e.get("locale") === this.get('locale');
+      }, this);
+      return !Ember.isEmpty(productName) && productName.get("name");
     }),
 
     price: Ember.computed('selectedVariant', function(){
@@ -39,9 +44,12 @@ export default Ember.Component.extend({
 
     }),
 
-    productDescription: Ember.computed.filterBy('data.productDescriptions','locale', 'en_US'),
-    description: Ember.computed('productDescription', function(){
-      return this.get('productDescription.firstObject.description');
+    productDescriptions: Ember.computed.reads('data.productDescriptions'),
+    description: Ember.computed('locale', 'productDescriptions', function(){
+        let description = this.get('productDescriptions').find(function(e){
+          return e.get("locale") === this.get('locale');
+      }, this);
+      return !Ember.isEmpty(description) && description.get("description");
     }),
 
     actions: {

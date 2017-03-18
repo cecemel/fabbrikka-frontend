@@ -1,12 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    localeTracker: Ember.inject.service(),
+    locale: Ember.computed.reads("localeTracker.locale"),
     tagName: 'tr',
     classNames: [],
     cartService: Ember.inject.service('shopping-cart'),
     product: Ember.computed.reads('item.productVariant.product'),
     primaryImages: Ember.computed.filterBy('product.productImages', 'type', 'primary'),
-    name: Ember.computed.reads('product.productNames.firstObject.name'),
+    productNames: Ember.computed.reads('product.productNames'),
+    name: Ember.computed('locale', 'productNames', function(){
+        let productName = this.get('productNames').find(function(e){
+          return e.get("locale") === this.get('locale');
+      }, this);
+      return !Ember.isEmpty(productName) && productName.get("name");
+    }),
+
     price: Ember.computed.reads('item.productVariant.price'),
     image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
     size: Ember.computed.reads('item.productVariant.size.id'),
