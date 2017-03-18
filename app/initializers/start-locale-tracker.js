@@ -1,5 +1,5 @@
 export function initialize(application) {
-    application.inject('component', 'locale-selector', 'service:locale-tracker');
+    application.inject('component', 'locale-select-modal', 'service:locale-tracker');
 }
 
 export default {
