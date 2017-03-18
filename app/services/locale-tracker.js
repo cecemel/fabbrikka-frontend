@@ -77,7 +77,7 @@ export default Ember.Service.extend({
     },
 
     _hasUserSetLocale(){
-        let userLocale = this.getLocale();
+        let userLocale = this._fetchLocaleFromCookie();
         if(userLocale && userLocale.length !== 0){
             return true;
         }
