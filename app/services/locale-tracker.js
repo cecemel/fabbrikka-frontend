@@ -17,14 +17,19 @@ export default Ember.Service.extend({
 
         if(this._hasUserSetLocale()){
             this.setLocale(this._fetchLocaleFromCookie());
+            return;
         }
 
         //check if specified in url
+        if(this._haseLocalefromURL()){
+            this.setLocale(this._fetchLocaleFromURL());
+            return;
+        }
 
         //ok nothing found set the default here
         this.set('i18n.locale', this.get('defaultLocale'));
 
-        //let's see whether the locale guesser can tell us something
+        //last resort, let's see whether the locale guesser can tell us something
         this._setLocaleFromRemote();
 
     },
@@ -47,6 +52,28 @@ export default Ember.Service.extend({
 
     _fetchLocaleFromRemote(){
         return this.get('ajax').request(config.APP.localeGuesser);
+    },
+
+    _fetchLocaleFromURL(){
+        ////////////////////////////////////////////////////////////////////////
+        //TODO: HAKING ALERT!!! find out what the proper way is...
+        ////////////////////////////////////////////////////////////////////////
+        console.log("WARNING: locale-tracker.js still contains an hack!");
+        let queryParams = location.search.substring(1);
+        let routerInstance = Ember.getOwner(this).lookup('router:main');
+
+        if(queryParams.length > 0){
+            let query = routerInstance.router.recognizer.parseQueryString(queryParams);
+            return query["locale"];
+        }
+    },
+
+    _haseLocalefromURL(){
+        let locale = this._fetchLocaleFromURL();
+        if (locale && locale.length !== 0){
+            return true;
+        }
+        return false;
     },
 
     _hasUserSetLocale(){
