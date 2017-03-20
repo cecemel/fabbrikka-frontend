@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Materialize from 'materialize';
 
 export default Ember.Component.extend({
+    i18n: Ember.inject.service(),
     cartService: Ember.inject.service('shopping-cart'),
     localeTracker: Ember.inject.service(),
     locale: Ember.computed.reads("localeTracker.locale"),
@@ -55,7 +56,8 @@ export default Ember.Component.extend({
     actions: {
         addToCart(){
             this.get('cartService').addItem(this.get('selectedVariant').get('id'), 1).then(() => {
-                Materialize.toast("+1 sweater, thanks!", 4000, 'rounded');
+                let thanksText = this.get("i18n").t('components.product-details.plusonesweater');
+                Materialize.toast(thanksText, 4000, 'rounded');
                 this.$('.detail-go-to-cart').addClass('scale-in');
             });
         }
