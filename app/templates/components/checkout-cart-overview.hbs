@@ -1,6 +1,6 @@
 <ul class="collapsible" data-collapsible="accordion">
     <li>
-        <div class="collapsible-header"><i class="material-icons">shopping_basket</i>click for items overview</div>
+        <div class="collapsible-header"><i class="material-icons">shopping_basket</i>{{t "components.checkout-cart-overview.items-overview"}}</div>
         <div class="collapsible-body">
             {{#each cartService.cart.shoppingCartItems as |row|}}
                 {{shopping-cart-overview-item item=row}}
@@ -9,6 +9,6 @@
     </li>
 </ul>
 <blockquote>
-    <b> Shipping: </b> <i> free! </i> <br>
-    <b>Total: </b> {{total}}
+    <b> {{t "components.checkout-cart-overview.shipping"}}: </b> <i> {{t "components.checkout-cart-overview.shipping-amount"}} </i> <br>
+    <b>{{t "components.checkout-cart-overview.total"}}: </b> {{total}}
 </blockquote>

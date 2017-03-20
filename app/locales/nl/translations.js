@@ -9,4 +9,9 @@ export default {
 
     "components.bancontact-payment.account-holders-name": "naam op kaart",
     "components.bancontact-payment.start-payment": "start betaling",
+
+    "components.checkout-cart-overview.items-overview": "klik voor overzicht",
+    "components.checkout-cart-overview.shipping": "levering",
+    "components.checkout-cart-overview.shipping-amount": "gratis!",
+    "components.checkout-cart-overview.total": "totaal",
 };
