@@ -96,7 +96,7 @@ export default Ember.Service.extend({
                 return;
             }
 
-            if(locales.length > 0){
+            if(locales.length > 1){
                 //some consumging component can do something with this info
                 this.set('multiLocalesUser', true);
                 this.set('multiLocalesUserAvailibleLocales', locales);
