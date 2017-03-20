@@ -1,47 +1,47 @@
-<h2>check out</h2>
+<h2>{{t "templates.shopping-cart.checkout.checkout"}}</h2>
 
 <div class="row">
     <div class="col s12 l6 m12">
-        <h4>delivery address</h4>
+        <h4>{{t "templates.shopping-cart.checkout.delivery-address"}}</h4>
         <div class="input-field col s12">
             <i class="material-icons prefix">face</i>
             <input  type="text" class="validate autocomplete" name="fname" value={{fullName}}>
-            <label for="fname">full name</label>
+            <label for="fname">{{t "templates.shopping-cart.checkout.name"}}</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">email</i>
             <input type="email" class="validate autocomplete" value={{email}}>
-            <label for="email" data-error="wrong" data-success="right">email</label>
+            <label for="email" data-error="wrong" data-success="right">{{t "templates.shopping-cart.checkout.email"}}</label>
         </div>
         <div class="input-field col s8 m10">
             <i class="material-icons prefix">home</i>
             <input type="text" class="validate autocomplete" value={{street}}>
-            <label for="street" data-error="wrong" data-success="right">street</label>
+            <label for="street" data-error="wrong" data-success="right">{{t "templates.shopping-cart.checkout.street"}}</label>
         </div>
         <div class="input-field col s4 m2 right">
             <input type="text" class="validate autocomplete" value={{houseNumber}}>
-            <label for="houseNumber" data-error="wrong" data-success="right">number, bus</label>
+            <label for="houseNumber" data-error="wrong" data-success="right">{{t "templates.shopping-cart.checkout.number-bus"}}</label>
         </div>
         {{place-autocomplete-field value=city
             inputFieldClass='input-field col s8 m8'
             value=city
             icon='home' types='(cities)' iconStyle='display:none;'
-            labelFor='cityCountry' labelForText="city, country"
+            labelFor='cityCountry' labelForText=(t "templates.shopping-cart.checkout.city-country")
             placeChangedCallback=(action "handleGoogleAddressUpdate")}}
         <div class="input-field col 6 s4 m4 right">
             <input type="text" class="validate" autocomplete="off"
-            value={{zip}} placeholder='zip'>
+            value={{zip}} placeholder={{t "templates.shopping-cart.checkout.zip"}}>
         </div>
 
 
     </div>
     <div class="col s12 l6 m12">
-        <h4>order summary</h4>
+        <h4>{{t "templates.shopping-cart.checkout.order-summary"}}</h4>
         {{checkout-cart-overview}}
 
-        <h4>payment</h4>
+        <h4>{{t "templates.shopping-cart.checkout.payment"}}</h4>
         {{#md-select optionLabelPath="content.name" optionValuePath="content.value" value=chosenPaymentMethod
-            content=paymentMethods prompt="Please choose your payment method..." }}
+            content=paymentMethods prompt=(t "templates.shopping-cart.checkout.payment-prompt") }}
         {{/md-select}}
 
         {{#if (equal-strings chosenPaymentMethod "visa")}}

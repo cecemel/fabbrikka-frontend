@@ -6,10 +6,21 @@
         <div class="cart-table-td-div-image-text">{{name}}</div>
     </td>
     <td>
-    {{#md-select class="cart-table-td col s10" optionLabelPath="content.name" optionValuePath="content.id" value=size content=availibleSizes label='size' change=(action 'update')}}  {{/md-select}}
+    {{#md-select class="cart-table-td col s10"
+                 optionLabelPath="content.name"
+                 optionValuePath="content.id"
+                 value=size
+                 content=availibleSizes
+                 label=(t "components.shopping-cart-overview-row.size")
+                 change=(action 'update')}}  {{/md-select}}
 </td>
 <td>
-    {{md-input value=quantity label='amount' type="number" class="cart-table-td col s10" validate=true focusOut=(action 'update')}}
+    {{md-input value=quantity
+               label=(t "components.shopping-cart-overview-row.amount")
+               type="number"
+               class="cart-table-td col s10"
+               validate=true
+               focusOut=(action 'update')}}
 </td>
     <td>
         <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>

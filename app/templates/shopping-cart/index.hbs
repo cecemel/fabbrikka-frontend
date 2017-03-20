@@ -1,13 +1,13 @@
 <div class="row">
-<h2>shopping cart</h2>
+<h2>{{t "templates.shopping-cart.index.title"}}</h2>
 	{{#if hasItems}}
 		<div class="col s12 l8">
             <table>
                 <thead>
                     <tr>
-                        <th>item</th>
-                        <th>size</th>
-                        <th>units</th>
+                        <th>{{t "templates.shopping-cart.index.item"}}</th>
+                        <th>{{t "templates.shopping-cart.index.size"}}</th>
+                        <th>{{t "templates.shopping-cart.index.units"}}</th>
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
@@ -23,28 +23,29 @@
 		<div class="col s12 m12 l4">
 			<div class="row">
                 <div class="section">
-                <span class="checkout-total-hd">subtotal items </span>: <span class="checkout-total-d">{{total}}  &euro;</span>
+                <span class="checkout-total-hd">{{t "templates.shopping-cart.index.subtotal"}}</span>: <span class="checkout-total-d">{{total}}  &euro;</span>
                 </div>
             <div class="divider"></div>
             <div class="section">
-                <span class="checkout-total-hd">shipping </span>: <span class="checkout-total-d"> free </span>
+                <span class="checkout-total-hd">{{t "templates.shopping-cart.index.shipping"}} </span>:
+                <span class="checkout-total-d">{{t "templates.shopping-cart.index.shipping-cost"}}</span>
             </div>
             <div class="divider"></div>
             <div class="section">
-                <span class="checkout-total-gran-total">grand total</span>: <span class="checkout-total-d"> {{total}}  &euro; </span>
+                <span class="checkout-total-gran-total">{{t "templates.shopping-cart.index.grand-total"}}</span>: <span class="checkout-total-d"> {{total}}  &euro; </span>
             </div>
             <div class="section">
-                Please note the delivery of your goods may take up to five days
+                {{t "templates.shopping-cart.index.disclaimer"}}
             </div>
 			</div>
 			<div class="row">
                 <div class="col s12">
-                    {{#link-to 'index' class="left waves-effect waves-light btn"}}shop more!{{/link-to}}
-                    {{#link-to 'shopping-cart.checkout' class="right waves-effect waves-light btn"}}checkout!{{/link-to}}
+                    {{#link-to 'index' class="left waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.shop-more"}}{{/link-to}}
+                    {{#link-to 'shopping-cart.checkout' class="right waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.checkout"}}{{/link-to}}
                 </div>
 			</div>
 		</div>
         {{else}}
-            <h3> oooh seems you haven't any items... yet </h3>
+            <h3>{{t "templates.shopping-cart.index.empty-cart"}}</h3>
         {{/if}}
 </div>
