@@ -65,11 +65,15 @@ export default Ember.Service.extend({
             let routerInstance = Ember.getOwner(this).lookup('router:main');
             if(queryParams.length > 0){
                 let query = routerInstance.router.recognizer.parseQueryString(queryParams);
-                return query["locale"];
+                return (query && query["locale"]) || null;
             }
         }
-        //else let's try fastboot
-        return this.get('fastboot.request.queryParams')["locale"];
+        else{
+            let parameters = this.get('fastboot.request.queryParams');
+            if(Object.keys(parameters).length !== 0){
+                return this.get(parameters)["locale"];
+            }
+        }
     },
 
     _hasLocationSet(){
