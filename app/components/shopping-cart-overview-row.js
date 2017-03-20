@@ -20,18 +20,15 @@ export default Ember.Component.extend({
     image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
     size: Ember.computed.reads('item.productVariant.size.id'),
     quantity: Ember.computed.reads('item.quantity'),
-
     productVariants: Ember.computed.reads('product.productVariants'),
     sizes: Ember.computed.mapBy('productVariants', 'size'),
     availibleSizes: Ember.computed.uniqBy('sizes', 'id'),
-    selectedSizeId: Ember.computed.reads('uniqueSizes.firstObject.id'),
 
     //sets the variant based on future multiple criteria
     selectedVariant: Ember.computed('size', function(){
-        let self = this;
         return this.get('productVariants').find(function(e){
-             return e.get('size').get('id') === self.get('size');
-        });
+             return e.get('size').get('id') === this.get('size');
+        }, this);
     }),
 
     didRender() {
