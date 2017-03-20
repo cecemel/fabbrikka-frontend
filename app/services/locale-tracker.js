@@ -8,6 +8,7 @@ export default Ember.Service.extend({
     i18n: Ember.inject.service(),
     cookies: Ember.inject.service(),
     ajax: Ember.inject.service(),
+    fastboot: Ember.inject.service(),
 
     locale: Ember.computed.reads('i18n.locale'),
 
@@ -21,7 +22,7 @@ export default Ember.Service.extend({
         }
 
         //check if specified in url
-        if(this._haseLocalefromURL()){
+        if(this._hasLocalefromURL()){
             this.setLocale(this._fetchLocaleFromURL());
             return;
         }
@@ -58,17 +59,27 @@ export default Ember.Service.extend({
         ////////////////////////////////////////////////////////////////////////
         //TODO: HAKING ALERT!!! find out what the proper way is...
         ////////////////////////////////////////////////////////////////////////
-        console.log("WARNING: locale-tracker.js still contains an hack!");
-        let queryParams = location.search.substring(1);
-        let routerInstance = Ember.getOwner(this).lookup('router:main');
-
-        if(queryParams.length > 0){
-            let query = routerInstance.router.recognizer.parseQueryString(queryParams);
-            return query["locale"];
+        console.log("WARNING: locale-tracker.js still contains a hack!");
+        if(this._hasLocationSet()){
+            let queryParams = location.search.substring(1);
+            let routerInstance = Ember.getOwner(this).lookup('router:main');
+            if(queryParams.length > 0){
+                let query = routerInstance.router.recognizer.parseQueryString(queryParams);
+                return query["locale"];
+            }
         }
+        //else let's try fastboot
+        return this.get('fastboot.request.queryParams')["locale"];
     },
 
-    _haseLocalefromURL(){
+    _hasLocationSet(){
+        if (typeof location === 'undefined' || location === null) {
+            return false;
+        }
+        return true;
+    },
+
+    _hasLocalefromURL(){
         let locale = this._fetchLocaleFromURL();
         if (locale && locale.length !== 0){
             return true;

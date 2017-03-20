@@ -29,6 +29,9 @@ module.exports = function(environment) {
     stripe: {
         key: 'pk_test_Od5jsn7vV50m8Y8OBf6ebmN5'
     },
+    fastboot: {
+      hostWhitelist: ['fabb-test.ruizdearcaute.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
+    }
   };
 
   if (environment === 'development') {
