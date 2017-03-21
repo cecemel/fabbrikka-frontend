@@ -1,7 +1,15 @@
 {{#link-to onClickLinkTo item.id tagName='div' class="card hoverable"}}
-    <div class="card-image waves-effect waves-block waves-light">
-        <img src={{primaryImageURL}}>
-    </div>
+    {{#if media.isS}}
+        <div class="card-image">
+            <img src={{primaryImageURL}}>
+        </div>
+    {{else}}
+        <div class="card-image waves-effect waves-block waves-light">
+            <img src={{primaryImageURL}}>
+        </div>
+    {{/if}}
+
+
     <div class="card-content waves-effect waves-block waves-light">
         <span class="card-title left">{{name}}</span>
         <span class="card-title right">{{price}}</span>
