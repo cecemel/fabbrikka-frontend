@@ -30,6 +30,7 @@ Router.map(function() {
   this.route('shopping-cart', function() {
     this.route('checkout');
   });
+  this.route('login');
 });
 
 export default Router;

@@ -1,0 +1,6 @@
+{{#if session.isAuthenticated}}
+<h2> you are logged in! </h2>
+  {{mu-logout}}
+{{else}}
+  {{mu-login}}
+{{/if}}
