@@ -2,8 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     session: Ember.inject.service(),
-    didInsertElement: function() {
-        this.$(".dropdown-button").dropdown();
+    didInsertElement(){
         this.$(".button-collapse").sideNav({closeOnClick: true});
+    },
+    didRender(){
+        this.$(".dropdown-button").dropdown();
     }
 });

@@ -1,9 +1,11 @@
 <!-- Dropdown Structure -->
+{{#if session.isAuthenticated}}
 <ul id="dropdown1" class="dropdown-content">
   <li>{{#link-to 'admin.product-audiences'}}audience{{/link-to}}</li>
   <li>{{#link-to 'admin.product-variant-sizes'}}sizes{{/link-to}}</li>
   <li>{{#link-to 'admin.products'}}products{{/link-to}}</li>
 </ul>
+{{/if}}
 <nav>
   <div class="nav-wrapper">
   {{#link-to 'index' class="brand-logo"}}
@@ -16,7 +18,7 @@
       <li>{{#link-to 'index'}}{{t "components.navbar-mat-fabb.shop"}} {{/link-to}}</li>
       <li><a href="#">{{t "components.navbar-mat-fabb.about"}}</a></li>
       {{#if session.isAuthenticated}}
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">admin<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-button" href="#" data-activates="dropdown1">admin<i class="material-icons right">arrow_drop_down</i></a></li>
       {{/if}}
       <!-- Dropdown Trigger -->
     </ul>
