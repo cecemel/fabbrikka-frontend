@@ -46,7 +46,7 @@
     "ember-material-design-icons-shim": "0.1.10",
     "ember-materialize-shim": "git+https://github.com/cecemel/ember-materialize-shim.git",
     "ember-modal-dialog": "0.8.8",
-    "ember-mu-login": "1.6.0",
+    "ember-mu-login": "git+https://github.com/cecemel/ember-mu-login.git",
     "ember-new-computed": "1.0.3",
     "ember-place-autocomplete": "0.0.17",
     "ember-radio-button": "1.0.7",
