@@ -52,7 +52,7 @@ export default Ember.Service.extend({
     },
 
     _fetchLocaleFromRemote(){
-        return this.get('ajax').request(config.APP.localeGuesser);
+        return this.get('ajax').request(config.APP.localeGuesser + "/locales");
     },
 
     _fetchLocaleFromURL(){

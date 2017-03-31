@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from 'fabbrikka-frontend/config/environment';
 
 export default Ember.Service.extend({
     store: Ember.inject.service('store'),
@@ -10,12 +11,17 @@ export default Ember.Service.extend({
      total: 0,
      totalItems: 0,
 
+     init() {
+         this._super(...arguments);
+         this._initCart();
+     },
+
      addItem(id, quantity){
          let self = this;
          return self._initCart()
         .then(() => {
             return Ember.RSVP.Promise.all([
-            self.get('store').findRecord('product-variant', id),
+                self.get('store').findRecord('product-variant', id),
             ]);
         })
         .then((items) =>{
@@ -45,22 +51,9 @@ export default Ember.Service.extend({
           return item.destroyRecord();
         });
     },
-
-    empty(){
-        return this.get('cart').get('shoppingCartItems').then((items) => {
-          let promises = [];
-
-          items.forEach((item) => {
-            promises.push(item.destroyRecord());
-          });
-
-          return Ember.RSVP.Promise.all(promises).then(()=>{
-            return this.get('cart').destroyRecord();
-          });
-        });
-    },
-
+    
     _initCart(){
+        //TODO: need to solved edge case, when the user starts adding stuf before cart is initialized fully
         let self = this;
         if(Ember.isNone(self.get('cart'))){
             return self._tryFetchAssociatedCart()
@@ -87,7 +80,7 @@ export default Ember.Service.extend({
 
     _associateCart(cart){
         //links cart with session
-        return this.get('ajax').request('http://localhost/fabbrikka-cart-service/shopping-carts', {
+        return this.get('ajax').request(config.APP.cartService + '/shopping-carts', {
             method: 'PATCH',
             data: JSON.stringify(cart.serialize({includeId: true})),
             contentType: 'application/vnd.api+json'
@@ -97,7 +90,7 @@ export default Ember.Service.extend({
     _tryFetchAssociatedCart(){
         //fetch associated cart with session remotly
         return this.get('ajax')
-        .request('http://localhost/fabbrikka-cart-service/shopping-carts')
+        .request(config.APP.cartService + '/shopping-carts')
         .then(data => data[0]);
     },
 

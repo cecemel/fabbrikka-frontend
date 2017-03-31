@@ -21,7 +21,8 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       backendHost: "",
-      localeGuesser: "/fabbrikka-locale-guesser/locales"
+      localeGuesser: "/fabbrikka-locale-guesser",
+      cartService: "/fabbrikka-cart-service",
     },
     "place-autocomplete": {
        key: 'AIzaSyD8SUmgYvE2yOjNr0BeKO90ptR68hFFHNQ',
@@ -45,7 +46,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV["ember-mu-login"]={"sessionBasePath" :"http://localhost/sessions"};
     ENV.APP.backendHost="http://localhost";
-    ENV.APP.localeGuesser="http://localhost/fabbrikka-locale-guesser/locales";
+    ENV.APP.localeGuesser="http://localhost/fabbrikka-locale-guesser";
+    ENV.APP.cartService="http://localhost/fabbrikka-cart-service";
   }
 
   if (environment === 'test') {
