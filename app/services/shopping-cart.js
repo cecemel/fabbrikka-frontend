@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Service.extend({
     store: Ember.inject.service('store'),
+    ajax: Ember.inject.service(),
     cart: null,
     totalObserver: Ember.observer('cart.shoppingCartItems.@each.quantity',
                                   'cart.shoppingCartItems.@each.productVariant',
@@ -62,14 +63,42 @@ export default Ember.Service.extend({
     _initCart(){
         let self = this;
         if(Ember.isNone(self.get('cart'))){
-            let cart = self.get('store').createRecord('shopping-cart');
-            return cart.save()
-                .then(() => {
-                    self.set('cart', cart);
-                    return Ember.RSVP.Promise.resolve(self.get('cart'));
-                });
+            return self._tryFetchAssociatedCart()
+            .then((id) => {
+                if(!id){
+                    return self._createNewCart();
+                }
+                return self.get('store').findRecord('shopping-cart', id);
+            })
+            .then((cart) => {
+                self.set('cart', cart);
+                self._associateCart(cart);
+                return cart;
+            });
         }
         return Ember.RSVP.Promise.resolve(self.get('cart'));
+    },
+
+    _createNewCart(){
+        let self = this;
+        let cart = self.get('store').createRecord('shopping-cart');
+        return cart.save();
+    },
+
+    _associateCart(cart){
+        //links cart with session
+        return this.get('ajax').request('http://localhost/fabbrikka-cart-service/shopping-carts', {
+            method: 'PATCH',
+            data: JSON.stringify(cart.serialize({includeId: true})),
+            contentType: 'application/vnd.api+json'
+        });
+    },
+
+    _tryFetchAssociatedCart(){
+        //fetch associated cart with session remotly
+        return this.get('ajax')
+        .request('http://localhost/fabbrikka-cart-service/shopping-carts')
+        .then(data => data[0]);
     },
 
     _setTotals(){
