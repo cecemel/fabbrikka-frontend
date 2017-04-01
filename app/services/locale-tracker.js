@@ -40,7 +40,9 @@ export default Ember.Service.extend({
         let selectedLocale  = locales.includes(locale) ? locale : this.get('defaultLocale');
 
         this.set('i18n.locale', selectedLocale);
-        this.get('cookies').write("locale-user", selectedLocale);
+        var expiration_date = new Date();
+        expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+        this.get('cookies').write("locale-user", selectedLocale, {expires: expiration_date});
     },
 
     getLocale(){
