@@ -57,7 +57,7 @@ export default Ember.Component.extend({
         addToCart(){
             this.get('cartService').addItem(this.get('selectedVariant').get('id'), 1).then(() => {
                 let thanksText = this.get("i18n").t('components.product-details.plusonesweater');
-                Materialize.toast(thanksText, 4000, 'rounded');
+                Materialize.toast(thanksText, 2000, 'rounded');
                 this.$('.detail-go-to-cart').addClass('scale-in');
             });
         }
