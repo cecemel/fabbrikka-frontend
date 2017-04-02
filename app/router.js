@@ -7,7 +7,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('product-images');
 
   this.route('products', function() {
     this.route('new');
