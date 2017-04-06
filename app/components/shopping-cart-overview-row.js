@@ -10,6 +10,9 @@ export default Ember.Component.extend({
     primaryImages: Ember.computed.filterBy('product.productImages', 'type', 'primary'),
     productNames: Ember.computed.reads('product.productNames'),
     name: Ember.computed('locale', 'productNames', function(){
+        if(!this.get('productNames') || !this.get('locale')){
+            return;
+        }
         let productName = this.get('productNames').find(function(e){
           return e.get("locale") === this.get('locale');
       }, this);
@@ -26,9 +29,13 @@ export default Ember.Component.extend({
 
     //sets the variant based on future multiple criteria
     selectedVariant: Ember.computed('size', function(){
+        let self = this;
+        if(!this.get('productVariants') || !self.get('size')){
+            return;
+        }
         return this.get('productVariants').find(function(e){
-             return e.get('size').get('id') === this.get('size');
-        }, this);
+             return e.get('size').get('id') === self.get('size');
+        });
     }),
 
     didRender() {

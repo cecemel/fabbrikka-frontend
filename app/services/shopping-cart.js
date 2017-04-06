@@ -7,27 +7,19 @@ export default Ember.Service.extend({
     cart: null,
     totalObserver: Ember.observer('cart.shoppingCartItems.@each.quantity',
                                   'cart.shoppingCartItems.@each.productVariant',
-                                  function(){Ember.run.once(this, this._setTotals);}),
+                                  function(){
+                                      Ember.run.once(this, this._setTotals);
+                                  }),
      total: 0,
      totalItems: 0,
 
-     init() {
-         this._super(...arguments);
-         this._initCart();
-     },
-
      addItem(id, quantity){
          let self = this;
-         return self._initCart()
-        .then(() => {
-            return Ember.RSVP.Promise.all([
-                self.get('store').findRecord('product-variant', id),
-            ]);
-        })
-        .then((items) =>{
+         return self.get('store').findRecord('product-variant', id)
+        .then((item) =>{
           let shoppingCartItem = self.get('store').createRecord('shopping-cart-item',
               {"quantity": quantity,
-               "productVariant": items[0],
+               "productVariant": item,
                "shoppingCart": self.get('cart')
             });
           return shoppingCartItem.save();
@@ -36,7 +28,7 @@ export default Ember.Service.extend({
 
     updateItem(id, variantId, quantity){
         let self = this;
-        return Ember.RSVP.Promise.all([self.get('store').findRecord('shopping-cart-item', id),
+        return Ember.RSVP.all([self.get('store').findRecord('shopping-cart-item', id),
                                 self.get('store').findRecord('product-variant', variantId),
                               ])
         .then((items) => {
@@ -51,8 +43,8 @@ export default Ember.Service.extend({
           return item.destroyRecord();
         });
     },
-    
-    _initCart(){
+
+    setupCart(){
         //TODO: need to solved edge case, when the user starts adding stuf before cart is initialized fully
         let self = this;
         if(Ember.isNone(self.get('cart'))){
