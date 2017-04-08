@@ -34,7 +34,7 @@ module.exports = function(environment) {
        sessionBasePath: "/sessions",
     },
     fastboot: {
-      hostWhitelist: ['fabb-test.ruizdearcaute.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
+      hostWhitelist: ['test.fabbrikka.com','fabb-test.ruizdearcaute.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
     }
   };
 
@@ -63,7 +63,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-   ENV.APP.backendHost="http://fabb-test.ruizdearcaute.com"
+   ENV.APP.backendHost=""
   }
 
   return ENV;
