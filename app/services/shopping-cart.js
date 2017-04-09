@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from 'fabbrikka-frontend/config/environment';
 
 export default Ember.Service.extend({
+    fastboot: Ember.inject.service(),
     store: Ember.inject.service('store'),
     ajax: Ember.inject.service(),
     cart: null,
@@ -45,8 +46,11 @@ export default Ember.Service.extend({
     },
 
     setupCart(){
-        //TODO: need to solved edge case, when the user starts adding stuf before cart is initialized fully
         let self = this;
+        if(self.get('fastboot.isFastBoot')){
+            return; //we don't need it here
+        }
+
         if(Ember.isNone(self.get('cart'))){
             return self._tryFetchAssociatedCart()
             .then((id) => {
