@@ -48,7 +48,7 @@ export default Ember.Service.extend({
     setupCart(){
         let self = this;
         if(self.get('fastboot.isFastBoot')){
-            console.log("INFO: setupCart disabled in fastboot modus...")
+            console.log("INFO: setupCart disabled in fastboot modus...");
             return; //we don't need it here
         }
 
