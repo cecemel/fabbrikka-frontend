@@ -154,6 +154,10 @@ nav .brand-logo {
 }
 
 @media #{$small-and-down} {
+    .parallax-container {
+      height: 350px;
+    }
+
   .cart-table-td-div-image{
       width: 50px;
   }
