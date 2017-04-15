@@ -19,7 +19,6 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(productName) && productName.get("name");
     }),
 
-    price: Ember.computed.reads('item.productVariant.price'),
     image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
     size: Ember.computed.reads('item.productVariant.size.id'),
     quantity: Ember.computed.reads('item.quantity'),
@@ -27,28 +26,31 @@ export default Ember.Component.extend({
     sizes: Ember.computed.mapBy('productVariants', 'size'),
     availibleSizes: Ember.computed.uniqBy('sizes', 'id'),
 
-    //sets the variant based on future multiple criteria
-    selectedVariant: Ember.computed('size', function(){
-        let self = this;
-        if(!this.get('productVariants') || !self.get('size')){
-            return;
-        }
-        return this.get('productVariants').find(function(e){
-             return e.get('size').get('id') === self.get('size');
+    selectVariantBySize: function (productVariants, sizeId) {
+        return productVariants.find(function(e){
+             return e.get('size').get('id') === sizeId;
         });
-    }),
+    },
 
     didRender() {
         this._super(...arguments);
         this.$('select').material_select();
     },
+
     actions: {
         delete: function(id){
             this.get('cartService').removeItem(id);
         },
-        update: function(){
-            this.get('cartService').updateItem(this.get('item.id'), this.get('selectedVariant').get('id'),
-                                               this.get('quantity'));
+        updateSize: function(sizeId){
+            let selectedVariant = this.selectVariantBySize(this.get('productVariants'), sizeId);
+            this.set('size', sizeId);
+            this.get('cartService').updateItem(this.get('item.id'), selectedVariant.get('id'),
+            this.get('quantity'));
+        },
+        updateQuantity: function(){
+            let selectedVariant = this.selectVariantBySize(this.get('productVariants'), this.get('size'));
+            this.get('cartService').updateItem(this.get('item.id'), selectedVariant.get('id'),
+            this.get('quantity'));
         }
     }
 });

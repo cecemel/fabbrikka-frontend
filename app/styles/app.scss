@@ -59,6 +59,9 @@ nav .brand-logo {
     display: none;
 }
 
+.cart-table-td-select{
+    margin-top: 12px;
+}
 .cart-table-td-div-image-text{
     text-align: center;
     font-size: large;
@@ -152,7 +155,7 @@ nav .brand-logo {
 
 @media #{$small-and-down} {
   .cart-table-td-div-image{
-      width: 100px;
+      width: 50px;
   }
 
   .container{

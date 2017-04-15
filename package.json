@@ -58,6 +58,7 @@
     "ember-truth-helpers": "1.2.0",
     "ember-uploader": "1.2.3",
     "ember-welcome-page": "^2.0.2",
+    "emberx-select": "3.0.1",
     "loader.js": "^4.0.10",
     "materialize-css": "^0.98.1",
     "node-sass": "^3.4.2"
