@@ -16,7 +16,7 @@ export default Ember.Component.extend({
     },
 
     didInsertElement() {
-        this.$(".locale-selector").dropdown();
+        this.$(".locale-selector").dropdown({belowOrigin: true});
     },
 
     actions:{
