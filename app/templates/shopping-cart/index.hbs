@@ -39,10 +39,19 @@
             </div>
 			</div>
 			<div class="row">
+                {{#if media.isXs}}
+                <div class="row">
+                    {{#link-to 'index' class="left waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.shop-more"}}{{/link-to}}
+                </div>
+                <div class="row">
+                    {{#link-to 'shopping-cart.checkout' class="waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.checkout"}}{{/link-to}}
+                </div>
+                {{else}}
                 <div class="col s12">
                     {{#link-to 'index' class="left waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.shop-more"}}{{/link-to}}
                     {{#link-to 'shopping-cart.checkout' class="right waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.checkout"}}{{/link-to}}
                 </div>
+                {{/if}}
 			</div>
 		</div>
         {{else}}
