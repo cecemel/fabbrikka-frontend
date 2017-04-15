@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    localeSimpleLanguageMap:{"fr-be": "français",
-                             "nl-be": "nederlands", "en-gb": "english"},
+    localeSimpleLanguageMap:{"nl-be": "nederlands", "en-gb": "english"},
 
     localeTracker: Ember.inject.service('locale-tracker'),
     localeSelections: [],
@@ -40,10 +39,14 @@ export default Ember.Component.extend({
 
     _mapLocalesTolangLabels(locales){
         let self = this;
-        let mapped = locales.map((locale) => {
-                        let localeLabel = self.get("localeSimpleLanguageMap")[locale] || locale;
-                        return {label: localeLabel, "locale": locale};
-                    });
+        //map only languages we have a translation for
+        let mapped = locales.reduce((acc, locale) => {
+                        let localeLabel = self.get("localeSimpleLanguageMap")[locale];
+                        if(localeLabel){
+                            acc.push({label: localeLabel, "locale": locale});
+                        }
+                        return acc;
+                    }, []);
         self.set("localeSelections", mapped);
     }
 });
