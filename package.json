@@ -59,7 +59,7 @@
     "ember-uploader": "1.2.3",
     "ember-welcome-page": "^2.0.2",
     "loader.js": "^4.0.10",
-    "materialize-css": "^0.98.0",
+    "materialize-css": "^0.98.1",
     "node-sass": "^3.4.2"
   },
   "engines": {

@@ -45,10 +45,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV["ember-mu-login"]={"sessionBasePath" :"http://localhost/sessions"};
-    ENV.APP.backendHost="http://localhost";
-    ENV.APP.localeGuesser="http://localhost/fabbrikka-locale-guesser";
-    ENV.APP.cartService="http://localhost/fabbrikka-cart-service";
+    ENV.APP.backendHost="";
   }
 
   if (environment === 'test') {
