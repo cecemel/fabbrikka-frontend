@@ -153,6 +153,10 @@ nav .brand-logo {
     width:40%;
 }
 
+#sidenav-overlay{
+    z-index: 996;
+}
+
 @media #{$small-and-down} {
     .parallax-container {
       height: 350px;
