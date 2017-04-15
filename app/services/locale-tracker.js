@@ -104,7 +104,7 @@ export default Ember.Service.extend({
     _setLocaleFromRemote(){
         this._fetchLocaleFromRemote()
         .then((locales) => {
-
+            
             if(locales.length === 0) {
                 return;
             }
@@ -115,8 +115,8 @@ export default Ember.Service.extend({
 
             if(locales.length > 1){
                 //some consumging component can do something with this info
-                this.set('multiLocalesUser', true);
                 this.set('multiLocalesUserAvailibleLocales', locales);
+                this.set('multiLocalesUser', true);
             }
 
             this.setLocale(locales[0]);
