@@ -1,7 +1,7 @@
 {
   "name": "fabbrikka-frontend",
   "dependencies": {
-    "materialize": "0.98.1",
+    "materialize": "0.98.2",
     "swiper": "~3.4.1",
     "flickity": "^2.0.5"
   }
