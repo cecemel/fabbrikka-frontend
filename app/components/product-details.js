@@ -53,6 +53,13 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(description) && description.get("description");
     }),
 
+    isPageReady: Ember.computed('uniqueSizes', function(){
+        if(!this.get('uniqueSizes') || this.get('uniqueSizes').length === 0){
+            return false;
+        }
+        return true;
+    }),
+
     actions: {
         addToCart(){
             this.get('cartService').addItem(this.get('selectedVariant').get('id'), 1).then(() => {

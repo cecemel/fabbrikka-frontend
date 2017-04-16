@@ -26,6 +26,13 @@ export default Ember.Component.extend({
     sizes: Ember.computed.mapBy('productVariants', 'size'),
     availibleSizes: Ember.computed.uniqBy('sizes', 'id'),
 
+    isPageReady: Ember.computed('availibleSizes', function(){
+        if(!this.get('availibleSizes') || this.get('availibleSizes').length === 0){
+            return false;
+        }
+        return true;
+    }),
+
     selectVariantBySize: function (productVariants, sizeId) {
         return productVariants.find(function(e){
              return e.get('size').get('id') === sizeId;

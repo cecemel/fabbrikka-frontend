@@ -1,4 +1,4 @@
-
+{{#if isPageReady}}
     <td>
         <div class="cart-table-td-div-image">
             <img src={{image}}/>
@@ -26,4 +26,6 @@
            <i class="material-icons">delete</i>
         </a>
     </td>
-{{yield}}
+{{else}}
+    {{fabb-spinner}}
+{{/if}}
