@@ -37,6 +37,13 @@ export default Ember.Component.extend({
         this.$('select').material_select();
     },
 
+    isPageReady: Ember.computed('availibleSizes', function(){
+        if(!this.get('availibleSizes') || this.get('availibleSizes').length === 0){
+            return false;
+        }
+        return true;
+    }),
+
     actions: {
         delete: function(id){
             this.get('cartService').removeItem(id);

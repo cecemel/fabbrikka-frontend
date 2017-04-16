@@ -1,34 +1,37 @@
 <div class="row">
-	<div class="col s12 m10 l10">
-		<div class="col s12 m3">
-			<img src={{image}} style='width:100%'/>
-		</div>
-		<div class="col s12 m9 l9">
-		<h5> {{name}} </h5>
-			<div class="row">
-				<div class="col s5 m4 l4">
-                    {{#x-select  class="cart-table-td cart-table-td-select col s12 m10" value=size on-change=(action 'updateSize') as |xs|}}
-                       {{#each availibleSizes as |aSize|}}
-                         {{#xs.option value=aSize.id}}{{aSize.name}}{{/xs.option}}
-                       {{/each}}
-                    {{/x-select}}
-				</div>
-				<div class="col s5 m4 l4">
-                    {{md-input value=quantity
-                               label=(t "components.shopping-cart-overview-row.amount")
-                               type="number"
-                               class="cart-table-td col s10"
-                               validate=true
-                               focusOut=(action 'updateQuantity')}}
-				</div>
-				<div class="col s2 m3 l3">
-				 <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
-				 	<i class="material-icons">delete</i>
-				 </a>
-				 </div>
-			</div>
-		</div>
-	</div>
-
+    {{#if isPageReady}}
+    	<div class="col s12 m10 l10">
+    		<div class="col s12 m3">
+    			<img src={{image}} style='width:100%'/>
+    		</div>
+    		<div class="col s12 m9 l9">
+    		<h5> {{name}} </h5>
+    			<div class="row">
+    				<div class="col s5 m4 l4">
+                        {{#x-select  class="cart-table-td cart-table-td-select col s12 m10" value=size on-change=(action 'updateSize') as |xs|}}
+                           {{#each availibleSizes as |aSize|}}
+                             {{#xs.option value=aSize.id}}{{aSize.name}}{{/xs.option}}
+                           {{/each}}
+                        {{/x-select}}
+    				</div>
+    				<div class="col s5 m4 l4">
+                        {{md-input value=quantity
+                                   label=(t "components.shopping-cart-overview-row.amount")
+                                   type="number"
+                                   class="cart-table-td col s10"
+                                   validate=true
+                                   focusOut=(action 'updateQuantity')}}
+    				</div>
+    				<div class="col s2 m3 l3">
+    				 <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
+    				 	<i class="material-icons">delete</i>
+    				 </a>
+    				 </div>
+    			</div>
+    		</div>
+    	</div>
+    {{else}}
+        {{fabb-spinner}}
+    {{/if}}
 </div>
 {{yield}}
