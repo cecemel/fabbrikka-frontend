@@ -174,28 +174,23 @@ nav .brand-logo {
       cursor: pointer;
   }
 
-}
-
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-
-
-select:active,
-textarea:active,
-input[type="text"]:active,
-input[type="password"]:active,
-input[type="datetime"]:active,
-input[type="datetime-local"]:active,
-input[type="date"]:active,
-input[type="month"]:active,
-input[type="time"]:active,
-input[type="week"]:active,
-input[type="number"]:active,
-input[type="email"]:active,
-input[type="url"]:active,
-input[type="search"]:active,
-input[type="tel"]:active,
-input[type="color"]:active, {
-    font-size: 30px;
- }
+  select:active,
+  textarea:active,
+  input[type="text"]:active,
+  input[type="password"]:active,
+  input[type="datetime"]:active,
+  input[type="datetime-local"]:active,
+  input[type="date"]:active,
+  input[type="month"]:active,
+  input[type="time"]:active,
+  input[type="week"]:active,
+  input[type="number"]:active,
+  input[type="email"]:active,
+  input[type="url"]:active,
+  input[type="search"]:active,
+  input[type="tel"]:active,
+  input[type="color"]:active, {
+      font-size: 30px;
+   }
 
 }
