@@ -62,6 +62,7 @@ export default Component.extend({
         let inputElement = document.getElementById(this.elementId).getElementsByTagName('input')[0],
             google = this.get('google') || window.google, //TODO: check how to use the inyected google object
             autocomplete = new google.maps.places.Autocomplete(inputElement, { types: this._typesToArray()});
+        inputElement.placeholder=''; //remove this ugly place holder text
         this.set('autocomplete', autocomplete);
       }
     }

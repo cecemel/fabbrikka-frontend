@@ -1,12 +1,14 @@
 {{#if hasBlock}}
   {{yield this}}
 {{else}}
-<div class={{inputFieldClass}}>
-    <i class="material-icons prefix" style={{iconStyle}}>{{icon}}</i>
-    {{input value=value
-            types=geoTypes
-            placeholder="city, country"
-        }}
-</div>
+    {{md-input
+        id=id
+        value=value
+        label=label
+        types=geoTypes
+        width="width: 100%"
+        validate=validate
+        errors=errors
+        icon=icon}}
 {{/if}}
 {{yield}}
