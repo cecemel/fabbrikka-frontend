@@ -3,36 +3,26 @@
 <div class="row">
     <div class="col s12 l6 m12">
         <h4>{{t "templates.shopping-cart.checkout.delivery-address"}}</h4>
-        <div class="input-field col s12">
-            <i class="material-icons prefix">face</i>
-            <input  type="text" class="validate autocomplete" name="fname" value={{fullName}}>
-            <label for="fname">{{t "templates.shopping-cart.checkout.name"}}</label>
-        </div>
-        <div class="input-field col s12">
-            <i class="material-icons prefix">email</i>
-            <input type="email" class="validate autocomplete" value={{email}}>
-            <label for="email" data-error="wrong" data-success="right">{{t "templates.shopping-cart.checkout.email"}}</label>
-        </div>
-        <div class="input-field col s8 m10">
-            <i class="material-icons prefix">home</i>
-            <input type="text" class="validate autocomplete" value={{street}}>
-            <label for="street" data-error="wrong" data-success="right">{{t "templates.shopping-cart.checkout.street"}}</label>
-        </div>
-        <div class="input-field col s4 m2 right">
-            <input type="text" class="validate autocomplete" value={{houseNumber}}>
-            <label for="houseNumber" data-error="wrong" data-success="right">{{t "templates.shopping-cart.checkout.number-bus"}}</label>
-        </div>
-        {{place-autocomplete-field value=city
-            inputFieldClass='input-field col s8 m8'
-            value=city
-            icon='home' types='(cities)' iconStyle='display:none;'
-            labelFor='cityCountry' labelForText=(t "templates.shopping-cart.checkout.city-country")
-            placeChangedCallback=(action "handleGoogleAddressUpdate")}}
-        <div class="input-field col 6 s4 m4 right">
-            <input type="text" class="validate" autocomplete="off"
-            value={{zip}} placeholder={{t "templates.shopping-cart.checkout.zip"}}>
-        </div>
+        {{md-input value=model.name label=(t "templates.shopping-cart.checkout.name")
+            icon="face" class="col s12" validate=true errors=errors.name}}
 
+        {{md-input value=model.email label=(t "templates.shopping-cart.checkout.email")
+            icon="email" class="col s12" validate=true errors=errors.email}}
+
+        {{md-input value=model.street label=(t "templates.shopping-cart.checkout.street")
+                icon="home" class="col s8 m10" validate=true errors=errors.street}}
+
+        {{md-input value=model.houseNumber label=(t "templates.shopping-cart.checkout.number-bus")
+                            class="col s4 m2 right" validate=true errors=errors.houseNumber}}
+
+        {{place-autocomplete-field value=city
+            class='col s8  m8' label=(t "templates.shopping-cart.checkout.city-country")
+            placeChangedCallback=(action "handleGoogleAddressUpdate")
+            validate=true errors=errors.city icon="location_city"
+       }}
+
+        {{md-input value=model.zip label=(t "templates.shopping-cart.checkout.zip")
+                                class="col s4 m4 right" validate=true errors=errors.zip}}
 
     </div>
     <div class="col s12 l6 m12">
@@ -45,7 +35,7 @@
         {{/md-select}}
 
         {{#if (equal-strings chosenPaymentMethod "visa")}}
-            {{credit-card-payment}}
+            {{credit-card-payment onPay=(action 'validateForm')}}
         {{/if}}
         {{#if (equal-strings chosenPaymentMethod "bancontact")}}
             {{bancontact-payment}}

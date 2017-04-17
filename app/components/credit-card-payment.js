@@ -2,28 +2,32 @@ import Ember from 'ember';
 import config from 'fabbrikka-frontend/config/environment';
 
 export default Ember.Component.extend({
-    scriptDownloaded: false,
-    hasRendered: false,
     card: null,
+    cardMounted: false,
     stripeInstance: null,
     creditCardElement: "credit-card-element",
     creditCardErrors: "credit-card-errors",
-    isPageReadyObserver: Ember.observer('scriptDownloaded', 'hasRendered', function(){
-        if(this.get('scriptDownloaded') && this.get('hasRendered')){
-            this.mountCart();
+
+    _stripeExists(){
+        try {
+            if (Stripe){
+                return true;
+            }
+        } catch(e) {
+            return false;
         }
-    }),
+    },
 
     didInsertElement() {
         let self = this;
-         Ember.$.getScript('https://js.stripe.com/v3/', () => {
-             self.set('scriptDownloaded', true);
-         });
+        if(!self._stripeExists()){
+             Ember.$.getScript('https://js.stripe.com/v3/', () => {
+                 this.mountCart();
+             });
+             return;
+         }
+         this.mountCart();
      },
-
-     didRender(){
-         this.set('hasRendered', true);
-    },
 
     mountCart(){
         // taken from https://stripe.com/docs/elements
@@ -56,8 +60,9 @@ export default Ember.Component.extend({
         card.mount('#' + this.get('creditCardElement'));
 
         // Handle real-time validation errors from the card Element.
+        let self = this;
         card.addEventListener('change', function(event) {
-            const displayError = document.getElementById(this.get('creditCardErrors'));
+            const displayError = document.getElementById(self.get('creditCardErrors'));
             if (event.error) {
                 displayError.textContent = event.error.message;
             } else {
@@ -67,10 +72,12 @@ export default Ember.Component.extend({
 
         this.set('card', card);
         this.set('stripeInstance', stripe);
+        this.set('cardMounted', true);
     },
 
     actions: {
         submitPayment(){
+            this.get('onPay')();
             this.get('stripeInstance').createToken(this.get('card'))
             .then((result) => {
                 if (result.error) {
