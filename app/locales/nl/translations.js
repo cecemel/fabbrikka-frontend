@@ -48,4 +48,7 @@ export default {
     "templates.shopping-cart.index.checkout": "uitchecken!",
     "templates.shopping-cart.index.empty-cart": "oooh het winkelmandje is nog steeds niet gevuld...",
 
+    "controllers.shopping-cart.index.errors.wrong-email": "bedankt om een geldige email op te geven :-)",
+    "controllers.shopping-cart.index.errors.required": "verplicht...",
+
 };

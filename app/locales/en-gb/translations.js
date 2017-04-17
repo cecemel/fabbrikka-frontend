@@ -48,10 +48,7 @@ export default {
     "templates.shopping-cart.index.checkout": "checkout!",
     "templates.shopping-cart.index.empty-cart": "oooh seems you haven't any items... yet!",
 
-
-
-
-
-
+    "controllers.shopping-cart.index.errors.wrong-email": "thanks for providing a valid email :-)",
+    "controllers.shopping-cart.index.errors.required": "required...",
 
 };
