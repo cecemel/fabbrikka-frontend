@@ -20,8 +20,16 @@ html {
 	width: 99%;
 }
 
+nav {
+    @extend .grey, .darken-1
+}
+
 nav .brand-logo {
     margin-left: 1%;
+}
+
+.brand-logo img{
+    width: 65px;
 }
 
 .row .textarea{
