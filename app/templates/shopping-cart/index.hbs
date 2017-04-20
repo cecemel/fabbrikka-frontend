@@ -20,7 +20,7 @@
             </table>
 		</div>
 
-		<div class="col s12 m12 l4">
+		<div class="col s12 l4">
 			<div class="row">
                 <div class="section">
                 <span class="checkout-total-hd">{{t "templates.shopping-cart.index.subtotal"}}</span>: <span class="checkout-total-d">{{total}}  &euro;</span>
@@ -41,10 +41,10 @@
 			<div class="row">
                 {{#if media.isXs}}
                 <div class="row">
-                    {{#link-to 'index' class="left waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.shop-more"}}{{/link-to}}
+                    {{#link-to 'index' class="col s12 left waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.shop-more"}}{{/link-to}}
                 </div>
                 <div class="row">
-                    {{#link-to 'shopping-cart.checkout' class="waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.checkout"}}{{/link-to}}
+                    {{#link-to 'shopping-cart.checkout' class="col s12 waves-effect waves-light btn"}}{{t "templates.shopping-cart.index.checkout"}}{{/link-to}}
                 </div>
                 {{else}}
                 <div class="col s12">
