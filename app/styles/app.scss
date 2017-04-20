@@ -21,15 +21,20 @@ html {
 }
 
 nav {
-    @extend .grey, .darken-1
+    @extend .white;
 }
+
+nav a{
+   @extend .black-text;
+ }
+
 
 nav .brand-logo {
     margin-left: 1%;
 }
 
 .brand-logo img{
-    width: 65px;
+    width: 60px;
 }
 
 .row .textarea{
@@ -182,28 +187,33 @@ nav .brand-logo {
       cursor: pointer;
   }
 
+  .brand-logo img{
+      width: 55px;
+  }
+
 }
 
 @media #{$small-and-down} and (-webkit-min-device-pixel-ratio:0) {
-
-
-select:active,
-textarea:active,
-input[type="text"]:active,
-input[type="password"]:active,
-input[type="datetime"]:active,
-input[type="datetime-local"]:active,
-input[type="date"]:active,
-input[type="month"]:active,
-input[type="time"]:active,
-input[type="week"]:active,
-input[type="number"]:active,
-input[type="email"]:active,
-input[type="url"]:active,
-input[type="search"]:active,
-input[type="tel"]:active,
-input[type="color"]:active, {
-    font-size: 30px;
- }
-
+    select:active,
+    textarea:active,
+    input[type="text"]:active,
+    input[type="password"]:active,
+    input[type="datetime"]:active,
+    input[type="datetime-local"]:active,
+    input[type="date"]:active,
+    input[type="month"]:active,
+    input[type="time"]:active,
+    input[type="week"]:active,
+    input[type="number"]:active,
+    input[type="email"]:active,
+    input[type="url"]:active,
+    input[type="search"]:active,
+    input[type="tel"]:active,
+    input[type="color"]:active, {
+        font-size: 30px;
+     }
+}
+@-moz-document url-prefix() {
+	html { overflow: hidden; height: 100%; }
+	body { overflow: auto; height: 100%; }
 }
