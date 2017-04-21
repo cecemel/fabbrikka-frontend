@@ -7,6 +7,7 @@ export default Ember.Component.extend({
     stripeInstance: null,
     creditCardElement: "credit-card-element",
     creditCardErrors: "credit-card-errors",
+    billingData: null,
 
     _stripeExists(){
         try {
@@ -75,18 +76,31 @@ export default Ember.Component.extend({
         this.set('cardMounted', true);
     },
 
+    handleTokenFetch(tokenFetchResult){
+        return new Ember.RSVP.Promise((resolve, reject) => {
+            if (tokenFetchResult.error) {
+                var errorElement = document.getElementById(this.get('creditCardErrors'));
+                errorElement.textContent = tokenFetchResult.error.message;
+                return reject(tokenFetchResult.error.message);
+            }
+            resolve(tokenFetchResult);
+        });
+    },
+
+    submitPaymentToPaymentService(tokenData){
+        //json
+        console.log(tokenData);
+    },
+
     actions: {
         submitPayment(){
-            this.get('onPay')();
-            this.get('stripeInstance').createToken(this.get('card'))
-            .then((result) => {
-                if (result.error) {
-                    var errorElement = document.getElementById(this.get('creditCardErrors'));
-                    errorElement.textContent = result.error.message;
-                } else {
-                    console.log('foo');
-                }
-            });
+            this.get('onPay')()
+            .then((billingData) => {
+                this.set('billingData', billingData);
+                return this.get('stripeInstance').createToken(this.get('card'));
+            })
+            .then(this.handleTokenFetch)
+            .then(this.submitPaymentToPaymentService)
         }
     }
 });

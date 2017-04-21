@@ -15,7 +15,7 @@
         {{md-input value=model.houseNumber label=(t "templates.shopping-cart.checkout.number-bus")
                             class="col s4 m2 right" validate=true errors=errors.houseNumber}}
 
-        {{place-autocomplete-field value=city
+        {{place-autocomplete-field value=model.city
             class='col s8  m8' label=(t "templates.shopping-cart.checkout.city-country")
             placeChangedCallback=(action "handleGoogleAddressUpdate")
             validate=true errors=errors.city icon="location_city"
@@ -35,7 +35,7 @@
         {{/md-select}}
 
         {{#if (equal-strings chosenPaymentMethod "visa")}}
-            {{credit-card-payment onPay=(action 'validateForm')}}
+            {{credit-card-payment onPay=(action 'onSubmitPayment')}}
         {{/if}}
         {{#if (equal-strings chosenPaymentMethod "bancontact")}}
             {{bancontact-payment}}

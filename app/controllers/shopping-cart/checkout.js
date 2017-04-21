@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    cartService: Ember.inject.service('shopping-cart'),
     scroller: Ember.inject.service(),
     i18n: Ember.inject.service(),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:""},
@@ -67,6 +68,31 @@ export default Ember.Controller.extend({
         this.get('scroller').scrollVertical((Ember.$('h2')).first(), {duration: 1000, easing: 'linear'});
     },
 
+    validateForm(){
+
+        //check all required fields are there
+        let hasErrors = false;
+        let thisModel = this.get('model');
+        let keys = Object.keys(thisModel);
+
+        for (var key of keys) {
+            hasErrors = this.validateEmptyField(key);
+        }
+
+        //check mail again
+        if (!this.validateEmail(this.get('model.email'))) {
+            let messages = [this.get("i18n").t('controllers.shopping-cart.index.errors.wrong-email')];
+            this.set('errors.email', messages);
+        }
+
+        if(hasErrors){
+            this.helpVisualizeError();
+        }
+
+        return hasErrors;
+
+    },
+
     actions:{
         handleGoogleAddressUpdate(place){
             let zip = place.address_components.find((item) => {
@@ -74,29 +100,22 @@ export default Ember.Controller.extend({
             }) || {};
             this.set('foundGooglePlace', place);
             this.set('model.zip', zip['long_name'] || '');
-            this.set('model.city', place.address_components);
+            let addressComponents = place.formatted_address.split(",");
+            this.set('model.city', addressComponents[0]);
+            this.set('model.country', addressComponents[1] || "N/A");
         },
 
-        validateForm(){
-
-            //check all required fields are there
-            let hasErrors = false;
-            let thisModel = this.get('model');
-            let keys = Object.keys(thisModel);
-
-            for (var key of keys) {
-                hasErrors = this.validateEmptyField(key);
-            }
-
-            //check mail again
-            if (!this.validateEmail(this.get('model.email'))) {
-                let messages = [this.get("i18n").t('controllers.shopping-cart.index.errors.wrong-email')];
-                this.set('errors.email', messages);
-            }
-
-            if(hasErrors){
-                this.helpVisualizeError();
-            }
+        onSubmitPayment(){
+            let self = this;
+            return new Ember.RSVP.Promise((resolve, reject) => {
+                if(self.validateForm()){
+                    reject();
+                }
+                resolve({
+                    "cartId": self.get("cartService").get('cart').get('id'),
+                    "deliveryAddress": self.get('model')
+                });
+            });
 
         }
     }
