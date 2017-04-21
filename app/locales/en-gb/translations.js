@@ -51,4 +51,6 @@ export default {
     "controllers.shopping-cart.index.errors.wrong-email": "thanks for providing a valid email :-)",
     "controllers.shopping-cart.index.errors.required": "required...",
 
+    "controllers.shopping-cart.checkout.errors.general": "the address contains errors...",
+
 };

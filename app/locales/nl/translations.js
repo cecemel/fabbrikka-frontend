@@ -51,4 +51,6 @@ export default {
     "controllers.shopping-cart.index.errors.wrong-email": "bedankt om een geldige email op te geven :-)",
     "controllers.shopping-cart.index.errors.required": "verplicht...",
 
+    "controllers.shopping-cart.checkout.errors.general": "er zijn fouten in de adresgegevens",
+
 };
