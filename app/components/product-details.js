@@ -7,23 +7,19 @@ export default Ember.Component.extend({
     localeTracker: Ember.inject.service(),
     locale: Ember.computed.reads("localeTracker.locale"),
 
-    productVariants: Ember.computed.reads('data.productVariants'),
-    sizes: Ember.computed.mapBy('productVariants', 'size'),
     uniqueSizes: Ember.computed.uniqBy('sizes', 'id'),
     selectedSizeId: Ember.computed.reads('uniqueSizes.firstObject.id'),
+
+    selectBoxDisplay: Ember.computed('data.productVariants', function(){
+        return this.get('data.productVariants').map((item) =>{
+           return {"id": item.get('id'), "name": item.get('size').get('name')};
+       });
+    }),
 
     didRender() {
     this._super(...arguments);
     this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
     },
-
-    //sets the variant based on future multiple criteria
-    selectedVariant: Ember.computed('selectedSizeId', function(){
-        let self = this;
-        return this.get('productVariants').find(function(e){
-             return e.get('size').get('id') === self.get('selectedSizeId');
-        });
-    }),
 
     images: Ember.computed.reads('data.productImages'),
 
@@ -35,12 +31,14 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(productName) && productName.get("name");
     }),
 
-    price: Ember.computed('selectedVariant', function(){
-        let variant = this.get('selectedVariant');
-
-        if(Ember.isEmpty(variant) || Object.keys(variant).length === 0){
-            return '';
+    price: Ember.computed('selectedVariantId', function(){
+        let selectedVariantId = this.get('selectedVariantId');
+        if(!selectedVariantId){
+            return this.get('data.productVariants.firstObject.price') + '€';
         }
+
+        let variant = this.get('data.productVariants').find(i => i.get('id') === selectedVariantId);
+
         return variant.get('price') + '€';
 
     }),
@@ -53,20 +51,13 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(description) && description.get("description");
     }),
 
-    isPageReady: Ember.computed('uniqueSizes', function(){
-        if(!this.get('uniqueSizes') || this.get('uniqueSizes').length === 0){
-            return false;
-        }
-        return true;
-    }),
-
     actions: {
         addToCart(){
-            this.get('cartService').addItem(this.get('selectedVariant').get('id'), 1).then(() => {
+            this.get('cartService').addItem(this.get('selectedVariantId'), 1).then(() => {
                 let thanksText = this.get("i18n").t('components.product-details.plusonesweater');
                 Materialize.toast(thanksText, 2000, 'rounded');
                 this.$('.detail-go-to-cart').addClass('scale-in');
-            });
+            }).catch(() => alert('error adding to cart...'));
         }
     }
 
