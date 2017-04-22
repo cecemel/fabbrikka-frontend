@@ -1,0 +1,12 @@
+<div class="row">
+     <div class="col s12">
+         <h3>add stock</h3>
+         {{#md-select optionLabelPath="content.name" optionValuePath="content.id"
+         value=model.stockVariant  content=model.products
+         prompt="Please choose product..." }} {{/md-select}}
+         {{md-input value=model.stockAmount label="stock amount" type="number"}}
+         {{#md-btn text='Save' action='save' actionArg=model}}{{/md-btn}}
+    </div>
+</div>
+
+{{outlet}}

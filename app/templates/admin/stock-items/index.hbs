@@ -1,0 +1,9 @@
+<h1>manage stock</h1>
+{{#link-to 'admin.stock-items.new'}}{{md-btn text='add'}}{{/link-to}}
+<ul class="collection">
+    {{#each model as |item|}}
+        {{stock-item-overview-item item=item
+            onUpdate=(route-action 'update') onDelete=(route-action 'delete')}}
+    {{/each}}
+</ul>
+{{outlet}}

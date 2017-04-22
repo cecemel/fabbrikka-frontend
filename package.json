@@ -52,6 +52,7 @@
     "ember-radio-button": "1.0.7",
     "ember-resolver": "^2.0.3",
     "ember-responsive": "2.0.2",
+    "ember-route-action-helper": "2.0.2",
     "ember-router-scroll": "0.1.1",
     "ember-scroll-to": "0.6.4",
     "ember-simple-auth": "^1.1.0",

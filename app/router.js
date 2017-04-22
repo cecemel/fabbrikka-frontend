@@ -26,6 +26,9 @@ Router.map(function() {
     this.route('product-variant-sizes', function() {
       this.route('new');
     });
+    this.route('stock-items', function() {
+      this.route('new');
+    });
   });
   this.route('shopping-cart', function() {
     this.route('checkout');
