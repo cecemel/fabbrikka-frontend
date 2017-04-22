@@ -46,18 +46,18 @@ export default Ember.Component.extend({
 
     actions: {
         delete: function(id){
-            this.get('cartService').removeItem(id);
+            this.get('cartService').removeItem(id).catch(() => alert('issue deleting item...'));
         },
         updateSize: function(sizeId){
             let selectedVariant = this.selectVariantBySize(this.get('productVariants'), sizeId);
             this.set('size', sizeId);
             this.get('cartService').updateItem(this.get('item.id'), selectedVariant.get('id'),
-            this.get('quantity'));
+            this.get('quantity')).catch(() => alert('issue updating item...'));
         },
         updateQuantity: function(){
             let selectedVariant = this.selectVariantBySize(this.get('productVariants'), this.get('size'));
             this.get('cartService').updateItem(this.get('item.id'), selectedVariant.get('id'),
-            this.get('quantity'));
+            this.get('quantity')).catch(() => alert('issue updating item...'));
         }
     }
 });
