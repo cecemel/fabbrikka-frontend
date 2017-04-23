@@ -53,7 +53,7 @@ export default Component.extend({
       this.sendAction('focusIn', evt);
     },
     inputFocusOut(){
-        if(this.get('labelIsActive')){
+        if(this.get('isInvalid')){
             return false;
         }
     }
