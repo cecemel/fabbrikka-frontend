@@ -40,7 +40,7 @@ export default Component.extend({
 
   _setupLabel() {
     const $label = this.$('> label');
-    if (isPresent(this.get('value')) && !$label.hasClass('active')) {
+    if ((isPresent(this.get('value')) && !$label.hasClass('active'))|| this.get('isInvalid')) {
       $label.addClass('active');
     }
   },
