@@ -69,6 +69,11 @@ export default Ember.Service.extend({
         return Ember.RSVP.Promise.resolve(self.get('cart'));
     },
 
+    resetCart(){
+        this.set("cart", null);
+        return this.setupCart();
+    },
+
     _createNewCart(){
         let self = this;
         let cart = self.get('store').createRecord('shopping-cart');
@@ -102,6 +107,9 @@ export default Ember.Service.extend({
         //console.log('foo');
         // })
         let subTotals = [];
+        if(!this.get('cart')){
+            return; //no cart set, do nothing
+        }
         this.get('cart').get('shoppingCartItems')
                         .then((items) => {
                             this.set('totalItems', items.length);

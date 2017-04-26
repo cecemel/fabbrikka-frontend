@@ -1,4 +1,4 @@
-{{#unless model.orderConfirmed}}
+{{#unless orderConfirmed}}
     <h2 class="header">{{t "templates.shopping-cart.checkout.checkout"}}</h2>
 
     <div class="row">
@@ -44,7 +44,7 @@
             {{/if}}
         </div>
     </div>
-    {{error-modal status=model.hasBackendError title=(t "templates.shopping-cart.checkout.error-title") message=model.backendErrorText}}
+    {{error-modal status=hasBackendError title=(t "templates.shopping-cart.checkout.error-title") message=backendErrorText}}
 
 {{else}}
 <h2 class="header">{{t "templates.shopping-cart.checkout.order-confirmation.title"}}</h2>
@@ -52,12 +52,12 @@
     <div class ="col push-s1 s11">
         <div class="section">
             <h5>{{t "templates.shopping-cart.checkout.order-confirmation.order-id-title"}}</h5>
-            <p><b>{{model.orderConfirmation.id}}</b></p>
+            <p><b>{{orderConfirmation.id}}</b></p>
         </div>
         <div class="divider"></div>
         <div class="section">
             <p>
-                {{t "templates.shopping-cart.checkout.order-confirmation.email-sent-to"}} <b> {{model.orderConfirmation.customer.email}}! </b> <br>
+                {{t "templates.shopping-cart.checkout.order-confirmation.email-sent-to"}} <b> {{orderConfirmation.customer.email}}! </b> <br>
                 {{t "templates.shopping-cart.checkout.order-confirmation.in-case-of-issues"}} <a href="mailto:hello@fabbbrikka.com">hello@fabbbrikka.com</a>. <br>
                 {{t "templates.shopping-cart.checkout.order-confirmation.love-helping"}} <i class="material-icons prefix">mood</i>
             </p>

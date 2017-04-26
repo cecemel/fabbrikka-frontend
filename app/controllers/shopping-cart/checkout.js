@@ -66,7 +66,15 @@ export default Ember.Controller.extend({
         return re.test(email);
     },
 
-    helpVisualizeError(){
+    extractBackendErrorMsg(error){
+        let errorMsg = error.errors[0] && error.errors[0].detail && error.errors[0].detail.message;
+        if(!errorMsg){
+            return error["message"] || "general error";
+        }
+        return errorMsg;
+    },
+
+    scrollToTop(){
         this.get('scroller').scrollVertical((Ember.$('h2')).first(), {duration: 1000, easing: 'linear'});
     },
 
@@ -88,7 +96,7 @@ export default Ember.Controller.extend({
         }
 
         if(hasErrors){
-            this.helpVisualizeError();
+            this.scrollToTop();
         }
 
         return hasErrors;
@@ -123,14 +131,18 @@ export default Ember.Controller.extend({
         },
 
         onSubmitPaymentError(data){
-            let message = this.get("i18n").t('controllers.shopping-cart.checkout.payment.error-message') + " "+ (data["message"] || "general error");
-            this.set('model.backendErrorText', message);
-            this.set('model.hasBackendError', true);
+            let message = this.get("i18n").t('controllers.shopping-cart.checkout.payment.error-message') + " "+ this.extractBackendErrorMsg(data);
+            this.set('backendErrorText', message);
+            this.set('hasBackendError', true);
         },
 
         onSubmitPaymentSuccess(data){
-            this.set("model.orderConfirmation", data);
-            this.set("model.orderConfirmed", true);
+            this.get("cartService").resetCart()
+            .then(() => {
+                this.set("orderConfirmation", data);
+                this.set("orderConfirmed", true);
+                this.scrollToTop();
+            });
         }
     }
 });
