@@ -23,6 +23,9 @@ export default {
     "components.shopping-cart-overview-row.size": "maat",
     "components.shopping-cart-overview-row.amount": "aantal",
 
+    "components.error-modal.the-error-message-is":"Het foutbericht is",
+    "components.error-modal.if-you-dont-know": "Indien je niet zeker bent hoe je verder moet, kan je altijd terecht bij hello@fabbrikka.com",
+
     "templates.shopping-cart.checkout.checkout": "betaling",
     "templates.shopping-cart.checkout.delivery-address": "leveradres",
     "templates.shopping-cart.checkout.name": "volledige naam",
@@ -34,6 +37,7 @@ export default {
     "templates.shopping-cart.checkout.order-summary": "overzicht bestelling",
     "templates.shopping-cart.checkout.payment": "betaling",
     "templates.shopping-cart.checkout.payment-prompt": "kies een betalingsmethode",
+    "templates.shopping-cart.checkout.error-title": "Oh een foutje...",
 
     "templates.shopping-cart.index.title": "winkelmandje",
     "templates.shopping-cart.index.item": "artikel",
@@ -52,5 +56,6 @@ export default {
     "controllers.shopping-cart.index.errors.required": "verplicht...",
 
     "controllers.shopping-cart.checkout.errors.general": "er zijn fouten in de adresgegevens",
+    "controllers.shopping-cart.checkout.payment.error-message": "Fout bij het verwerken van de betaling:",
 
 };

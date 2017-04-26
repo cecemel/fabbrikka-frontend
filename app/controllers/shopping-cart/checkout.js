@@ -122,8 +122,8 @@ export default Ember.Controller.extend({
 
         },
         onSubmitPaymentError(data){
-            let message = "Error processing payment: " +  (data["message"] || "general error");
-             this.set('backendErrorText', message);
+            let message = this.get("i18n").t('controllers.shopping-cart.checkout.payment.error-message') + " "+ (data["message"] || "general error");
+            this.set('backendErrorText', message);
             this.set('hasBackendError', true);
         }
     }

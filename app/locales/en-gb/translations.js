@@ -23,6 +23,9 @@ export default {
     "components.shopping-cart-overview-row.size": "size",
     "components.shopping-cart-overview-row.amount": "amount",
 
+    "components.error-modal.the-error-message-is":"The error message is",
+    "components.error-modal.if-you-dont-know": "If you are not sure how to fix the issue, you can always contact hello@fabbrikka.com",
+
     "templates.shopping-cart.checkout.checkout": "checkout",
     "templates.shopping-cart.checkout.delivery-address": "delivery address",
     "templates.shopping-cart.checkout.name": "full name",
@@ -34,6 +37,7 @@ export default {
     "templates.shopping-cart.checkout.order-summary": "order summary",
     "templates.shopping-cart.checkout.payment": "payment",
     "templates.shopping-cart.checkout.payment-prompt": "please choose your payment method",
+    "templates.shopping-cart.checkout.error-title": "UhOh an error...",
 
     "templates.shopping-cart.index.title": "shopping cart",
     "templates.shopping-cart.index.item": "item",
@@ -52,5 +56,6 @@ export default {
     "controllers.shopping-cart.index.errors.required": "required...",
 
     "controllers.shopping-cart.checkout.errors.general": "the address contains errors...",
+    "controllers.shopping-cart.checkout.payment.error-message": "Error processing payment: ",
 
 };
