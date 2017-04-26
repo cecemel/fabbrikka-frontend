@@ -31,7 +31,7 @@ Router.map(function() {
     });
   });
   this.route('shopping-cart', function() {
-    this.route('checkout');
+    this.route('checkout', function() {});
   });
   this.route('login');
 });

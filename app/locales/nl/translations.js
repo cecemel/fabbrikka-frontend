@@ -38,6 +38,12 @@ export default {
     "templates.shopping-cart.checkout.payment": "betaling",
     "templates.shopping-cart.checkout.payment-prompt": "kies een betalingsmethode",
     "templates.shopping-cart.checkout.error-title": "Oh een foutje...",
+    "templates.shopping-cart.checkout.order-confirmation.title": "Bedankt voor je bestelling!",
+    "templates.shopping-cart.checkout.order-confirmation.order-id-title": "je bestellingsnummer",
+    "templates.shopping-cart.checkout.order-confirmation.email-sent-to": "We hebben een email verstuurd naar",
+    "templates.shopping-cart.checkout.order-confirmation.in-case-of-issues": "In geval van problemen kan je steeds terecht bij",
+    "templates.shopping-cart.checkout.order-confirmation.love-helping": "We helpen je graag",
+    "templates.shopping-cart.checkout.order-confirmation.back": "terug naar het begin!",
 
     "templates.shopping-cart.index.title": "winkelmandje",
     "templates.shopping-cart.index.item": "artikel",

@@ -121,10 +121,16 @@ export default Ember.Controller.extend({
             });
 
         },
+
         onSubmitPaymentError(data){
             let message = this.get("i18n").t('controllers.shopping-cart.checkout.payment.error-message') + " "+ (data["message"] || "general error");
-            this.set('backendErrorText', message);
-            this.set('hasBackendError', true);
+            this.set('model.backendErrorText', message);
+            this.set('model.hasBackendError', true);
+        },
+
+        onSubmitPaymentSuccess(data){
+            this.set("model.orderConfirmation", data);
+            this.set("model.orderConfirmed", true);
         }
     }
 });
