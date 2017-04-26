@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    localeTracker: Ember.inject.service(),
+    locale: Ember.computed.reads("localeTracker.locale"),
     cartService: Ember.inject.service('shopping-cart'),
     scroller: Ember.inject.service(),
     i18n: Ember.inject.service(),
@@ -112,11 +114,17 @@ export default Ember.Controller.extend({
                     reject();
                 }
                 resolve({
+                    "locale": self.get("locale"),
                     "cartId": self.get("cartService").get('cart').get('id'),
                     "deliveryAddress": self.get('model')
                 });
             });
 
+        },
+        onSubmitPaymentError(data){
+            let message = "Error processing payment: " +  (data["message"] || "general error");
+             this.set('backendErrorText', message);
+            this.set('hasBackendError', true);
         }
     }
 });

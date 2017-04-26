@@ -8,6 +8,8 @@ export default Ember.Component.extend({
     creditCardElement: "credit-card-element",
     creditCardErrors: "credit-card-errors",
     billingData: null,
+    ajax: Ember.inject.service(),
+    isSubmittingPayment: false,
 
     _stripeExists(){
         try {
@@ -28,6 +30,15 @@ export default Ember.Component.extend({
              return;
          }
          this.mountCart();
+     },
+
+     willDestroyElement() {
+         this._super(...arguments);
+         let self = this;
+         if(!self._stripeExists()){
+             Stripe = null;
+         }
+         return;
      },
 
     mountCart(){
@@ -81,26 +92,43 @@ export default Ember.Component.extend({
             if (tokenFetchResult.error) {
                 var errorElement = document.getElementById(this.get('creditCardErrors'));
                 errorElement.textContent = tokenFetchResult.error.message;
-                return reject(tokenFetchResult.error.message);
+                return reject({"type":"tokenFetchError", "error": "tokenFetchResult.error.message"});
             }
             resolve(tokenFetchResult);
         });
     },
 
     submitPaymentToPaymentService(tokenData){
-        //json
-        console.log(tokenData);
+        let checkoutData = {'tokenData': tokenData, "billingData": this.get("billingData")};
+        return this.get('ajax').request(config.APP.checkoutService + '/checkouts', {
+            method: 'POST',
+            data: JSON.stringify(checkoutData),
+            contentType: 'application/vnd.api+json'
+        });
     },
 
     actions: {
         submitPayment(){
-            this.get('onPay')()
+            let self = this;
+            self.set('isSubmittingPayment', true);
+            self.get('onPay')()
             .then((billingData) => {
-                this.set('billingData', billingData);
-                return this.get('stripeInstance').createToken(this.get('card'));
+                self.set('billingData', billingData);
+                return self.get('stripeInstance').createToken(self.get('card'));
             })
-            .then(this.handleTokenFetch)
-            .then(this.submitPaymentToPaymentService)
+            .then(self.handleTokenFetch.bind(self))
+            .then(self.submitPaymentToPaymentService.bind(self))
+            .then((data)=> {
+                self.set('isSubmittingPayment', false);
+                return self.get('onPaySuccess')(data);
+            })
+            .catch((error)=>{
+                self.set('isSubmittingPayment', false);
+                if(error["type"] === "tokenFetchError"){
+                    return;
+                }
+                return self.get('onPayError')(error);
+            });
         }
     }
 });

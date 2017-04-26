@@ -35,13 +35,16 @@
         {{/md-select}}
 
         {{#if (equal-strings chosenPaymentMethod "visa")}}
-            {{credit-card-payment onPay=(action 'onSubmitPayment')}}
+            {{credit-card-payment onPay=(action 'onSubmitPayment') onPayError=(action 'onSubmitPaymentError')}}
         {{/if}}
         {{#if (equal-strings chosenPaymentMethod "bancontact")}}
             {{bancontact-payment}}
         {{/if}}
-
-
     </div>
 </div>
+{{error-modal status=hasBackendError title="UhOh an error..." message=backendErrorText}}
+
+
+
+
 {{outlet}}

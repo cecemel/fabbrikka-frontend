@@ -11,7 +11,16 @@
             </div>
             <!-- Used to display form errors -->
             <div id="credit-card-errors"></div>
-          <a class="waves-effect waves-light btn right" {{action 'submitPayment'}}>{{t "components.credit-card-payment.submit"}}</a>
+    </div>
+</div>
+<div class="row" style="min-height: 30px">
+    <div class='col s3'>
+        {{#if isSubmittingPayment}}
+            {{fabb-spinner}}
+        {{/if}}
+    </div>
+    <div class='col s9'>
+        <a class="waves-effect waves-light btn right" {{action 'submitPayment'}}>{{t "components.credit-card-payment.submit"}}</a>
     </div>
 </div>
 {{yield}}
