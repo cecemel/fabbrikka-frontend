@@ -170,6 +170,10 @@ nav .brand-logo {
     z-index: 996;
 }
 
+.parallax img {
+    bottom: -100px;
+}
+
 @media #{$small-and-down} {
     .parallax-container {
       height: 350px;
