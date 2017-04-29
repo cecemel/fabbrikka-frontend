@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Materialize from 'materialize';
 
 export default Ember.Controller.extend({
     localeTracker: Ember.inject.service(),
@@ -101,6 +102,12 @@ export default Ember.Controller.extend({
 
         if(hasErrors){
             this.scrollToTop();
+        }
+
+        //additional help to visualize in small screens, since in firefox scrolling does not work
+        if(this.get('media.isS')){
+            let errorText = this.get("i18n").t('controllers.shopping-cart.checkout.errors.general');
+            Materialize.toast(errorText, 2000, 'checkout-error-toast');
         }
 
         return hasErrors;

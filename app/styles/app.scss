@@ -199,6 +199,10 @@ nav .brand-logo {
       width: 90%;
   }
 
+  .checkout-error-toast{
+      background-color: red;
+  }
+
 }
 
 @media #{$small-and-down} and (-webkit-min-device-pixel-ratio:0) {
@@ -220,10 +224,6 @@ nav .brand-logo {
     input[type="color"]:active, {
         font-size: 30px;
      }
-}
-@-moz-document url-prefix() {
-	html { overflow: hidden; height: 100%; }
-	body { overflow: auto; height: 100%; }
 }
 
 @media all and (max-width: 350px){
