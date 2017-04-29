@@ -90,8 +90,9 @@ export default Ember.Controller.extend({
         let thisModel = this.get('model');
         let keys = Object.keys(thisModel);
 
-        for (var key of keys) {
-            hasErrors = this.validateEmptyField(key);
+
+        for (var i = 0; i < keys.length; i++) {
+            hasErrors = this.validateEmptyField(keys[i]);
         }
 
         //check mail again
@@ -105,7 +106,7 @@ export default Ember.Controller.extend({
         }
 
         //additional help to visualize in small screens, since in firefox scrolling does not work
-        if(this.get('media.isS')){
+        if(hasErrors && this.get('media.isS')){
             let errorText = this.get("i18n").t('controllers.shopping-cart.checkout.errors.general');
             Materialize.toast(errorText, 2000, 'checkout-error-toast');
         }
