@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     foundGooglePlace: null,
 
     paymentMethods: [{name: "visa/mastercard", value: "visa"},
-                     {name: "bancontact", value: "bancontact"}
+                    //  {name: "bancontact", value: "bancontact"}
                     ],
 
     emailDidChange: Ember.observer('model.email', function() {

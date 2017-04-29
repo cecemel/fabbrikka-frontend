@@ -39,9 +39,9 @@
                 {{credit-card-payment onPay=(action 'onSubmitPayment')
                  onPayError=(action 'onSubmitPaymentError') onPaySuccess=(action 'onSubmitPaymentSuccess')}}
             {{/if}}
-            {{#if (equal-strings chosenPaymentMethod "bancontact")}}
+            {{!-- {{#if (equal-strings chosenPaymentMethod "bancontact")}}
                 {{bancontact-payment}}
-            {{/if}}
+            {{/if}} --}}
         </div>
     </div>
     {{error-modal status=hasBackendError title=(t "templates.shopping-cart.checkout.error-title") message=backendErrorText}}
