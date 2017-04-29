@@ -24,7 +24,7 @@ module.exports = function(environment) {
       backendHost: "",
       localeGuesser: "/fabbrikka-locale-guesser",
       cartService: "/fabbrikka-cart-service",
-      checkoutService: "http://localhost:8080",
+      checkoutService: "/fabbrikka-checkout-service",
     },
     "place-autocomplete": {
        key: 'AIzaSyD8SUmgYvE2yOjNr0BeKO90ptR68hFFHNQ',

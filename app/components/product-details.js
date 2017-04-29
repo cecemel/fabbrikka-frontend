@@ -2,6 +2,11 @@ import Ember from 'ember';
 import Materialize from 'materialize';
 
 export default Ember.Component.extend({
+
+    addToCartId: Ember.computed('elementId', function() {
+        return `${this.get('elementId')}-addToCartId`;
+      }),
+      
     i18n: Ember.inject.service(),
     cartService: Ember.inject.service('shopping-cart'),
     localeTracker: Ember.inject.service(),
@@ -51,8 +56,22 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(description) && description.get("description");
     }),
 
+    _displayChooseSizeError(){
+        let self = this;
+        this.$("#" + this.get('addToCartId')).tooltip({position: "top", tooltip: "please choose a size", delay: 0});
+        this.$("#" + this.get('addToCartId')).trigger("mouseenter.tooltip");
+        setTimeout(function(){
+            self.$("#" + self.get('addToCartId')).trigger("mouseleave.tooltip");
+            self.$("#" + self.get('addToCartId')).tooltip('remove');
+        }, 2000);
+    },
+
     actions: {
         addToCart(){
+            if(!this.get('selectedVariantId')){
+                this._displayChooseSizeError();
+                return;
+            }
             this.get('cartService').addItem(this.get('selectedVariantId'), 1).then(() => {
                 let thanksText = this.get("i18n").t('components.product-details.plusonesweater');
                 Materialize.toast(thanksText, 2000, 'rounded');
