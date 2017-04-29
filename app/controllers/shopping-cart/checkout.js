@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
     cartService: Ember.inject.service('shopping-cart'),
     scroller: Ember.inject.service(),
     i18n: Ember.inject.service(),
-    model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:""},
+    model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
 
     foundGooglePlace: null,
@@ -45,6 +45,10 @@ export default Ember.Controller.extend({
 
     zipEmptyObserver:Ember.observer('model.zip', function(){
         this.validateEmptyField('zip');
+    }),
+
+    countryEmptyObserver:Ember.observer('model.country', function(){
+        this.validateEmptyField('country');
     }),
 
     validateEmptyField(key){
@@ -104,17 +108,6 @@ export default Ember.Controller.extend({
     },
 
     actions:{
-        handleGoogleAddressUpdate(place){
-            let zip = place.address_components.find((item) => {
-                return item["types"] && item["types"][0] === 'postal_code' && item["long_name"];
-            }) || {};
-            this.set('foundGooglePlace', place);
-            this.set('model.zip', zip['long_name'] || '');
-            let addressComponents = place.formatted_address.split(",");
-            this.set('model.city', addressComponents[0]);
-            this.set('model.country', addressComponents[1] || "N/A");
-        },
-
         onSubmitPayment(){
             let self = this;
             return new Ember.RSVP.Promise((resolve, reject) => {
