@@ -221,3 +221,9 @@ nav .brand-logo {
 	html { overflow: hidden; height: 100%; }
 	body { overflow: auto; height: 100%; }
 }
+
+@media all and (max-width: 350px){
+    .menu-locale-selector {
+        margin-right: 10px;
+    }
+}
