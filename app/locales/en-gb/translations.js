@@ -6,6 +6,7 @@ export default {
     "components.product-details.choose-size": "choose your size...",
     "components.product-details.add-to-cart": "add to cart",
     "components.product-details.go-to-cart": "go to cart!",
+    "components.product-details.choose-size-error": "please select a size",
 
     "components.bancontact-payment.account-holders-name": "account holders name",
     "components.bancontact-payment.start-payment": "start payment",

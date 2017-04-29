@@ -6,7 +6,7 @@ export default Ember.Component.extend({
     addToCartId: Ember.computed('elementId', function() {
         return `${this.get('elementId')}-addToCartId`;
       }),
-      
+
     i18n: Ember.inject.service(),
     cartService: Ember.inject.service('shopping-cart'),
     localeTracker: Ember.inject.service(),
@@ -58,7 +58,8 @@ export default Ember.Component.extend({
 
     _displayChooseSizeError(){
         let self = this;
-        this.$("#" + this.get('addToCartId')).tooltip({position: "top", tooltip: "please choose a size", delay: 0});
+        let message = this.get("i18n").t('components.product-details.choose-size-error');
+        this.$("#" + this.get('addToCartId')).tooltip({position: "top", tooltip: message, delay: 0});
         this.$("#" + this.get('addToCartId')).trigger("mouseenter.tooltip");
         setTimeout(function(){
             self.$("#" + self.get('addToCartId')).trigger("mouseleave.tooltip");
