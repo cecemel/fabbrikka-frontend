@@ -124,7 +124,7 @@ export default Ember.Component.extend({
             })
             .catch((error)=>{
                 self.set('isSubmittingPayment', false);
-                if(error["type"] === "tokenFetchError"){
+                if(error && error["type"] === "tokenFetchError"){
                     return;
                 }
                 return self.get('onPayError')(error);

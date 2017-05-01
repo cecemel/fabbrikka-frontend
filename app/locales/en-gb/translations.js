@@ -46,6 +46,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.in-case-of-issues": "In case of any issues, please contact",
     "templates.shopping-cart.checkout.order-confirmation.love-helping": "We love helping you",
     "templates.shopping-cart.checkout.order-confirmation.back": "back to start!",
+    "templates.shopping-cart.checkout.choose-country": "country",
 
     "templates.shopping-cart.index.title": "shopping cart",
     "templates.shopping-cart.index.item": "item",

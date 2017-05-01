@@ -46,6 +46,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.in-case-of-issues": "In geval van problemen kan je steeds terecht bij",
     "templates.shopping-cart.checkout.order-confirmation.love-helping": "We helpen je graag",
     "templates.shopping-cart.checkout.order-confirmation.back": "terug naar het begin!",
+    "templates.shopping-cart.checkout.choose-country": "land",
 
     "templates.shopping-cart.index.title": "winkelmandje",
     "templates.shopping-cart.index.item": "artikel",

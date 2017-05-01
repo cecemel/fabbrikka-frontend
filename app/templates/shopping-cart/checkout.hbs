@@ -21,9 +21,14 @@
 
             {{md-input value=model.zip label=(t "templates.shopping-cart.checkout.zip")
                                     class="col s4 m4 right" validate=true errors=errors.zip}}
+            {{#md-select
+                        optionLabelPath="content.name"
+                        optionValuePath="content.name"
+                        value=model.country
+                        content=availibleCountries
+                        prompt=(t "templates.shopping-cart.checkout.choose-country")
+                        validate=true errors=errors.country icon="public"}} {{/md-select}}
 
-            {{md-input value=model.country label=(t "templates.shopping-cart.checkout.country")
-                                    class="col s12" validate=true errors=errors.country icon="public"}}
 
         </div>
         <div class="col s12 l6 m12">

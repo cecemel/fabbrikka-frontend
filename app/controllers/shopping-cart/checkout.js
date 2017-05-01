@@ -9,6 +9,12 @@ export default Ember.Controller.extend({
     i18n: Ember.inject.service(),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
+    availibleCountries: Ember.computed(() => {
+        let countries = [{"name": "belgium"}, {"name": "france"}, {"name": "spain"}, {"name": "netherlands"}, {"name": "germany"}];
+        return countries.sort((a,b) => {
+            return !(a.name < b.name);
+        });
+    }),
 
     foundGooglePlace: null,
 
