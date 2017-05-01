@@ -48,6 +48,12 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.back": "back to start!",
     "templates.shopping-cart.checkout.choose-country": "country",
 
+    "controllers.shopping-cart.countries.belgium" : "belgium",
+    "controllers.shopping-cart.countries.spain" : "spain",
+    "controllers.shopping-cart.countries.france" : "france",
+    "controllers.shopping-cart.countries.netherlands" : "netherlands",
+    "controllers.shopping-cart.countries.germany" : "germany",
+
     "templates.shopping-cart.index.title": "shopping cart",
     "templates.shopping-cart.index.item": "item",
     "templates.shopping-cart.index.size": "size",

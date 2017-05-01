@@ -48,6 +48,12 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.back": "terug naar het begin!",
     "templates.shopping-cart.checkout.choose-country": "land",
 
+    "controllers.shopping-cart.countries.belgium" : "belgie",
+    "controllers.shopping-cart.countries.spain" : "spanje",
+    "controllers.shopping-cart.countries.france" : "frankrijk",
+    "controllers.shopping-cart.countries.netherlands" : "nederland",
+    "controllers.shopping-cart.countries.germany" : "duitsland",
+
     "templates.shopping-cart.index.title": "winkelmandje",
     "templates.shopping-cart.index.item": "artikel",
     "templates.shopping-cart.index.size": "maat",

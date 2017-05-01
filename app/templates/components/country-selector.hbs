@@ -1,0 +1,22 @@
+
+{{#if icon}}
+  <i class="material-icons prefix">{{icon}}</i>
+{{/if}}
+
+<select onchange={{action (mut value) value="target.value"}}
+        class="{{if validate 'validate'}} {{if errors 'invalid' 'valid'}} {{extraClass}}"
+        disabled={{if disabled "true"}}>
+  {{#if prompt}}
+    <option value="" disabled selected={{unless value "true"}}>{{prompt}}</option>
+  {{/if}}
+  {{#each _parsedContent as |option|}}
+    <option value={{option.value}} selected={{if (eq value option.value) "true"}}>{{option.label}}</option>
+  {{/each}}
+</select>
+<small class="col s1 push-s1 red-text">
+  {{#if errors}}
+    {{errors.firstObject}}
+  {{else}}
+    &nbsp;
+  {{/if}}
+</small>

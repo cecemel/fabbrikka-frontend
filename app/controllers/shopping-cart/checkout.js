@@ -9,10 +9,14 @@ export default Ember.Controller.extend({
     i18n: Ember.inject.service(),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
-    availibleCountries: Ember.computed(() => {
-        let countries = [{"name": "belgium"}, {"name": "france"}, {"name": "spain"}, {"name": "netherlands"}, {"name": "germany"}];
+    availibleCountries: Ember.computed(function() {
+        let countries = [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')},
+                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.france')},
+                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.spain')},
+                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')},
+                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.germany')}];
         return countries.sort((a,b) => {
-            return !(a.name < b.name);
+            return (a.name > b.name);
         });
     }),
 
