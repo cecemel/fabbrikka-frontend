@@ -28,6 +28,10 @@ h1, h2, h3, h4, h5, h6{
     text-transform: uppercase;
 }
 
+h1 {
+    font-size: 2.5rem;
+}
+
 h2 {
     font-size: 2.3rem;
 }
@@ -189,6 +193,11 @@ nav .brand-logo {
 
 .menu-shopping-cart{
     margin-right: 1%;
+    padding-top: 10px
+}
+
+.menu-shopping-cart > img {
+    width: 30px;
 }
 
 .toast {
