@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col s12 l6 m12">
-            <h4>{{t "templates.shopping-cart.checkout.delivery-address"}}</h4>
+            <h3 class="header">{{t "templates.shopping-cart.checkout.delivery-address"}}</h3>
             {{md-input value=model.name label=(t "templates.shopping-cart.checkout.name")
                 icon="face" class="col s12" validate=true errors=errors.name}}
 
@@ -32,10 +32,10 @@
         </div>
 
         <div class="col s12 l6 m12">
-            <h4>{{t "templates.shopping-cart.checkout.order-summary"}}</h4>
+            <h3 class="header">{{t "templates.shopping-cart.checkout.order-summary"}}</h3>
             {{checkout-cart-overview}}
 
-            <h4>{{t "templates.shopping-cart.checkout.payment"}}</h4>
+            <h3 class="header">{{t "templates.shopping-cart.checkout.payment"}}</h3>
             {{#md-select optionLabelPath="content.name" optionValuePath="content.value" value=chosenPaymentMethod
                 content=paymentMethods prompt=(t "templates.shopping-cart.checkout.payment-prompt") }}
             {{/md-select}}

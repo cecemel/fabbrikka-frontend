@@ -1,11 +1,12 @@
+ <div class="container">
 <div class="row">
-<h2 class="header">{{t "templates.shopping-cart.index.title"}}</h2>
+<h2 class="header center-align">{{t "templates.shopping-cart.index.title"}}</h2>
 	{{#if hasItems}}
-		<div class="col s12 l7">
+		<div class="col s12 l6">
             <table>
                 <thead>
                     <tr>
-                        <th>{{t "templates.shopping-cart.index.item"}}</th>
+                        <th style="text-align:center;">{{t "templates.shopping-cart.index.item"}}</th>
                         <th>{{t "templates.shopping-cart.index.size"}}</th>
                         <th>{{t "templates.shopping-cart.index.units"}}</th>
                         <th>&nbsp;</th>
@@ -20,7 +21,7 @@
             </table>
 		</div>
 
-		<div class="col s12 l5">
+		<div class="col s12 l5 push-l1">
 			<div class="row">
                 <div class="section">
                 <span class="checkout-total-hd">{{t "templates.shopping-cart.index.subtotal"}}</span>: <span class="checkout-total-d">{{total}}  &euro;</span>
@@ -57,4 +58,5 @@
         {{else}}
             <h3>{{t "templates.shopping-cart.index.empty-cart"}}</h3>
         {{/if}}
+</div>
 </div>

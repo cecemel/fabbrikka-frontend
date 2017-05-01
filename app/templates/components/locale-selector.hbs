@@ -2,25 +2,20 @@
 <ul id={{id}} class="dropdown-content">
   <li>
       <a href="#!" {{action 'setLocale' 'be' 'nl'}}>
-          <img src="/assets/images/flag-placeholder.png" class="flag flag-be" alt="be"/>
-          -
           nl
      </a>
   </li>
   <li>
       <a href="#!" {{action 'setLocale' 'gb' 'en'}}>
-          <img src="/assets/images/flag-placeholder.png" class="flag flag-gb" alt="gb"/>
-          -
           en
       </a>
   </li>
 </ul>
 <a class="locale-selector" href="#!" data-activates={{id}}>
-    <img src="/assets/images/flag-placeholder.png" class="flag flag-{{country}}" alt="{{country}}"/>
     {{#if language}}
-    -{{language}}
+    {{language}}
     {{/if}}
-    <i class="material-icons right">arrow_drop_down</i>
+    <i class="locale-selector-arrow material-icons right">arrow_drop_down</i>
 </a>
 
 {{yield}}
