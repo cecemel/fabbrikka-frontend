@@ -47,6 +47,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.love-helping": "We helpen je graag",
     "templates.shopping-cart.checkout.order-confirmation.back": "terug naar het begin!",
     "templates.shopping-cart.checkout.choose-country": "land",
+    "templates.shopping-cart.checkout.country-not-in-list": "Indien je land niet in de lijst aanwezig is, kan je altijd langs onze",
 
     "controllers.shopping-cart.countries.belgium" : "belgie",
     "controllers.shopping-cart.countries.spain" : "spanje",
