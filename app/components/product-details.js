@@ -21,9 +21,14 @@ export default Ember.Component.extend({
        });
     }),
 
+    didInsertElement(){
+        this._super(...arguments);
+        this._setupSizeToolTip();
+    },
+
     didRender() {
-    this._super(...arguments);
-    this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
+        this._super(...arguments);
+        this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
     },
 
     images: Ember.computed.reads('data.productImages'),
@@ -56,21 +61,26 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(description) && description.get("description");
     }),
 
-    _displayChooseSizeError(){
-        let self = this;
+    toolTipMessage: Ember.observer('selectedVariantId', function(){
+        let selectedVariantId = this.get('selectedVariantId');
+        if(selectedVariantId){
+            this._destroySizeToolTip();
+        }
+    }),
+
+    _setupSizeToolTip(){
         let message = this.get("i18n").t('components.product-details.choose-size-error');
         this.$("#" + this.get('addToCartId')).tooltip({position: "top", tooltip: message, delay: 0});
-        this.$("#" + this.get('addToCartId')).trigger("mouseenter.tooltip");
-        setTimeout(function(){
-            self.$("#" + self.get('addToCartId')).trigger("mouseleave.tooltip");
-            self.$("#" + self.get('addToCartId')).tooltip('remove');
-        }, 2000);
+    },
+
+    _destroySizeToolTip(){
+        this.$("#" + this.get('addToCartId')).tooltip('remove');
     },
 
     actions: {
         addToCart(){
             if(!this.get('selectedVariantId')){
-                this._displayChooseSizeError();
+                
                 return;
             }
             this.get('cartService').addItem(this.get('selectedVariantId'), 1).then(() => {
