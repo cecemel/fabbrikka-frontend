@@ -74,6 +74,15 @@ nav .brand-logo {
 .card .card-image .card-title .right{
     float: right;
 }
+.card-subscript{
+    font-size: 0.90rem;;
+    font-style: italic;
+    float: right;
+}
+
+.card .card-content{
+    padding-bottom: 12px;
+}
 
 .parallax-container {
   height: 500px;
