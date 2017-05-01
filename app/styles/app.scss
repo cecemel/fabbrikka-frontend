@@ -12,6 +12,32 @@ html {
   font-family: 'CooperHewittLight';
 }
 
+// @font-face {
+//     font-family: 'Sansumi-DemiBold';
+//         src: url('fonts/Sansumi-DemiBold.ttf');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+//
+// html {
+//   font-family: 'Sansumi-DemiBold';
+//   text-transform: uppercase;
+// }
+//
+// @media #{$large-and-up} {
+//     html{
+//         font-size: 12px;
+//     }
+//
+// }
+//
+// @media #{$medium-and-down} {
+//     html{
+//         font-size: 10px;
+//     }
+//
+// }
+
 .header{
     margin-left: 10px;
 }
