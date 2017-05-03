@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     uniqueSizes: Ember.computed.uniqBy('sizes', 'id'),
     selectedSizeId: Ember.computed.reads('uniqueSizes.firstObject.id'),
 
-    selectBoxDisplay: Ember.computed('data.productVariants', function(){
+    selectBoxDisplay: Ember.computed('data.productVariants.@each.size', function(){
         return this.get('data.productVariants').map((item) =>{
            return {"id": item.get('id'), "name": item.get('size').get('name')};
        });
@@ -80,7 +80,7 @@ export default Ember.Component.extend({
     actions: {
         addToCart(){
             if(!this.get('selectedVariantId')){
-                
+
                 return;
             }
             this.get('cartService').addItem(this.get('selectedVariantId'), 1).then(() => {
