@@ -82,7 +82,7 @@ export default Ember.Controller.extend({
     },
 
     extractBackendErrorMsg(error){
-        let errorMsg = error.errors[0] && error.errors[0].detail && error.errors[0].detail.message;
+        let errorMsg = error && error.errors && error.errors[0] && error.errors[0].detail && error.errors[0].detail.message;
         if(!errorMsg){
             return error["message"] || "general error";
         }

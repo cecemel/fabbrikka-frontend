@@ -70,8 +70,11 @@ export default Ember.Service.extend({
     },
 
     resetCart(){
-        this.set("cart", null);
-        return this.setupCart();
+        let self = this;
+        self.get("store").unloadAll('shoppingCart');
+        self.get("store").unloadAll('shoppingCartItem');
+        self.set("cart", null);
+        return self.setupCart();
     },
 
     _createNewCart(){
