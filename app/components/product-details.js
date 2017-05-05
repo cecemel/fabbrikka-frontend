@@ -32,7 +32,11 @@ export default Ember.Component.extend({
         this.$('select').material_select();  //see issue https://github.com/mike-north/ember-cli-materialize/issues/434
     },
 
-    images: Ember.computed.reads('data.productImages'),
+    images: Ember.computed('data.@each.productImages', function(){
+        return this.get("data.productImages").filter(e => {
+            return e.get("type") === "primary" || e.get("type") === "detail";
+        });
+    }),
 
     productNames: Ember.computed.reads('data.productNames'),
     name: Ember.computed('locale', 'productNames', function(){

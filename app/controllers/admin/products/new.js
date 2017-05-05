@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
         fileUploadEndpoint: config.APP.backendHost + "/files",
         localesList: [{"value": "en-gb"}, {"value": "nl-be"}],
         productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
-        imageTypesList: [{"value": "primary"}, {"value": "detail"}],
+        imageTypesList: [{"value": "primary"}, {"value": "detail"}, {"value": "facebook-share"}],
 
         imageUploadValidation: Ember.computed(function(){
           return Ember.run.bind(this, () => {

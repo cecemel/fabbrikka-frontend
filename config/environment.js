@@ -21,6 +21,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      publicHostName: "",
       backendHost: "",
       localeGuesser: "/fabbrikka-locale-guesser",
       cartService: "/fabbrikka-cart-service",
@@ -47,6 +48,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.backendHost="";
+    ENV.APP.publicHostName="http://playground.ruizdearcaute.com";
   }
 
   if (environment === 'test') {
@@ -58,11 +60,12 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    ENV.APP.backendHost="http://playground.ruizdearcaute.com:6970"
+    ENV.APP.publicHostName="https://test.fabbrikka.com";
   }
 
   if (environment === 'production') {
-   ENV.APP.backendHost=""
+   ENV.APP.backendHost="";
+   ENV.APP.publicHostName="https://test.fabbrikka.com";
   }
 
   return ENV;
