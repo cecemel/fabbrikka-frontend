@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import Materialize from 'materialize';
+// WORKAROUND: see https://github.com/mike-north/ember-materialize-shim/issues/80
+// import Materialize from 'materialize';
 
 export default Ember.Controller.extend({
     localeTracker: Ember.inject.service(),
