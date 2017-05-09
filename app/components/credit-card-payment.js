@@ -4,69 +4,22 @@ import config from 'fabbrikka-frontend/config/environment';
 export default Ember.Component.extend({
     card: null,
     cardMounted: false,
-    stripeInstance: null,
     creditCardElement: "credit-card-element",
     creditCardErrors: "credit-card-errors",
     billingData: null,
     ajax: Ember.inject.service(),
+    stripeService: Ember.inject.service(),
     isSubmittingPayment: false,
 
-    _stripeExists(){
-        try {
-            if (Stripe){
-                return true;
-            }
-        } catch(e) {
-            return false;
-        }
-    },
-
     didInsertElement() {
-        let self = this;
-        if(!self._stripeExists()){
-             Ember.$.getScript('https://js.stripe.com/v3/', () => {
-                 this.mountCart();
-             });
-             return;
-         }
+         this._super(...arguments);
          this.mountCart();
      },
 
-     willDestroyElement() {
-         this._super(...arguments);
-         let self = this;
-         if(!self._stripeExists()){
-             Stripe = null;
-         }
-         return;
-     },
-
     mountCart(){
-        // taken from https://stripe.com/docs/elements
-        let stripe = new Stripe(config.stripe.key);
-        // Create an instance of Elements
-        let elements = stripe.elements();
-
-        // Just inject sytling here
-        var style = {
-          base: {
-            color: '#32325d',
-            lineHeight: '24px',
-            fontFamily: 'Helvetica Neue',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-              color: '#aab7c4'
-            }
-          },
-          invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-          }
-        };
 
         // Create an instance of the card Element
-        let card = elements.create('card', {style: style});
+        let card = this.get('stripeService').initStripeElementsCard();
 
         // Add an instance of the card Element into the `card-element` <div>
         card.mount('#' + this.get('creditCardElement'));
@@ -83,7 +36,6 @@ export default Ember.Component.extend({
         });
 
         this.set('card', card);
-        this.set('stripeInstance', stripe);
         this.set('cardMounted', true);
     },
 
@@ -114,7 +66,7 @@ export default Ember.Component.extend({
             self.get('onPay')()
             .then((billingData) => {
                 self.set('billingData', billingData);
-                return self.get('stripeInstance').createToken(self.get('card'));
+                return self.get('stripeService').get('stripeInstance').createToken(self.get('card'));
             })
             .then(self.handleTokenFetch.bind(self))
             .then(self.submitPaymentToPaymentService.bind(self))
