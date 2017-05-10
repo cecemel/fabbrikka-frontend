@@ -17,7 +17,6 @@ export default Ember.Component.extend({
      },
 
     mountCart(){
-
         // Create an instance of the card Element
         let card = this.get('stripeService').initStripeElementsCard();
 

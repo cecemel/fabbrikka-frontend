@@ -10,4 +10,18 @@ export default Ember.Route.extend({
         this.controllerFor('shopping-cart.checkout').set("orderConfirmation", null);
         this.controllerFor('shopping-cart.checkout').set('orderConfirmed', false);
     },
+
+    resetController(controller, isExiting) {
+        if (isExiting) {
+            controller.set('clientSecretQP', null);
+            controller.set('sourceQP', null);
+            controller.set('cityQP', null);
+            controller.set('emailQP', null);
+            controller.set('houseNumberQP', null);
+            controller.set('nameQP', null);
+            controller.set('streetQP', null);
+            controller.set('zipQP', null);
+            controller.set('countryQP', null);
+        }
+    }
 });

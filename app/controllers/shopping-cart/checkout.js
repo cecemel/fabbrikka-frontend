@@ -3,11 +3,45 @@ import Ember from 'ember';
 // import Materialize from 'materialize';
 
 export default Ember.Controller.extend({
+     //TODO: this should be re-thought. Basically the flow of bancontact works with a redirect.....
+     queryParams:{
+         clientSecretQP: 'client_secret',
+         sourceQP: 'source',
+         cityQP: 'deliveryAddress[city]',
+         countryQP:  'deliveryAddress[country]',
+         emailQP: 'deliveryAddress[email]',
+         houseNumberQP: 'deliveryAddress[houseNumber]',
+         nameQP: 'deliveryAddress[name]',
+         streetQP: 'deliveryAddress[street]',
+         zipQP: 'deliveryAddress[zip]'
+     },
+     clientSecretQP: null,
+     sourceQP: null,
+     cityQP: null,
+     emailQP: null,
+     houseNumberQP: null,
+     nameQP: null,
+     streetQP: null,
+     zipQP: null,
+     countryQP: null,
+
+     clientSecretObserver:  Ember.observer('clientSecretQP', function() {
+         if(! this.get('clientSecretQP')){
+             return;
+         }
+         this.set('model', {name: this.get('nameQP'), email: this.get('emailQP'),
+                           street: this.get('streetQP'), houseNumber: this.get('houseNumberQP'),
+                           city:this.get('cityQP'),
+                           zip: this.get('zipQP'), country: this.get('countryQP')});
+         this.set('chosenPaymentMethod', 'bancontact');
+     }),
+
     localeTracker: Ember.inject.service(),
     locale: Ember.computed.reads("localeTracker.locale"),
     cartService: Ember.inject.service('shopping-cart'),
     scroller: Ember.inject.service(),
     i18n: Ember.inject.service(),
+    totalAmount: Ember.computed.reads('cartService.total'),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
     availibleCountries: Ember.computed(function() {
@@ -21,10 +55,8 @@ export default Ember.Controller.extend({
         });
     }),
 
-    foundGooglePlace: null,
-
     paymentMethods: [{name: "visa/mastercard", value: "visa"},
-                    //  {name: "bancontact", value: "bancontact"}
+                     {name: "bancontact", value: "bancontact"}
                     ],
 
     emailDidChange: Ember.observer('model.email', function() {
@@ -127,6 +159,7 @@ export default Ember.Controller.extend({
     },
 
     actions:{
+
         onSubmitPayment(){
             let self = this;
             return new Ember.RSVP.Promise((resolve, reject) => {

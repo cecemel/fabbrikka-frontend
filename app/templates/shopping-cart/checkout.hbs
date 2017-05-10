@@ -1,25 +1,26 @@
 {{#unless orderConfirmed}}
     <h2 class="header">{{t "templates.shopping-cart.checkout.checkout"}}</h2>
+    {{currentURL}}
 
     <div class="row">
         <div class="col s12 l6 m12">
             <h3 class="header">{{t "templates.shopping-cart.checkout.delivery-address"}}</h3>
-            {{md-input value=model.name label=(t "templates.shopping-cart.checkout.name")
+            {{md-input value=model.name autocomplete="off" label=(t "templates.shopping-cart.checkout.name")
                 icon="face" class="col s12" validate=true errors=errors.name}}
 
-            {{md-input value=model.email label=(t "templates.shopping-cart.checkout.email")
+            {{md-input value=model.email autocomplete="off" label=(t "templates.shopping-cart.checkout.email")
                 icon="email" class="col s12" validate=true errors=errors.email}}
 
-            {{md-input value=model.street label=(t "templates.shopping-cart.checkout.street")
+            {{md-input value=model.street autocomplete="off" label=(t "templates.shopping-cart.checkout.street")
                     icon="home" class="col s8 m10" validate=true errors=errors.street}}
 
-            {{md-input value=model.houseNumber label=(t "templates.shopping-cart.checkout.number-bus")
+            {{md-input value=model.houseNumber autocomplete="off" label=(t "templates.shopping-cart.checkout.number-bus")
                                 class="col s4 m2 right" validate=true errors=errors.houseNumber}}
 
-            {{md-input value=model.city label=(t "templates.shopping-cart.checkout.city-country")
+            {{md-input value=model.city autocomplete="off" label=(t "templates.shopping-cart.checkout.city-country")
                                     class="col s8  m8" validate=true errors=errors.city icon="location_city"}}
 
-            {{md-input value=model.zip label=(t "templates.shopping-cart.checkout.zip")
+            {{md-input value=model.zip autocomplete="off" label=(t "templates.shopping-cart.checkout.zip")
                                     class="col s4 m4 right" validate=true errors=errors.zip}}
             {{#country-selector extraClass="countrySelector"
                         optionLabelPath="content.name"
@@ -44,9 +45,12 @@
                 {{credit-card-payment onPay=(action 'onSubmitPayment')
                  onPayError=(action 'onSubmitPaymentError') onPaySuccess=(action 'onSubmitPaymentSuccess')}}
             {{/if}}
-            {{!-- {{#if (equal-strings chosenPaymentMethod "bancontact")}}
-                {{bancontact-payment}}
-            {{/if}} --}}
+
+            {{#if (equal-strings chosenPaymentMethod "bancontact")}}
+                {{bancontact-payment onPay=(action 'onSubmitPayment') clientSecret=clientSecretQP source=sourceQP
+                 onPayError=(action 'onSubmitPaymentError') onPaySuccess=(action 'onSubmitPaymentSuccess')
+                 accountHolderName=model.name totalAmount=totalAmount}}
+            {{/if}}
         </div>
     </div>
     {{error-modal status=hasBackendError title=(t "templates.shopping-cart.checkout.error-title") message=backendErrorText}}
