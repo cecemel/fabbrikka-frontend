@@ -100,6 +100,8 @@ export default Ember.Component.extend({
                     return Ember.RSVP.Promise.reject({"type": "bancontactFormIssue"});
                 }
 
+                billingData['paymentType'] = self.get("paymentType");
+                
                 let redirectUrl = config.APP.publicHostName + Ember.getOwner(self).lookup('controller:application').target.currentURL;
 
                 return self.get('stripeService').initBCNPayment(

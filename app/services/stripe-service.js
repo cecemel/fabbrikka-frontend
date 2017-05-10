@@ -4,6 +4,7 @@ TODO:
  - uniform promised based API -> not like e.g. initStripeElementsCard
  - optional data should not be passed around in URL's!!!
  - the import of the stripe is SYNC -> via script tag. Should be asyn and then some smart polling. Which reduces intial load time.
+ - more generic name since BCN and ideal are pretty much the same flow
 **/
 import Ember from 'ember';
 import config from 'fabbrikka-frontend/config/environment';
@@ -49,7 +50,7 @@ export default Ember.Service.extend({
         return new Ember.RSVP.Promise((resolve, reject) => {
 
             if(!this._stripeExists()){
-                return reject({"message": "issue finishing bancontact payment. You wil NOT be charged."});
+                return reject({"message": "issue finishing payment. You wil NOT be charged."});
             }
 
             Stripe.setPublishableKey(config.stripe.key);
@@ -58,7 +59,7 @@ export default Ember.Service.extend({
                 clientSecret,
                 (status, source) => {
                     if(status !== 200 || source['status'] !== "chargeable"){
-                        reject({"message": "issue finishing bancontact payment. You wil NOT be charged."});
+                        reject({"message": "issue finishing payment. You wil NOT be charged."});
                     }
                     resolve(source);
                 });

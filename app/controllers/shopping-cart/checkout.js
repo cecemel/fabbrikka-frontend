@@ -13,7 +13,8 @@ export default Ember.Controller.extend({
          houseNumberQP: 'deliveryAddress[houseNumber]',
          nameQP: 'deliveryAddress[name]',
          streetQP: 'deliveryAddress[street]',
-         zipQP: 'deliveryAddress[zip]'
+         zipQP: 'deliveryAddress[zip]',
+         paymentTypeQP: 'paymentType',
      },
      clientSecretQP: null,
      sourceQP: null,
@@ -24,6 +25,7 @@ export default Ember.Controller.extend({
      streetQP: null,
      zipQP: null,
      countryQP: null,
+     paymentTypeQP: null,
 
      clientSecretObserver:  Ember.observer('clientSecretQP', function() {
          if(! this.get('clientSecretQP')){
@@ -33,7 +35,7 @@ export default Ember.Controller.extend({
                            street: this.get('streetQP'), houseNumber: this.get('houseNumberQP'),
                            city:this.get('cityQP'),
                            zip: this.get('zipQP'), country: this.get('countryQP')});
-         this.set('chosenPaymentMethod', 'bancontact');
+         this.set('chosenPaymentMethod', this.get('paymentTypeQP'));
      }),
 
     localeTracker: Ember.inject.service(),
