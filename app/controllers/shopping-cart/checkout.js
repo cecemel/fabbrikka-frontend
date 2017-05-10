@@ -56,7 +56,8 @@ export default Ember.Controller.extend({
     }),
 
     paymentMethods: [{name: "visa/mastercard", value: "visa"},
-                     {name: "bancontact", value: "bancontact"}
+                     {name: "bancontact", value: "bancontact"},
+                     {name: "ideal", value: "ideal"}
                     ],
 
     emailDidChange: Ember.observer('model.email', function() {

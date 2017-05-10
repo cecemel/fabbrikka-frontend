@@ -12,7 +12,7 @@ export default Ember.Service.extend({
 
     stripeInstance: null,
 
-    initBCNPayment(accountHolderName, amount, redirectUrl, optionalData){
+    initBCNPayment(type, accountHolderName, amount, redirectUrl, optionalData){
         return new Ember.RSVP.Promise((resolve, reject) => {
             if(!this._stripeExists()){
                 return reject({"message": "issue initiating payment, please try again"});
@@ -26,7 +26,7 @@ export default Ember.Service.extend({
             }
 
             Stripe.source.create({
-                type: 'bancontact',
+                type: type,
                 amount: Math.floor(amount*100),
                 currency: 'eur',
                 owner: {
