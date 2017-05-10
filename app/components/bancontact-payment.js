@@ -66,7 +66,7 @@ export default Ember.Component.extend({
     completePayement(){
         let self = this;
         self.set('isSubmittingPayment', true);
-        self.set('waitMessage', this.get('paymentType') + ' ok, please hold on...');
+        self.set('waitMessage', this.get('paymentType') + ' ' + this.get("i18n").t("components.bancontact-payment.payment-ok-wait"));
         self.get('onPay')()
         .then((billingData) => {
             self.set('billingData', billingData);
@@ -101,7 +101,7 @@ export default Ember.Component.extend({
                 }
 
                 billingData['paymentType'] = self.get("paymentType");
-                
+
                 let redirectUrl = config.APP.publicHostName + Ember.getOwner(self).lookup('controller:application').target.currentURL;
 
                 return self.get('stripeService').initBCNPayment(

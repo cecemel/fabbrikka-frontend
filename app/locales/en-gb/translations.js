@@ -12,6 +12,7 @@ export default {
 
     "components.bancontact-payment.account-holders-name": "account holders name",
     "components.bancontact-payment.start-payment": "start payment",
+    "components.bancontact-payment.payment-ok-wait": "ok, please hold on...",
 
     "components.checkout-cart-overview.items-overview": "click for items overview",
     "components.checkout-cart-overview.shipping": "shipping",
