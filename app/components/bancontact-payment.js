@@ -17,6 +17,7 @@ export default Ember.Component.extend({
 
     didRender(){
         if(this.get('clientSecret') && this.get('source') && !this.get('hasRendered')){
+            this.scrollToComponent();
             this.completePayement();
         }
         this.set('hasRendered', true);
@@ -87,6 +88,12 @@ export default Ember.Component.extend({
             return self.get('onPayError')(error);
         });
 
+    },
+
+    scrollToComponent(){
+        Ember.$('html, body').animate({
+            scrollTop: Ember.$(".bcn-button").offset().top
+        }, 2000);
     },
 
 
