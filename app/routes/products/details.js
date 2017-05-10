@@ -21,7 +21,10 @@ export default Ember.Route.extend({
         if(this.get('fastboot.isFastBoot')){
             let path = this.get('fastboot.request.path');
             this.set('headData.url', config.APP.publicHostName + path);
-            this.set('headData.imageUrl', config.APP.publicHostName + model.get("productImages").find(this._filterFacebookOGImage).get('accessURL'));
+            let img = model.get("productImages").find(this._filterFacebookOGImage);
+            if(img){
+                this.set('headData.imageUrl', config.APP.publicHostName + img.get('accessURL'));
+            }
         }
     },
 
