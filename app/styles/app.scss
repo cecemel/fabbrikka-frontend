@@ -40,6 +40,13 @@ h3 {
     font-size: 2.0rem;
 }
 
+.progress{
+    z-index: 1000;
+    position: fixed;
+    margin: 0;
+    height: 3px;
+}
+
 @media #{$medium-and-up} {
     html{
         font-size: 13px;

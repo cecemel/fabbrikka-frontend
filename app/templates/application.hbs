@@ -1,6 +1,17 @@
 <header>
 {{locale-select-modal}}
 {{#navbar-mat-fabb}}{{/navbar-mat-fabb}}
+{{#if currentlyLoading}}
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+{{/if}}
+{{#if (is-fastboot)}}
+<div class="progress">
+    <div class="indeterminate"></div>
+</div>
+{{/if}}
+
 </header>
 <main class="fabb-main">
     {{outlet}}
