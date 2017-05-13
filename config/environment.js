@@ -18,6 +18,14 @@ module.exports = function(environment) {
       }
     },
 
+   metricsAdapters: [{
+   name: 'FacebookPixel',
+        environments: ['all'],
+        config: {
+          id: '1593264654222029'
+        }
+   }],
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

@@ -46,6 +46,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-material-design-icons-shim": "0.1.10",
     "ember-materialize-shim": "git+https://github.com/cecemel/ember-materialize-shim.git",
+    "ember-metrics": "^0.10.0",
     "ember-modal-dialog": "0.8.8",
     "ember-mu-login": "git+https://github.com/cecemel/ember-mu-login.git",
     "ember-new-computed": "1.0.3",
