@@ -41,10 +41,22 @@ h3 {
 }
 
 .progress{
-    z-index: 1000;
+    z-index: 996;
     position: fixed;
     margin: 0;
     height: 3px;
+    margin-top: 18px;
+}
+
+.quick-header{
+    color: white;
+    z-index: 996;
+    position: fixed;
+    width: 100%
+}
+
+.fabb-main{
+    margin-top:19px;
 }
 
 @media #{$medium-and-up} {
@@ -266,16 +278,32 @@ i.locale-selector-arrow.material-icons.right{
 }
 
 .parallax img {
-    bottom: -100px;
+    bottom: -130px;
 }
 
 @media #{$medium-and-down}{
+    .progress{
+        margin-top: 13px;
+    }
+    .fabb-main{
+        margin-top:15px;
+    }
+    .quick-header{
+        font-size: 10px
+    }
+
+    .parallax img {
+        bottom: -120px;
+    }
     .container{
       width: 90%;
     }
 }
 
 @media #{$small-and-down} {
+    .parallax img {
+        bottom: -150px;
+    }
     .parallax-container {
       height: 350px;
     }
