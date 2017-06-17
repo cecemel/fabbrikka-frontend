@@ -17,6 +17,17 @@ export default Ember.Route.extend({
         this._setupFacebookOG(model);
     },
 
+    actions: {
+        delete(product) {
+            product.set('published', false);
+            product.save().then(()=>{
+                this.transitionTo( "admin.products");
+            }).catch( function() {
+                alert("Removal of product failed");
+            });
+        }
+    },
+
     _setupFacebookOG(model){
         if(this.get('fastboot.isFastBoot')){
             let path = this.get('fastboot.request.path');

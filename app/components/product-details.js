@@ -3,7 +3,7 @@ import Ember from 'ember';
 // import Materialize from 'materialize';
 
 export default Ember.Component.extend({
-
+    session: Ember.inject.service(),
     addToCartId: Ember.computed('elementId', function() {
         return `${this.get('elementId')}-addToCartId`;
       }),
