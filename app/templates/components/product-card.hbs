@@ -1,8 +1,10 @@
 {{#link-to onClickLinkTo item.id tagName='div' class="card hoverable"}}
     {{#if media.isS}}
-        <div class="card-image">
-            <img src={{primaryImageURL}}>
-        </div>
+        {{#swiper-container updateFor=images pagination=true slidesPerView=1 spaceBetween=0 centered=true loop=true}}
+            {{#each item.productImages as |image|}}
+                {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
+            {{/each}}
+        {{/swiper-container}}
     {{else}}
         <div class="card-image waves-effect waves-block waves-light">
             <img src={{primaryImageURL}}>
