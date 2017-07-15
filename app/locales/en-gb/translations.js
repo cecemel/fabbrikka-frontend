@@ -2,7 +2,7 @@ export default {
     "components.navbar-mat-fabb.shop": "shop",
     "components.navbar-mat-fabb.about": "about",
 
-    "components.product-card.free-shipping": "free shipping within europe",
+    "components.product-card.free-shipping": "free shipping & return within europe",
 
     "components.product-details.plusonesweater": "+1 sweater, thanks",
     "components.product-details.choose-size": "choose your size...",
