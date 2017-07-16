@@ -25,6 +25,10 @@ export default Ember.Route.extend({
             }).catch( function() {
                 alert("Removal of product failed");
             });
+        },
+
+        edit(product){
+            this.transitionTo('admin.products.edit', product.get("id"));
         }
     },
 

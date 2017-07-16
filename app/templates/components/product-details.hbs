@@ -23,6 +23,7 @@
         {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out red"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
 
         {{#if session.isAuthenticated}}
+            {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
             {{#md-btn text='delete' action=onDelete actionArg=data}}{{/md-btn}}
         {{/if}}
 
