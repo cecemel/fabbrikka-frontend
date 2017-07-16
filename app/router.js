@@ -33,6 +33,7 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('products', function() {
       this.route('new');
+      this.route('edit', { path: '/:id/edit' });
     });
 
     this.route('product-audiences', function() {

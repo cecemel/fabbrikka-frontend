@@ -1,0 +1,8 @@
+<h5>overview product names</h5>
+{{#md-table content=model as |row|}}
+    {{md-table-col row=row valueBindingPath='locale'}}
+    {{md-table-col row=row valueBindingPath='name'}}
+    {{#md-table-col row=row key='name' header='action'}}
+        {{md-btn class='teal white-text' text='delete' action='delete' actionArg=row.id}}
+    {{/md-table-col}}
+{{/md-table}}

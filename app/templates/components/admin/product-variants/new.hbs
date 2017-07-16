@@ -1,0 +1,12 @@
+<h4> product variants </h4>
+A product can have multiple variants, e.g. over size or color. This might affect the price.
+<div class="row">
+    {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=selectedSize  content=sizes prompt="please provide a size" }} {{/md-select}}
+</div>
+<div class="row">
+    {{input type="text" class="validate" value=price type="number" validate=true}}
+    <label for="type">product price in euro</label>
+</div>
+<div class="row">
+    {{md-btn class='teal white-text' text='save' action='save'}}
+</div>

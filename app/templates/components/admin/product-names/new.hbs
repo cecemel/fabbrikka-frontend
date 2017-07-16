@@ -1,0 +1,18 @@
+<h4>product names</h4>
+A product can have multiple names, varying over language.
+<div class="row">
+    <form class="col s12">
+        <div class="row">
+            {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=selectedLocale  content=locales prompt="Please choose a language..." }} {{/md-select}}
+        </div>
+        <dir class="row textarea">
+            <div class="input-field col s6">
+                {{md-input type="text" class="validate" value=productName}}
+                <label for="type">provide a product name</label>
+            </div>
+        </dir>
+        <div class="row">
+            <a class="waves-effect waves-light btn" {{action 'save' selectedLocale productName}}>add</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,8 @@
+<h4>product audiences</h4>
+A product can have multiple audiences, like, men, women, children....
+<div class="row">
+    {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=productAudienceId  content=audiences prompt="please provide an audience..." }} {{/md-select}}
+</div>
+<div class="row">
+    {{md-btn class='teal white-text' text='save' action='save'}}
+</div>

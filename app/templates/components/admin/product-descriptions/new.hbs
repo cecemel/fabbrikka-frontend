@@ -1,0 +1,13 @@
+<h4>product descriptions</h4>
+A product can have multiple descriptions, varying over language.
+<form class="col s12">
+    <div class="row">
+        {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=selectedLocale  content=locales prompt="Please choose a language..." }} {{/md-select}}
+    </div>
+    <dir class="row textarea">
+        {{md-textarea label='add your product description here' value=description class="input-field col s12 m6"}}
+    </dir>
+    <div class="row">
+        {{md-btn class='teal white-text' text='save' action='save'}}
+    </div>
+</form>

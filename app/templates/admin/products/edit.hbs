@@ -1,0 +1,62 @@
+<div class="row">
+     <div class="col s12">
+        <h3>add a product</h3>
+        <h4>general info</h4>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                    {{#md-select optionLabelPath="content.value" optionValuePath="content.value" value=model.product.type  content=productTypesList prompt="please provide a type..." }} {{/md-select}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        {{md-input type="text" class="validate" value=model.product.ranking type="number" validate=true}}
+                        <label for="type">product ranking, ranging from 0 (high) to ....</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="input-field col s6 push-s5">
+                <a class="waves-effect waves-light btn" {{action 'updateProduct'}}>update</a>
+            </div>
+        </div>
+
+        {{#md-card-collapsible }}
+            {{#md-collapsible icon="mdi-image-filter-drama" title="product names"}}
+                {{admin/product-names/new locales=localesList save="addName"}}
+                {{admin/product-names/index model=model.product.productNames delete="deleteName"}}
+            {{/md-collapsible}}
+        {{/md-card-collapsible }}
+
+        {{#md-card-collapsible }}
+            {{#md-collapsible icon="mdi-image-filter-drama" title="product descriptions"}}
+                {{admin/product-descriptions/new locales=localesList save="addDescription"}}
+                {{admin/product-descriptions/index model=model.product.productDescriptions delete="deleteDescription"}}
+            {{/md-collapsible}}
+        {{/md-card-collapsible }}
+
+        {{#md-card-collapsible }}
+            {{#md-collapsible icon="mdi-image-filter-drama" title="product variants"}}
+                {{admin/product-variants/new sizes=model.productSizesList save="addVariant"}}
+                {{admin/product-variants/index model=model.product.productVariants delete="deleteVariant"}}
+            {{/md-collapsible}}
+        {{/md-card-collapsible }}
+
+        {{#md-card-collapsible }}
+            {{#md-collapsible icon="mdi-image-filter-drama" title="product audiences"}}
+                {{admin/product-audiences/new audiences=model.productAudiencesList save="addAudience"}}
+                {{admin/product-audiences/index model=model.product.productAudiences delete="deleteAudience"}}
+            {{/md-collapsible}}
+        {{/md-card-collapsible }}
+
+        {{#md-card-collapsible }}
+            {{#md-collapsible icon="mdi-image-filter-drama" title="product images"}}
+                {{admin/product-images/new imageTypes=imageTypesList save="addImage"}}
+                {{admin/product-images/index model=model.product.productImages delete="deleteImage"}}
+            {{/md-collapsible}}
+        {{/md-card-collapsible }}
+
+    </div>
+</div>

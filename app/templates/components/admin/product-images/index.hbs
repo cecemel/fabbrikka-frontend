@@ -1,0 +1,10 @@
+<h5>overview product images</h5>
+{{#md-table content=model as |row|}}
+    {{md-table-col row=row key='type' header='type'}}
+    {{#md-table-col row=row key='name' header='images'}}
+        <img src="{{row.accessURL}}">
+    {{/md-table-col}}
+    {{#md-table-col row=row key='name' header='action'}}
+        {{md-btn class='teal white-text' text='delete' action='delete' actionArg=row.id}}
+    {{/md-table-col}}
+{{/md-table}}
