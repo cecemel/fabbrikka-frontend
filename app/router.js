@@ -24,7 +24,6 @@ const Router = Ember.Router.extend(RouterScroll, {
 });
 
 Router.map(function() {
-
   this.route('products', function() {
     this.route('new');
     this.route('details', { path: '/:id/details' });
@@ -51,6 +50,7 @@ Router.map(function() {
     this.route('checkout', function() {});
   });
   this.route('login');
+  this.route('about');
 });
 
 export default Router;

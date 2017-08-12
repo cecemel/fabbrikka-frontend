@@ -18,7 +18,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li>{{#link-to 'index'}}{{t "components.navbar-mat-fabb.shop"}} {{/link-to}}</li>
-          <li><a href="#">{{t "components.navbar-mat-fabb.about"}}</a></li>
+          <li>{{#link-to 'about'}}{{t "components.navbar-mat-fabb.about"}} {{/link-to}}</li>
           {{#if session.isAuthenticated}}
           <li><a class="dropdown-button" href="#" data-activates="dropdown1">admin<i class="material-icons right">arrow_drop_down</i></a></li>
           {{/if}}
@@ -26,7 +26,7 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="#">{{t "components.navbar-mat-fabb.shop"}}</a></li>
-          <li><a href="#">{{t "components.navbar-mat-fabb.about"}}</a></li>
+          <li>{{#link-to 'about'}}{{t "components.navbar-mat-fabb.about"}} {{/link-to}}</li>
         </ul>
       </div>
     </nav>
