@@ -62,19 +62,25 @@ export default Ember.Service.extend({
         //TODO: HAKING ALERT!!! find out what the proper way is...
         ////////////////////////////////////////////////////////////////////////
         console.log("WARNING: locale-tracker.js still contains a hack!");
-        if(this._hasLocationSet()){
-            let queryParams = location.search.substring(1);
-            let routerInstance = Ember.getOwner(this).lookup('router:main');
-            if(queryParams.length > 0){
-                let query = routerInstance.router.recognizer.parseQueryString(queryParams);
-                return (query && query["locale"]) || null;
+        try{
+            if(this._hasLocationSet()){
+                let queryParams = location.search.substring(1);
+                let routerInstance = Ember.getOwner(this).lookup('router:main');
+                if(queryParams.length > 0){
+                    let query = routerInstance.router.recognizer.parseQueryString(queryParams);
+                    return (query && query["locale"]) || null;
+                }
+            }
+            else{
+                let parameters = this.get('fastboot.request.queryParams');
+                if(Object.keys(parameters).length !== 0){
+                    return this.get(parameters)["locale"];
+                }
             }
         }
-        else{
-            let parameters = this.get('fastboot.request.queryParams');
-            if(Object.keys(parameters).length !== 0){
-                return this.get(parameters)["locale"];
-            }
+        catch(err){
+            console.log(err.message);
+            return null;
         }
     },
 
