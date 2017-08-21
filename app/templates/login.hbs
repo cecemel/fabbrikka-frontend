@@ -1,6 +1,8 @@
 {{#if session.isAuthenticated}}
 <h2> you are logged in! </h2>
   {{mu-logout}}
+<h3> change password </h3>
+  {{mu-change-password}}
 {{else}}
   {{mu-login}}
 {{/if}}

@@ -1,12 +1,20 @@
-<div class="cookies-dialog row  orange lighten-2 white-text valign-wrapper">
-    <div class="col s10">
-        {{#unless media.isS }}
-          <div class="left-align">This site uses cookies, for more info, click <a href='#'>here</a>.</div>
-         {{else}}
-          <div class="left-align">This site uses cookies, <br> for more info, click <a href='#'>here</a>.</div>
-         {{/unless}}
-    </div>
-    <div class="col s2" style="padding-right: 0px;">
-        <a class="waves-effect waves-light btn right" {{action 'acceptCookies'}}>ok!</a>
-    </div>
-</div>
+{{#if showDialog}}
+  <div class="cookies-dialog row  orange lighten-2 white-text valign-wrapper">
+      <div class="col s10">
+          {{#unless media.isS }}
+            <div class="left-align">
+              {{t "components.cookies-dialog.this-site-uses-cookies"}},
+               {{t "components.cookies-dialog.for-more-info-click"}}
+              <a href='#'>{{t "components.cookies-dialog.here"}}</a>.</div>
+           {{else}}
+            <div class="left-align">
+              {{t "components.cookies-dialog.this-site-uses-cookies"}}
+               <br> {{t "components.cookies-dialog.for-more-info-click"}}
+                <a href='#'>{{t "components.cookies-dialog.here"}} </a>.</div>
+           {{/unless}}
+      </div>
+      <div class="col s2" style="padding-right: 0px;">
+          <a class="waves-effect waves-light btn right" {{action 'acceptCookies'}}>ok!</a>
+      </div>
+  </div>
+{{/if}}
