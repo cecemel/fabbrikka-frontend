@@ -30,6 +30,10 @@ export default {
     "components.error-modal.the-error-message-is":"The error message is",
     "components.error-modal.if-you-dont-know": "If you are not sure how to fix the issue, you can always contact hello@fabbrikka.com",
 
+    "components.cookies-dialog.this-site-uses-cookies": "This site uses cookies",
+    "components.cookies-dialog.for-more-info-click": "for more info, click",
+    "components.cookies-dialog.here": "here",
+
     "templates.shopping-cart.checkout.checkout": "checkout",
     "templates.shopping-cart.checkout.delivery-address": "delivery address",
     "templates.shopping-cart.checkout.name": "full name",
