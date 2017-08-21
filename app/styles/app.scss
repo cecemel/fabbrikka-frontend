@@ -13,14 +13,28 @@
 // }
 
 @font-face {
-    font-family: 'Sansumi-Bold';
-        src: url(https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/Sansumi-Bold.ttf?alt=media&token=1b8d8927-aeff-465b-904d-ec83dd16ca0e) format("truetype");
+    font-family: 'Raleway-Light';
+        src: url(https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/FontRaleway%2FRaleway-Light.ttf?alt=media&token=8431d5f4-6e14-4514-87e8-e0b7902eb07f) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway-Medium';
+        src: url(https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/FontRaleway%2FRaleway-Medium.ttf?alt=media&token=382efcbd-d5ca-4eaf-8523-336c60adbb20) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway';
+        src: url(https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/FontRaleway%2FRaleway-Regular.ttf?alt=media&token=ce2ec260-8809-4ac5-b583-8537918baf4f) format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 html {
-  font-family: 'Sansumi-Bold';
+  font-family: 'Raleway-Light';
   text-transform: uppercase;
 }
 
@@ -37,18 +51,33 @@ h2 {
 }
 
 h3 {
-    font-size: 15px;
+    font-size: 17px;
+    text-transform: none;
+    line-height: 24px;
+    margin-top: 0px;
 }
 
 h4 {
-    font-size: 13px;
-    line-height: 19px;
+    font-size: 20px;
+    line-height: 30px;
+    text-transform: none;
 }
 
 h5 {
-    font-size: 20px;
+    font-size: 23px;
     margin-bottom: 25px;
+    font-family: 'Raleway';
 }
+
+h6 {
+    font-size: 19px;
+}
+
+p{
+  text-transform: none;
+  font-size: 17px;
+}
+
 .progress{
     z-index: 996;
     position: fixed;
@@ -90,14 +119,14 @@ padding-bottom: 0px;
 
 @media #{$medium-and-up} {
     html{
-        font-size: 13px;
+        font-size: 15px;
     }
 
 }
 
 @media #{$small-and-down} {
     html{
-        font-size: 12px;
+        font-size: 13px;
     }
 
     h2{
@@ -134,6 +163,7 @@ nav .brand-logo {
 }
 
 .nav-wrapper{
+    font-family: 'Raleway';
     text-transform: uppercase;
 }
 
@@ -153,7 +183,9 @@ nav .brand-logo {
     float: right;
 }
 .card-subscript{
-    font-size: 0.80rem;;
+    font-family: 'Raleway-Medium';
+    font-size: 0.9rem;
+    text-transform: none;
     float: right;
 }
 
@@ -179,7 +211,8 @@ nav .brand-logo {
 }
 
 .product-details-caroussel{
-	width: 100%
+	width: 100%;
+  padding-top: 20px;
 }
 
 .place-autocomplete--input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -267,7 +300,7 @@ i.locale-selector-arrow.material-icons.right{
 }
 
 .select-dropdown, .dropdown-content, .dropdown-content > li{
-    text-transform: uppercase;
+    text-transform: none;
      font-size: 0.5 rem;
 }
 /*!
@@ -341,7 +374,8 @@ i.locale-selector-arrow.material-icons.right{
         margin-top:15px;
     }
     .quick-header{
-        font-size: 11px
+        font-size: 12px;
+        font-family: 'Raleway-Medium';
     }
 
     .parallax img {
