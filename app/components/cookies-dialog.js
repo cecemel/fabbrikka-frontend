@@ -9,7 +9,9 @@ export default Ember.Component.extend({
     },
 
     _storeAcceptCookies(){
-      this.get('cookies').write('accepted-cookies', 'true');
+      var expiration_date = new Date();
+      expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+      this.get('cookies').write('accepted-cookies', 'true', {expires: expiration_date, path:"/"});
     },
 
     didInsertElement(){
