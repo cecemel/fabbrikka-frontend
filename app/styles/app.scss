@@ -364,6 +364,28 @@ i.locale-selector-arrow.material-icons.right{
 .about-accent {
 
 }
+.swiper-button{
+  height: 55px;
+}
+
+.swiper-button-next{
+  background: url(images/swiper-button-next.svg);
+}
+
+.swiper-button-prev{
+  background: url(images/swiper-button-prev.svg);
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: white;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 3;
+    background: #e81b1b;
+}
 
 
 @media #{$medium-and-down}{
