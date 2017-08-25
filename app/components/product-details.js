@@ -24,6 +24,7 @@ export default Ember.Component.extend({
 
     didInsertElement(){
         this._super(...arguments);
+        this.$('.parallax').parallax();
         this._setupSizeToolTip();
     },
 

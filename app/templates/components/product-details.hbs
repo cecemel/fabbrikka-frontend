@@ -7,11 +7,13 @@
                 {{/each}}
             {{/swiper-container}}
         {{else}}
+
     	  	{{#swiper-container updateFor=images navigation=true pagination=true slidesPerView=2 grabCursor=true spaceBetween=3 centered=true loop=true}}
-    	  		{{#each images as |image|}}
+            {{#each images as |image|}}
     	  			{{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
         		{{/each}}
       		{{/swiper-container}}
+
         {{/if}}
   	</div>
   	<div class="col s12 m12 l4">
