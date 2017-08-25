@@ -30,9 +30,9 @@ export default {
     "components.error-modal.the-error-message-is":"Het foutbericht is",
     "components.error-modal.if-you-dont-know": "Indien je niet zeker bent hoe je verder moet, kan je altijd terecht bij hello@fabbrikka.com",
 
-    "components.cookies-dialog.this-site-uses-cookies": "Deze site gebruikt cookies",
-    "components.cookies-dialog.for-more-info-click": "voor meer info, klik",
-    "components.cookies-dialog.here": "hier",
+    "components.cookies-dialog.this-site-uses-cookies": "De EU vraagt ons om je even te melden dat onze website cookies gebruikt.",
+    "components.cookies-dialog.for-more-info-click": "Voor meer info over onze lekkere cookies, klik",
+    "components.cookies-dialog.here": "hier.",
 
     "templates.shopping-cart.checkout.checkout": "betaling",
     "templates.shopping-cart.checkout.delivery-address": "leveradres",

@@ -117,6 +117,10 @@ padding-bottom: 0px;
 
 }
 
+.btn.right{
+  background-color: #29b6f6;
+}
+
 @media #{$medium-and-up} {
     html{
         font-size: 15px;
@@ -159,7 +163,7 @@ nav a{
 
 nav .brand-logo {
     margin-left: 1%;
-    margin-top: 6px;
+    margin-top: 10px;
 }
 
 .nav-wrapper{
@@ -172,7 +176,7 @@ nav .brand-logo {
 }
 
 .brand-logo img{
-    width: 80px;
+    width: 70px;
 }
 
 .row .textarea{
@@ -207,12 +211,11 @@ nav .brand-logo {
 }
 
 .parallax-container {
-  height: 500px;
+  height: 600px;
 }
 
 .product-details-caroussel{
 	width: 100%;
-  padding-top: 20px;
 }
 
 .place-autocomplete--input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -390,7 +393,7 @@ i.locale-selector-arrow.material-icons.right{
 
 @media #{$medium-and-down}{
     .progress{
-        margin-top: 13px;
+        margin-top: 15px;
     }
     .fabb-main{
         margin-top:15px;
@@ -514,4 +517,6 @@ i.locale-selector-arrow.material-icons.right{
     left: 0;
     width: 100%;
     margin-bottom: 0px;
+    font-size: 12px;
+    text-transform: none;
 }
