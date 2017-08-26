@@ -32,7 +32,7 @@ export default {
 
     "components.cookies-dialog.this-site-uses-cookies": "The EU asks us to tell you that our website uses cookies.",
     "components.cookies-dialog.for-more-info-click": "For more info on our delicious cookies, click",
-    "components.cookies-dialog.here": "here.",
+    "components.cookies-dialog.here": "here",
 
     "templates.shopping-cart.checkout.checkout": "checkout",
     "templates.shopping-cart.checkout.delivery-address": "delivery address",

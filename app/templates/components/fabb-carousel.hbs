@@ -1,7 +1,7 @@
 <div class="fabb-carousel">
   {{#swiper-container updateFor=imageSources autoplay=true pagination=false onlyExternal=true followFinger=false speed=6000 effect='fade' slidesPerView=1 spaceBetween=0 centered=true loop=true breakpoints=false}}
     {{#each imageSources as |imageSource|}}
-      {{#swiper-slide}}<img style="width:100%" src={{imageSource}}>{{/swiper-slide}}
+      {{#swiper-slide}}<img class="carouselimage" src={{imageSource}}>{{/swiper-slide}}
     {{/each}}
   {{/swiper-container}}
 </div>
