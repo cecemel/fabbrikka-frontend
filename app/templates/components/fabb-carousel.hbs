@@ -1,4 +1,8 @@
 <div class="fabb-carousel">
-  <img style="width:100%" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/testparal.jpg?alt=media&token=983f12fa-f7cb-4418-80b5-154c8aef51b1">
+  {{#swiper-container updateFor=imageSources autoplay=true pagination=false onlyExternal=true followFinger=false speed=6000 effect='fade' slidesPerView=1 spaceBetween=0 centered=true loop=true breakpoints=false}}
+    {{#each imageSources as |imageSource|}}
+      {{#swiper-slide}}<img style="width:100%" src={{imageSource}}>{{/swiper-slide}}
+    {{/each}}
+  {{/swiper-container}}
 </div>
 {{yield}}
