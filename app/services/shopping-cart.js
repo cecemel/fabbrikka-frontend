@@ -40,7 +40,7 @@ export default Ember.Service.extend({
     },
 
     removeItem(id){
-        return this.get('store').findRecord('shopping-cart-item', id).then((item) =>{
+        return this.get('store').findRecord('shopping-cart-item', id, { backgroundReload: false }).then((item) =>{
           return item.destroyRecord();
         });
     },
@@ -58,7 +58,7 @@ export default Ember.Service.extend({
                 if(!id){
                     return self._createNewCart();
                 }
-                return self.get('store').findRecord('shopping-cart', id);
+                return self.get('store').findRecord('shopping-cart', id, {include: "shopping-cart-items"});
             })
             .then((cart) => {
                 self.set('cart', cart);
