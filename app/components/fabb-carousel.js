@@ -2,15 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   fastboot: Ember.inject.service(),
-  imageSources: ["https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/Carousel%20Images%2FCar1.jpeg?alt=media&token=5c913cdf-53f7-445f-ad57-ac6df0fcfc2f"],
+  imageSources: ["https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar1-min.jpg?alt=media&token=766bb252-3392-4e32-be9c-49f19494591d"],
 
   _loadCarouselImages(){
     let imageSources = this.get("imageSources");
 
     if (!this.get("fastboot.isFastBoot")) {
       return imageSources.concat([
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/Carousel%20Images%2FCar2.jpeg?alt=media&token=8c5822d6-5f7d-4b6e-a169-f0380263a03f",
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/Carousel%20Images%2FCar3.jpeg?alt=media&token=4889d382-c67f-482c-a9dd-7b08b4a3f695",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar2-min.jpg?alt=media&token=880b459f-4e74-49c7-b6ab-695bf03d38a5",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar2-min.jpg?alt=media&token=880b459f-4e74-49c7-b6ab-695bf03d38a5",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar5-min.jpg?alt=media&token=2e07b79c-5be2-418c-b7ca-f0930ef5378e",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar6-min.jpg?alt=media&token=df4ba17f-a754-4189-af85-72999e530cf1",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar3-min.jpg?alt=media&token=1fd2e43b-7b5f-4018-80bf-c09dbc148db7",
+
       ]);
     }
     return imageSources;

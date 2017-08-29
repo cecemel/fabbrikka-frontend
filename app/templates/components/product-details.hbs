@@ -20,7 +20,7 @@
         <h4>{{price}}</h4>
         {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
         <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
-        {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out red"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+        {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
 
         {{#if session.isAuthenticated}}
             {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
