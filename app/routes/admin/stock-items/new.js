@@ -1,17 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-    
+
     model() {
       return Ember.RSVP.hash({
           "stockItems": this.store.findAll('stock-item'),
-          "productVariants": this.store.findAll('product-variant', {include: "size,product,product.product-images,product.product-names"})
+          //This is a nasty workaround because couldn't make the include work
+          "products": this.store.findAll('product', {include: "product-images,product-variants,product-names,product-descriptions,product-variants.size"})
       });
     },
 
     afterModel(model){
-      //filter the ones which already have stock information
-        let productVariantsWithoutStock = model.productVariants.filter((productVariant)=>{
+        //filter the ones which already have stock information
+        //note nasty workaround
+        let productVariantsWithoutStock = model.products.reduce((acc, item) => {
+          acc.pushObjects(item.get('productVariants').toArray());
+          return acc;
+        }, [])
+        .filter((productVariant)=>{
             let stockItem = model.stockItems.find((item) => {
                 return item.get('productVariant').get('id') === productVariant.get('id');
             });
