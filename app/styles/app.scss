@@ -53,6 +53,7 @@ h2 {
 h3 {
     font-size: 17px;
     text-transform: none;
+    text-align: justify;
     line-height: 24px;
     margin-top: 0px;
 }
@@ -96,6 +97,7 @@ p{
 
 .fabb-main{
     margin-top:19px;
+    bottom: 0;
 }
 
 .aboutmainimage{
@@ -114,12 +116,6 @@ p{
   width:100%;
 }
 
-.rowcactus{
-width: 100%;
-padding-bottom: 0px;
-
-}
-
 .btn.right{
   background-color: #2196f3;
 }
@@ -131,6 +127,24 @@ padding-bottom: 0px;
 .btn:hover{
   background-color: #0277bd;
 }
+
+.abouthor{
+  max-width:100%;
+  max-height:100%;
+}
+
+.row .aboutpadding{
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.row .bottomrectangle{
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+}
+
+
 
 @media #{$medium-and-up} {
     html{
@@ -150,6 +164,7 @@ padding-bottom: 0px;
 
     h3 {
         font-size: 15px;
+        text-align: center;
     }
 
 }
@@ -289,10 +304,6 @@ nav .brand-logo {
     margin-right: 25%;
 }
 
-.fabb-main{
-    min-height: 500px;
-}
-
 .menu-shopping-cart{
     margin-right: 2%;
     padding-top: 10px
@@ -370,7 +381,8 @@ i.locale-selector-arrow.material-icons.right{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 140px;
+  max-height: 300px;
+  max-width: 100%;
   padding-top: 20px;
 }
 
@@ -501,6 +513,7 @@ i.locale-selector-arrow.material-icons.right{
     object-fit: cover;
     background-position: center center;
   }
+
 }
 
 @media #{$small-and-down} and (-webkit-min-device-pixel-ratio:0) {

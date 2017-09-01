@@ -7,7 +7,7 @@ export default {
     "components.product-details.plusonesweater": "Toegevoegd aan mandje",
     "components.product-details.choose-size": "Kies een maat",
     "components.product-details.add-to-cart": "Toevoegen",
-    "components.product-details.go-to-cart": "Naar mijn mandje",
+    "components.product-details.go-to-cart": "Naar mandje",
     "components.product-details.choose-size-error": "Gelieve een maat te kiezen",
 
     "components.bancontact-payment.account-holders-name": "Naam op kaart",
@@ -17,7 +17,7 @@ export default {
     "components.checkout-cart-overview.items-overview": "Klik voor overzicht",
     "components.checkout-cart-overview.shipping": "Levering",
     "components.checkout-cart-overview.shipping-amount": "Gratis",
-    "components.checkout-cart-overview.total": "Gotaal",
+    "components.checkout-cart-overview.total": "Totaal",
 
     "components.credit-card-payment.submit": "Betaal",
 
@@ -44,7 +44,7 @@ export default {
     "templates.shopping-cart.checkout.zip": "Postcode",
     "templates.shopping-cart.checkout.country": "Land",
     "templates.shopping-cart.checkout.order-summary": "Overzicht bestelling",
-    "templates.shopping-cart.checkout.payment": "Betaling",
+    "templates.shopping-cart.checkout.payment": "Betaling - Powered by",
     "templates.shopping-cart.checkout.payment-prompt": "Kies een betaalmethode",
     "templates.shopping-cart.checkout.error-title": "Oh een foutje...",
     "templates.shopping-cart.checkout.order-confirmation.title": "Bedankt voor je bestelling",
