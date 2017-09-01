@@ -39,6 +39,15 @@ export default Ember.Component.extend({
         });
     },
 
+    quantityValidator: Ember.observer('quantity', function(){
+      this.set('validationError', []);
+      let x = parseFloat(this.get('quantity'));
+      let isNumber = !isNaN(x) && (x | 0) === x && x > 0;
+      if(!isNumber){
+        this.set('validationError', ['wrong']);
+      }
+    }),
+
     didRender() {
         this._super(...arguments);
         this.$('select').material_select();
