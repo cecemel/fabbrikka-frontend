@@ -10,6 +10,8 @@
   </div>
 </div>
 
+  {{#if (equal-strings locale "en-gb")}}
+
   <h2 class="header center-align"> who we are </h2>
 <div class="row">
   <h3 class="center-align col s12 m10 push-m1 ull-m1 center-align"> Fabbrikka's first collection consists of a series of sweaters and t-shirts with some nice detailing. <br>Sustainability is key throughout the whole design process, so you can wear our clothes with a clean conscience. <br> Oh, and they look cute too :)
@@ -59,6 +61,61 @@
   </div>
 </div>
 
+{{/if}}
+
+{{#if (equal-strings locale "nl-be")}}
+
+<h2 class="header center-align"> wie zijn we </h2>
+<div class="row">
+<h3 class="center-align col s12 m10 push-m1 ull-m1 center-align"> Fabbrikka's eerste collectie bestaat uit een reeks sweaters en t-shirts met aandacht voor detail. <br> Duurzaamheid staat centraal, zodat je onze kleren met een schoon geweten kan dragen. <br> Oh, en ze zien er ook leuk uit :)
+</h3>
+</div>
+<div class="row">
+<div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
+  <div class="col s12 m12 l6">
+    <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Ffabrics.png?alt=media&token=de164c37-ba44-4e2c-8764-ace4ba2ae983" alt="fabric"/>
+  </div>
+  <div class="col s12 m12 l6">
+    <h5 class="center-align"> Stoffen </h5>
+    <h3>We kopen onze stoffen aan bij leveranciers die het <a href="http://www.global-standard.org"target="_blank"> GOTS label</a> dragen. De stoffen bevatten o.m. biologisch katoen en gerecycleerde PET-flessen</h3>
+  </div>
+  </div>
+<div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
+
+  <div class="col s12 m12 l6">
+    <h5 class="center-align"> Werkplek </h5>
+    <h3>We produceren onze kleding in ateliers in het centrum van Barcelona, waar we een persoonlijke band mee hebben en waarvan we weten dat ze veilig en eerlijk werken.</h3>
+  </div>
+  <div class="col s12 m12 l6">
+    <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Fworkplace.png?alt=media&token=ebdf72b7-ef0f-47d6-8ab0-57e388310a58" alt="thread"/>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
+  <div class="col s12 m12 l6">
+    <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Ffairpay.png?alt=media&token=00c5342b-9873-4f51-a43e-500320642863" alt="fairpay"/>
+  </div>
+  <div class="col s12 m12 l6">
+    <h5 class="center-align"> Eerlijk loon </h5>
+    <h3>We vinden dat iedereen die bijdraagt aan ons eindproduct verdient wat hem toehoort.</h3>
+  </div>
+  </div>
+<div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
+
+  <div class="col s12 m12 l6">
+    <h5 class="center-align"> Kwaliteit </h5>
+    <h3>We gebruiken enkel de beste materialen en produceren in kleine hoeveelheden. Onze kleding is dan ook van hoge kwaliteit, zodat jij er lang van kan genieten.</h3>
+  </div>
+  <div class="col s12 m12 l6">
+    <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Fquality.png?alt=media&token=97f7c22b-c479-46e9-b191-5d8382d5232f" alt="quality"/>
+  </div>
+</div>
+</div>
+
+{{/if}}
+
 <div class="row aboutpadding">
 
   <div class="col s12 m4 l4 aboutpadding">
@@ -74,83 +131,4 @@
   </div>
 
 </div>
-{{outlet}}
-
-
-<!-- <div class="row aboutpadding">
-
-  <div class="col s12 m6 l6 aboutpadding">
-      <img class="abouthor" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/aboutfotos%2Fhor1.jpg?alt=media&token=a6c74df0-caa9-49bf-9556-ad2ca8d79c37" alt="fabbrikkagirl1"/>
-
-  </div>
-
-  <div class="col s12 m6 l6 aboutpadding">
-      <img class="abouthor" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/aboutfotos%2Fhor2.png?alt=media&token=6ed1e8b1-d797-4605-8ac3-20cd555eb26f" alt="fabbrikkagirl2"/>
-  </div>
-</div>
-
-  <h2 class="header center-align"> wie zijn we </h2>
-<div class="row">
-  <h3 class="center-align col s12 m10 push-m1 ull-m1 center-align"> Fabbrikka's eerste collectie bestaat uit een reeks sweaters en t-shirts met aandacht voor detail. <br> Duurzaamheid staat centraal, zodat je onze kleren met een schoon geweten kan dragen. <br> Oh, en ze zien er ook leuk uit :)
- </h3>
-</div>
-<div class="row">
-  <div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
-    <div class="col s12 m12 l6">
-      <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Ffabrics.png?alt=media&token=de164c37-ba44-4e2c-8764-ace4ba2ae983" alt="fabric"/>
-    </div>
-    <div class="col s12 m12 l6">
-      <h5 class="center-align"> Stoffen </h5>
-      <h3>We kopen onze stoffen aan bij leveranciers die het <a href="http://www.global-standard.org"target="_blank"> GOTS label</a> dragen. De stoffen bevatten o.m. biologisch katoen en gerecycleerde PET-flessen</h3>
-    </div>
-    </div>
-  <div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
-
-    <div class="col s12 m12 l6">
-      <h5 class="center-align"> Werkplek </h5>
-      <h3>We produceren onze kleding in ateliers in het centrum van Barcelona, waar we een persoonlijke band mee hebben en waarvan we weten dat ze veilig en eerlijk werken.</h3>
-    </div>
-    <div class="col s12 m12 l6">
-      <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Fworkplace.png?alt=media&token=ebdf72b7-ef0f-47d6-8ab0-57e388310a58" alt="thread"/>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
-    <div class="col s12 m12 l6">
-      <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Ffairpay.png?alt=media&token=00c5342b-9873-4f51-a43e-500320642863" alt="fairpay"/>
-    </div>
-    <div class="col s12 m12 l6">
-      <h5 class="center-align"> Eerlijk loon </h5>
-      <h3>We vinden dat iedereen die bijdraagt aan ons eindproduct verdient wat hem toehoort.</h3>
-    </div>
-    </div>
-  <div class="col s12 m12 l6 valign-wrapper" style="margin-bottom: 3%">
-
-    <div class="col s12 m12 l6">
-      <h5 class="center-align"> Kwaliteit </h5>
-      <h3>We gebruiken enkel de beste materialen en produceren in kleine hoeveelheden. Onze kleding is dan ook van hoge kwaliteit, zodat jij er lang van kan genieten.</h3>
-    </div>
-    <div class="col s12 m12 l6">
-      <img class="circle about-icon" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/abouticonsfoto%2Fquality.png?alt=media&token=97f7c22b-c479-46e9-b191-5d8382d5232f" alt="quality"/>
-    </div>
-  </div>
-</div>
-
-<div class="row aboutpadding">
-
-  <div class="col s12 m4 l4 aboutpadding">
-      <img class="abouthor" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/aboutfotos%2Fvert1.jpg?alt=media&token=7496641c-0b75-41b6-a07c-b5948e0de4b7" alt="fabbrikkagirl3"/>
-  </div>
-
-  <div class="col s12 m4 l4 aboutpadding">
-      <img class="abouthor" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/aboutfotos%2Fvert2.jpg?alt=media&token=4c50884b-4feb-434a-87d4-a37e1350a9f2" alt="fabbrikkagirl4"/>
-  </div>
-
-  <div class="col s12 m4 l4 aboutpadding">
-      <img class="abouthor" src="https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/aboutfotos%2Fvert3.jpg?alt=media&token=91b4f1a0-0d10-4822-a3f7-f6dc0b72146c" alt="fabbrikkagirl5"/>
-  </div>
-
-</div> -->
 {{outlet}}
