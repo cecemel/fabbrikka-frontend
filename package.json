@@ -55,7 +55,7 @@
     "ember-resolver": "^4.0.0",
     "ember-responsive": "2.0.2",
     "ember-route-action-helper": "2.0.2",
-    "ember-router-scroll": "0.1.1",
+    "ember-router-scroll": "^0.1.1",
     "ember-scroll-to": "0.6.4",
     "ember-simple-auth": "^1.1.0",
     "ember-source": "^2.13.0",
