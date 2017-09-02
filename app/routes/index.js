@@ -12,4 +12,7 @@ export default Ember.Route.extend({
             }
         });
     },
+    afterModel(model){
+      return model.sortBy('ranking');
+    }
 });
