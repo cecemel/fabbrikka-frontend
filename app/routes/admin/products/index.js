@@ -5,9 +5,9 @@ export default Ember.Route.extend({
         return this.store
         .query('product', {
             reload: true,
-            filter: {
-                published: true
-            }
+           // filter: {
+           //     published: true
+           // }
         });
     },
 });
