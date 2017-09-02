@@ -18,7 +18,8 @@
         <h2>{{name}}</h2>
         <p> {{{description}}} </p>
         <h4>{{price}}</h4>
-        {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
+        {{fabb-size-table}}
+        {{#md-select class="select-size-box" optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
         {{#unless media.isS}}
           {{#md-btn class="teal" text='back' action=onBack}}{{/md-btn}}
         {{/unless}}
