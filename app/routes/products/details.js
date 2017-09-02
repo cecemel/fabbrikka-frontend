@@ -29,6 +29,10 @@ export default Ember.Route.extend({
 
         edit(product){
             this.transitionTo('admin.products.edit', product.get("id"));
+        },
+
+        back(){
+          history.back();
         }
     },
 

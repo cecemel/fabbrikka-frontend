@@ -24,5 +24,11 @@ export default Ember.Route.extend({
             controller.set('countryQP', null);
             controller.set('paymentTypeQP', null);
         }
+    },
+
+    actions: {
+      back(){
+        history.back();
+      }
     }
 });
