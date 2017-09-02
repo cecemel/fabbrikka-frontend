@@ -44,7 +44,7 @@ export default {
     "templates.shopping-cart.checkout.zip": "Zip",
     "templates.shopping-cart.checkout.country": "Country",
     "templates.shopping-cart.checkout.order-summary": "Order summary",
-    "templates.shopping-cart.checkout.payment": "Payment",
+    "templates.shopping-cart.checkout.payment": "Payment - Powered by",
     "templates.shopping-cart.checkout.payment-prompt": "Please choose your payment method",
     "templates.shopping-cart.checkout.error-title": "Oooops, an error...",
     "templates.shopping-cart.checkout.order-confirmation.title": "Thank you for your order",

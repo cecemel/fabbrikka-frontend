@@ -4,7 +4,7 @@ export default Ember.Route.extend({
 
     model() {
       return Ember.RSVP.hash({
-          "stockItems": this.store.findAll('stock-item'),
+          "stockItems": this.store.findAll('stock-item', {include: 'product-variant'}),
           //This is a nasty workaround because couldn't make the include work
           "products": this.store.findAll('product', {include: "product-images,product-variants,product-names,product-descriptions,product-variants.size"})
       });

@@ -36,7 +36,7 @@
             <h3 class="header">{{t "templates.shopping-cart.checkout.order-summary"}}</h3>
             {{checkout-cart-overview}}
 
-            <h3 class="header">{{t "templates.shopping-cart.checkout.payment"}}</h3>
+            <h3 class="header">{{t "templates.shopping-cart.checkout.payment"}} <a href="http://www.stripe.com" target="_blank">Stripe</a></h3>
             {{#md-select optionLabelPath="content.name" optionValuePath="content.value" value=chosenPaymentMethod
                 content=paymentMethods prompt=(t "templates.shopping-cart.checkout.payment-prompt") }}
             {{/md-select}}

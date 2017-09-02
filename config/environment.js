@@ -56,7 +56,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.backendHost="";
-    ENV.APP.publicHostName="http://localhost:4200";
+    ENV.APP.publicHostName="http://playground.ruizdearcaute.com";
   }
 
   if (environment === 'test') {
