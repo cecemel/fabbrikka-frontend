@@ -6,7 +6,7 @@ export default Ember.Route.extend({
         return this.store
         .query('product',{
             include: "product-names,product-images",
-            reload: true,
+            backgroundReload: true,
             filter: {
                 published: true
             }
