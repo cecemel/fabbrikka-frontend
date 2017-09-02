@@ -18,6 +18,9 @@
             <span class="card-title right">{{price}}</span>
         </div>
         <div style="width:100%; float:left;">
+          {{#if session.isAuthenticated}}
+            <span class="card-title right">published: {{item.published}}</span>
+          {{/if}}
             <span class="card-subscript">{{t "components.product-card.free-shipping"}}</span>
         </div>
     </div>
