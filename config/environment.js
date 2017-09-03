@@ -74,6 +74,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
    ENV.APP.backendHost="";
+   ENV.stripe["key"]= "pk_live_wY1uILG7SAbSymady60FetJM";
    ENV.APP.publicHostName="https://fabbrikka.com";
   }
 
