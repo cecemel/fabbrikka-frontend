@@ -45,7 +45,7 @@ module.exports = function(environment) {
        sessionBasePath: "/sessions",
     },
     fastboot: {
-      hostWhitelist: ['test.fabbrikka.com','fabb-test.ruizdearcaute.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
+      hostWhitelist: ['test.fabbrikka.com','fabbrikka.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
     }
   };
 
@@ -73,7 +73,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
    ENV.APP.backendHost="";
-   ENV.APP.publicHostName="https://test.fabbrikka.com";
+   ENV.APP.publicHostName="https://fabbrikka.com";
   }
 
   return ENV;
