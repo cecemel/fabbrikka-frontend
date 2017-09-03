@@ -45,7 +45,7 @@ module.exports = function(environment) {
        sessionBasePath: "/sessions",
     },
     fastboot: {
-      hostWhitelist: ['test.fabbrikka.com','fabb-test.ruizdearcaute.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
+      hostWhitelist: ['test.fabbrikka.com','fabbrikka.com', 'ember', 'playground.ruizdearcaute.com', /^localhost:\d+$/]
     }
   };
 
@@ -61,19 +61,21 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.locationType = 'none';
+    //ENV.locationType = 'none';
 
     // keep test console output quieter
-    ENV.APP.LOG_ACTIVE_GENERATION = false;
-    ENV.APP.LOG_VIEW_LOOKUPS = false;
+    //ENV.APP.LOG_ACTIVE_GENERATION = false;
+    //ENV.APP.LOG_VIEW_LOOKUPS = false;
 
-    ENV.APP.rootElement = '#ember-testing';
+    //ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.backendHost="";
     ENV.APP.publicHostName="https://test.fabbrikka.com";
   }
 
   if (environment === 'production') {
    ENV.APP.backendHost="";
-   ENV.APP.publicHostName="https://test.fabbrikka.com";
+   ENV.stripe["key"]= "pk_live_wY1uILG7SAbSymady60FetJM";
+   ENV.APP.publicHostName="https://fabbrikka.com";
   }
 
   return ENV;
