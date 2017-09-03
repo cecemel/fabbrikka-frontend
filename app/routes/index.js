@@ -10,9 +10,6 @@ export default Ember.Route.extend({
             filter: {
                 published: true
             }
-        });
+        }).then(products => (products.sortBy('ranking')));
     },
-    afterModel(model){
-      return model.sortBy('ranking');
-    }
 });
