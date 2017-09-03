@@ -1,7 +1,7 @@
   <div class="row">
   	<div class="col s12 m12 l8">
         {{#if media.isS}}
-            {{#swiper-container updateFor=images pagination=true effect='fade' speed=800 slidesPerView=1 spaceBetween=0 centered=true loop=true}}
+            {{#swiper-container updateFor=images pagination=true effect='fade' speed=200 slidesPerView=1 spaceBetween=0 centered=true loop=true}}
                 {{#each images as |image|}}
                     {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
                 {{/each}}
@@ -18,14 +18,19 @@
         <h2>{{name}}</h2>
         <p> {{{description}}} </p>
         <h4>{{price}}</h4>
-        {{#md-select optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
-        <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
-        {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out red"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+        {{fabb-size-table}}
+        {{#md-select class="select-size-box" optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
 
+        <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
+        {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
         {{#if session.isAuthenticated}}
             {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
             {{#md-btn text='delete' action=onDelete actionArg=data}}{{/md-btn}}
         {{/if}}
+        <br>
+        {{#unless media.isS}}
+          {{#md-btn class="btn-back" text='back' action=onBack}}{{/md-btn}}
+        {{/unless}}
 
 	</div>
   </div>

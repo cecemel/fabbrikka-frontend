@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+    session: Ember.inject.service(),
     localeTracker: Ember.inject.service(),
     locale: Ember.computed.reads("localeTracker.locale"),
     primaryImages: Ember.computed.filterBy( 'item.productImages','type', 'primary'),

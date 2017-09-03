@@ -17,7 +17,8 @@ export default Ember.Controller.extend({
             .findRecord('product', this.get('model.product.id'))
             .then(function(product) {
                 product.set("type", self.get('model.product.type'));
-                product.set("ranking", self.get('model').get('ranking'));
+                product.set("ranking", self.get('model.product.ranking'));
+                product.set('published', true); 
                 product.save();
             });
         },

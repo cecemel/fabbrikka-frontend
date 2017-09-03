@@ -1,4 +1,7 @@
-{{#fabb-parallax}}
+<div class="row">
+{{fabb-carousel}}
+</div>
+<div class="row">
     {{#unless media.isS }}
       <h2 class="header center-align">collection one - fur for people</h2>
      {{else}}
@@ -6,5 +9,5 @@
       <h1 class="center-align">fur for people</h1>
      {{/unless}}
       {{#items-grid data=model itemComponentName="product-card"  onClickLinkTo="products.details"}} {{/items-grid}}
-{{/fabb-parallax}}
+</div>
 {{outlet}}
