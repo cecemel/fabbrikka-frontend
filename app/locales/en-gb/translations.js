@@ -54,7 +54,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.love-helping": "We love helping you",
     "templates.shopping-cart.checkout.order-confirmation.back": "Back to start",
     "templates.shopping-cart.checkout.choose-country": "Country",
-    "templates.shopping-cart.checkout.country-not-in-list": "If your country is not in the list, please vist our",
+    "templates.shopping-cart.checkout.country-not-in-list": "Any questions about your size, shipping to other countries or the weather:",
 
     "controllers.shopping-cart.countries.belgium" : "Belgium",
     "controllers.shopping-cart.countries.spain" : "Spain",

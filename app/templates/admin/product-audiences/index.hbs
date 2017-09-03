@@ -1,4 +1,4 @@
-<h1>overview product audiences </h1> 
+<h1>overview product audiences </h1>
 
 {{#link-to 'admin.product-audiences.new'}}{{md-btn text='add'}}{{/link-to}}
 
@@ -8,7 +8,7 @@
   {{md-table-col row=row valueBindingPath='label'}}
   {{md-table-col row=row valueBindingPath='description'}}
   {{#md-table-col row=row key='name' header='action'}}
-    {{md-btn class='teal white-text' text='delete' action='delete' actionArg=row.id}}
+    {{md-btn class='btn-back white-text' text='delete' action='delete' actionArg=row.id}}
   {{/md-table-col}}
 {{/md-table}}
 {{/if}}

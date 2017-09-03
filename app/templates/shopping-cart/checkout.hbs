@@ -29,7 +29,7 @@
                         content=availibleCountries
                         prompt=(t "templates.shopping-cart.checkout.choose-country")
                         validate=true errors=errors.country icon="public"}} {{/country-selector}}
-            (*) {{t "templates.shopping-cart.checkout.country-not-in-list"}} <a href="http://etsy.com" target="_blank"> etsy-shop </a>.
+            (*) {{t "templates.shopping-cart.checkout.country-not-in-list"}} <a href="mailto:hello@fabbbrikka.com" target="_blank"> hello@fabbrikka.com </a>.
         </div>
 
         <div class="col s12 l6 m12">
@@ -59,7 +59,7 @@
             {{/if}}
 
             {{#unless media.isS}}
-              {{#md-btn class="teal" text='back' action=(route-action 'back')}}{{/md-btn}}
+              {{#md-btn class="btn-back" text='back' action=(route-action 'back')}}{{/md-btn}}
             {{/unless}}
 
         </div>
