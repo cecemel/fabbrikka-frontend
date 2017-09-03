@@ -35,7 +35,7 @@
 
 html {
   font-family: 'Raleway-Light';
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -154,7 +154,6 @@ p{
 
 .select-size-box{
 }
-
 
 
 @media #{$medium-and-up} {
@@ -324,6 +323,7 @@ nav .brand-logo {
 
 .toast {
     background-color: #0277bd;
+    text-transform: uppercase;
 }
 
 .menu-locale-selector{
