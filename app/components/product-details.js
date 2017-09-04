@@ -38,6 +38,12 @@ export default Ember.Component.extend({
         });
     }),
 
+    sortedImages: Ember.computed('images', function(){
+        return this.get("images").toArray().sort(image => {
+          return image.get("type") !== 'primary';
+        });
+    }),
+
     productNames: Ember.computed.reads('data.productNames'),
     name: Ember.computed('locale', 'productNames', function(){
         let productName = this.get('productNames').find(function(e){

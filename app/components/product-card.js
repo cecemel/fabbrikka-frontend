@@ -4,6 +4,11 @@ export default Ember.Component.extend({
     session: Ember.inject.service(),
     localeTracker: Ember.inject.service(),
     locale: Ember.computed.reads("localeTracker.locale"),
+    sortedImages: Ember.computed('item', function(){
+        return this.get("item.productImages").toArray().sort(image => {
+          return image.get("type") !== 'primary';
+        });
+    }),
     primaryImages: Ember.computed.filterBy( 'item.productImages','type', 'primary'),
     primaryImageURL: Ember.computed.oneWay('primaryImages.firstObject.accessURL'),
     productNames: Ember.computed.reads('item.productNames'),

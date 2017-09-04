@@ -1,7 +1,7 @@
 {{#link-to onClickLinkTo item.id tagName='div' class="card hoverable"}}
     {{#if media.isS}}
-        {{#swiper-container updateFor=images pagination=true  speed=200 effect='fade' slidesPerView=1 spaceBetween=0 centered=true loop=true}}
-            {{#each item.productImages as |image|}}
+        {{#swiper-container updateFor=sortedImages pagination=true  speed=200 effect='fade' slidesPerView=1 spaceBetween=0 centered=true loop=true}}
+            {{#each sortedImages as |image|}}
                 {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
             {{/each}}
         {{/swiper-container}}
