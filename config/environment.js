@@ -20,11 +20,17 @@ module.exports = function(environment) {
 
    metricsAdapters: [{
    name: 'FacebookPixel',
-        environments: ['all'],
+        environments: ['production'],
         config: {
           id: '1593264654222029'
         }
-   }],
+   },
+  {name: "GoogleAnalytics",
+   environments: ["production"],
+   config: {
+      id: "UA-104488970-1"
+   }
+}],
 
     APP: {
       // Here you can pass flags/options to your application instance
