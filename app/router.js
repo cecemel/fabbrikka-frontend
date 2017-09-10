@@ -51,6 +51,7 @@ Router.map(function() {
   });
   this.route('login');
   this.route('about');
+  this.route('free-try-out-rules');
 });
 
 export default Router;

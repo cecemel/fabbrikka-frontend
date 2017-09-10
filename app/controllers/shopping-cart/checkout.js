@@ -44,6 +44,7 @@ export default Ember.Controller.extend({
     scroller: Ember.inject.service(),
     i18n: Ember.inject.service(),
     totalAmount: Ember.computed.reads('cartService.total'),
+    totalFreeTries: Ember.computed.reads('cartService.totalFreeTries'),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
     availibleCountries: Ember.computed(function() {

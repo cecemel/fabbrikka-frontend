@@ -14,16 +14,30 @@ export default Ember.Component.extend({
     }),
 
     didInsertElement(){
-        let self = this;
-        this.$('#' + this.get('id')).modal({
-            dismissible: true, // Modal can be dismissed by clicking outside of the modal
-            opacity: 0.5, // Opacity of modal background
-            inDuration: 300, // Transition in duration
-            outDuration: 200, // Transition out duration
-            startingTop: '4%', // Starting top style attribute
-            endingTop: '10%',
-            complete: function() { self.set('status', false);},
-        });
+      let self = this;
+      this._initModal(function() {
+        if(self.get('status')){
+          self.set('status', false);
+        }
+      });
+    },
+
+    _initModal(callback){
+      this.$('#' + this.get('id')).modal({
+          dismissible: true, // Modal can be dismissed by clicking outside of the modal
+          opacity: 0.5, // Opacity of modal background
+          inDuration: 300, // Transition in duration
+          outDuration: 200, // Transition out duration
+          startingTop: '4%', // Starting top style attribute
+          endingTop: '10%',
+          complete: callback,
+      });
+    },
+
+    willDestroyElement(){
+      this._super(...arguments);
+      this._initModal(null); //hackish...
+      this.$('#' + this.get('id')).modal('close');
     },
 
     actions: {

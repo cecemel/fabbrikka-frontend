@@ -12,22 +12,38 @@ export default Ember.Service.extend({
                                       Ember.run.once(this, this._setTotals);
                                   }),
      total: 0,
+     totalFreeTries: 0,
+     maxFreeTries: 4,
+     maxFreeTriesReached: false,
      totalItems: 0,
 
-     addItem(id, quantity){
+     getItem(id){
+       return this.get('store').findRecord('shopping-cart-item', id, {include: 'product-variant'});
+     },
+
+     addItem(id, quantity, isTryOut){
          let self = this;
          return self.get('store').findRecord('product-variant', id)
         .then((item) =>{
           let shoppingCartItem = self.get('store').createRecord('shopping-cart-item',
               {"quantity": quantity,
                "productVariant": item,
-               "shoppingCart": self.get('cart')
+               "shoppingCart": self.get('cart'),
+               "isTryOut": isTryOut || false
             });
+
+          if(self._isMaxFreeTriesReached(shoppingCartItem)){
+             shoppingCartItem.rollbackAttributes();
+             return new Ember.RSVP.Promise(function(resolve, reject){
+                 reject("maxFreeTriesReached");
+             });
+          }
+
           return shoppingCartItem.save();
          });
      },
 
-    updateItem(id, variantId, quantity){
+    updateItem(id, variantId, quantity, isTryOut){
         let self = this;
         return Ember.RSVP.all([self.get('store').findRecord('shopping-cart-item', id),
                                 self.get('store').findRecord('product-variant', variantId),
@@ -35,6 +51,15 @@ export default Ember.Service.extend({
         .then((items) => {
           items[0].set("quantity", quantity);
           items[0].set("productVariant", items[1]);
+          items[0].set("isTryOut", isTryOut || false);
+
+          if(self._isMaxFreeTriesReached(items[0])){
+             items[0].rollbackAttributes();
+             return new Ember.RSVP.Promise(function(resolve, reject){
+                 reject("maxFreeTriesReached");
+             });
+          }
+
           return items[0].save();
         });
     },
@@ -58,7 +83,7 @@ export default Ember.Service.extend({
                 if(!id){
                     return self._createNewCart();
                 }
-                return self.get('store').findRecord('shopping-cart', id, {include: "shopping-cart-items"});
+                return self.get('store').findRecord('shopping-cart', id, {include: "shopping-cart-items,shopping-cart-items.product-variant"});
             })
             .then((cart) => {
                 self.set('cart', cart);
@@ -99,37 +124,43 @@ export default Ember.Service.extend({
         .then(data => data[0]);
     },
 
+    _isMaxFreeTriesReached(item){
+      if(!item.get("isTryOut") || !this.get('cart')){
+        return false;
+      }
+      let items = this.get('cart').get('shoppingCartItems');
+      items.addObject(item);
+      let totals = this._getTotals(items);
+      if(totals.totalFreeTries > this.get('maxFreeTries')){
+        return true;
+      }
+      return false;
+    },
+
+    _getTotals(items){
+      let totals = {total: 0, totalItems: 0, totalFreeTries: 0};
+      items.map(item => {
+        let quantity = parseInt(item.get('quantity'));
+        let price = parseFloat(item.get('productVariant.price'));
+        totals.totalItems +=quantity;
+        if(item.get('isTryOut')){
+          totals.totalFreeTries += quantity;
+          return;
+        }
+        totals.total += price * quantity;
+      });
+      return totals;
+    },
+
     _setTotals(){
-        //TODO: fix this -> mapping is not working
-        //TODO: UPDATE: I know how now, but too lazy
-        //does not work
-        // let dataPromise = this.get('store').
-        //findRecord('shopping-cart', this.get('cart').get('id'),
-        //{include: 'shoppingCartItems,shoppingCartItems.product,shoppingCartItems.product.productPrice'});
-        // dataPromise.then((data) => {
-        //console.log('foo');
-        // })
-        let subTotals = [];
         if(!this.get('cart')){
             return; //no cart set, do nothing
         }
-        this.get('cart').get('shoppingCartItems')
-                        .then((items) => {
-                            this.set('totalItems', items.length);
-                            let promises = items.map((item) => {
-                                    let quantity = item.get('quantity');
-                                    return item.get('productVariant')
-                                                .then((product) => {
-                                                    subTotals.push(parseFloat(product.get('price')) * parseFloat(quantity));
-                                                });
-                                            });
-                            return Ember.RSVP.Promise.all(promises);
-                        })
-        .then(() => {
-            let total = subTotals.reduce((acc, val) => {
-                return acc + val;
-            }, 0);
-            this.set('total', total);
-        });
+        let items = this.get('cart').get('shoppingCartItems');
+        let totals = this._getTotals(items);
+        this.set('total', totals.total);
+        this.set('totalItems', totals.totalItems);
+        this.set('totalFreeTries', totals.totalFreeTries);
+        this.set('maxFreeTriesReached', totals.totalFreeTries >= this.get('maxFreeTries'));
     }
 });

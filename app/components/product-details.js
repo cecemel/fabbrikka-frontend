@@ -22,6 +22,9 @@ export default Ember.Component.extend({
        });
     }),
 
+    isTryOut: false,
+    maxFreeTriesReached: Ember.computed.reads('cartService.maxFreeTriesReached'),
+
     didInsertElement(){
         this._super(...arguments);
         this._setupSizeToolTip();
@@ -94,7 +97,7 @@ export default Ember.Component.extend({
 
                 return;
             }
-            this.get('cartService').addItem(this.get('selectedVariantId'), 1).then(() => {
+            this.get('cartService').addItem(this.get('selectedVariantId'), 1, this.get('isTryOut')).then(() => {
                 let thanksText = this.get("i18n").t('components.product-details.plusonesweater');
                 Materialize.toast(thanksText, 2000, 'rounded');
                 this.$('.detail-go-to-cart').addClass('scale-in');

@@ -4,11 +4,15 @@
         <div class="collapsible-body">
             {{#each cartService.cart.shoppingCartItems as |row|}}
                 {{shopping-cart-overview-item item=row}}
+                <div class="row">
+                  <div class="divider"></div>
+                </div>
             {{/each}}
         </div>
     </li>
 </ul>
 <blockquote>
+    <b> Free tries: </b> {{totalFreeTries}} <br>
     <b> {{t "components.checkout-cart-overview.shipping"}}: </b> {{t "components.checkout-cart-overview.shipping-amount"}} <br>
     <b>{{t "components.checkout-cart-overview.total"}}: </b> <b> {{total}} </b> euro
 </blockquote>

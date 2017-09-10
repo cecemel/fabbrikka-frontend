@@ -1,17 +1,17 @@
+{{fabb-max-free-tries-reached-modal status=displayModalMaxFreeTriesReached}}
 {{#if isPageReady}}
-    <td>
-        <div class="cart-table-td-div-image">
-            <img src={{image}}/>
-        </div>
-        <div class="cart-table-td-div-image-text">{{name}}</div>
-    </td>
-    <td>
-    {{#x-select  class="cart-table-td cart-table-td-select col s12 m10" value=size on-change=(action 'updateSize') as |xs|}}
-       {{#each availibleSizes as |aSize|}}
-         {{#xs.option value=aSize.id}}{{aSize.name}}{{/xs.option}}
-       {{/each}}
-    {{/x-select}}
-
+<td>
+  <div class="cart-table-td-div-image">
+    <img src={{image}}/>
+  </div>
+  <div class="cart-table-td-div-image-text">{{name}}</div>
+</td>
+<td>
+  {{#x-select  class="cart-table-td cart-table-td-select col s12 m10" value=size on-change=(action 'updateSize') as |xs|}}
+     {{#each availibleSizes as |aSize|}}
+       {{#xs.option value=aSize.id}}{{aSize.name}}{{/xs.option}}
+     {{/each}}
+  {{/x-select}}
 </td>
 <td>
     {{md-input value=quantity
@@ -22,11 +22,14 @@
                errors=validationError
                focusOut=(action 'updateQuantity')}}
 </td>
-    <td>
-        <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
-           <i class="material-icons">delete</i>
-        </a>
-    </td>
+<td>
+  {{md-check text="free try" isSelected=isTryOut disabled=isDisbledDueToMaxTryOutReached change=(action 'updateIsTryOut')}}
+</td>
+<td>
+    <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
+       <i class="material-icons">delete</i>
+    </a>
+</td>
 {{else}}
     {{fabb-spinner}}
 {{/if}}

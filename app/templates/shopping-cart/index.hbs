@@ -10,6 +10,7 @@
                         <th>{{t "templates.shopping-cart.index.size"}}</th>
                         <th>{{t "templates.shopping-cart.index.units"}}</th>
                         <th>&nbsp;</th>
+                        <th>&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +31,11 @@
 			<div class="row">
                 <div class="section">
                 <span class="checkout-total-hd">{{t "templates.shopping-cart.index.subtotal"}}</span>: <span class="checkout-total-d">{{total}}  &euro;</span>
+                </div>
+            <div class="divider"></div>
+                <div class="section">
+                    <span class="checkout-total-hd">Free try outs </span>:
+                    <span class="checkout-total-d"> {{totalFreeTries}}</span>
                 </div>
             <div class="divider"></div>
             <div class="section">

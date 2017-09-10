@@ -1,3 +1,4 @@
+{{fabb-max-free-tries-reached-modal status=displayModalMaxFreeTriesReached}}
 <div class="row">
     {{#if isPageReady}}
     	<div class="col s12 m12 l12">
@@ -7,14 +8,14 @@
     		<div class="col s12 l9 m9">
     		<h5> {{name}} </h5>
     			<div class="row">
-    				<div class="col s5 m4 l4">
+    				<div class="col s6 m6 l6">
                         {{#x-select  class="cart-table-td cart-table-td-select col s12 m10" value=size on-change=(action 'updateSize') as |xs|}}
                            {{#each availibleSizes as |aSize|}}
                              {{#xs.option value=aSize.id}}{{aSize.name}}{{/xs.option}}
                            {{/each}}
                         {{/x-select}}
     				</div>
-    				<div class="col s5 m4 l4">
+    				<div class="col s6 m6 l6">
                         {{md-input value=quantity
                                    label=(t "components.shopping-cart-overview-row.amount")
                                    type="number"
@@ -23,12 +24,19 @@
                                    errors=validationError
                                    focusOut=(action 'updateQuantity')}}
     				</div>
-    				<div class="col s2 m3 l3">
-    				 <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
-    				 	<i class="material-icons">delete</i>
-    				 </a>
-    				 </div>
-    			</div>
+          </div>
+          <div class="row">
+            <div>
+              <div class="col s6 m6 l6">
+                {{md-check text="free try" isSelected=isTryOut change=(action 'updateIsTryOut')}}
+              </div>
+            </div>
+            <div class="col s6 m6 l6">
+             <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
+              <i class="material-icons">delete</i>
+             </a>
+             </div>
+          </div>
     		</div>
     	</div>
     {{else}}

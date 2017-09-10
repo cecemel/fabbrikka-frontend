@@ -19,12 +19,26 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(productName) && productName.get("name");
     }),
 
+    isTryOut: Ember.computed.reads('item.isTryOut'),
+    maxFreeTriesReached: Ember.computed.reads('cartService.maxFreeTriesReached'),
+    displayModalMaxFreeTriesReached: false,
+    isDisbledDueToMaxTryOutReached: Ember.computed('isTryOut', 'maxFreeTriesReached', function(){
+      return !this.get('isTryOut') && this.get('maxFreeTriesReached');
+    }),
+
     image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
     size: Ember.computed.reads('item.productVariant.size.id'),
     quantity: Ember.computed.reads('item.quantity'),
     productVariants: Ember.computed.reads('product.productVariants'),
     sizes: Ember.computed.mapBy('productVariants', 'size'),
     availibleSizes: Ember.computed.uniqBy('sizes', 'id'),
+
+    isPageReady: Ember.computed('availibleSizes', function(){
+        if(!this.get('availibleSizes') || this.get('availibleSizes').length === 0){
+            return false;
+        }
+        return true;
+    }),
 
     selectVariantBySize: function (productVariants, sizeId) {
         return productVariants.find(function(e){
@@ -41,17 +55,15 @@ export default Ember.Component.extend({
       }
     }),
 
+    init(){
+      this._super(...arguments);
+      this.set('displayModalMaxFreeTriesReached', false);
+    },
+
     didRender() {
         this._super(...arguments);
         this.$('select').material_select();
     },
-
-    isPageReady: Ember.computed('availibleSizes', function(){
-        if(!this.get('availibleSizes') || this.get('availibleSizes').length === 0){
-            return false;
-        }
-        return true;
-    }),
 
     actions: {
         delete: function(id){
@@ -60,13 +72,43 @@ export default Ember.Component.extend({
         updateSize: function(sizeId){
             let selectedVariant = this.selectVariantBySize(this.get('productVariants'), sizeId);
             this.set('size', sizeId);
-            this.get('cartService').updateItem(this.get('item.id'), selectedVariant.get('id'),
-            this.get('quantity')).catch(() => alert('issue updating item...'));
+            this.get('cartService')
+            .updateItem(this.get('item.id'),
+                        selectedVariant.get('id'),
+                        this.get('quantity'),
+                        this.get('isTryOut'))
+              .catch(this._handleItemUpdateError.bind(this));
         },
         updateQuantity: function(){
             let selectedVariant = this.selectVariantBySize(this.get('productVariants'), this.get('size'));
-            this.get('cartService').updateItem(this.get('item.id'), selectedVariant.get('id'),
-            this.get('quantity')).catch(() => alert('issue updating item...'));
+            this.get('cartService')
+            .updateItem(this.get('item.id'),
+                        selectedVariant.get('id'),
+                        this.get('quantity'),
+                        this.get('isTryOut'))
+            .catch(this._handleItemUpdateError.bind(this));
+        },
+        updateIsTryOut: function(){
+          let selectedVariant = this.selectVariantBySize(this.get('productVariants'), this.get('size'));
+          this.get('cartService')
+          .updateItem(this.get('item.id'),
+                      selectedVariant.get('id'),
+                      this.get('quantity'),
+                      this.get('isTryOut'))
+          .catch(this._handleItemUpdateError.bind(this));
         }
+    },
+
+    _handleItemUpdateError(error){
+      if(error === "maxFreeTriesReached"){
+        this.set('displayModalMaxFreeTriesReached', true);
+        this.get('cartService').getItem(this.get('item.id'))
+        .then(item => {
+          this.set('quantity', item.get('quantity'));
+          this.set('isTryOut', item.get('isTryOut'));
+        });
+        return;
+      }
+      alert("General error, try again or contact hello@fabbrikka.com");
     }
 });
