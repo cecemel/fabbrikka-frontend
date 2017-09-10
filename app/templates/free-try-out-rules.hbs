@@ -1,1 +1,17 @@
+{{#if (equal-strings locale "en-gb")}}
+  <div class="row">
+      <h2> Try our stuff out for free! </h2>
+  </div>
+{{/if}}
+
+{{#if (equal-strings locale "nl-be")}}
+<div class="row">
+    <h2> Pas onze kleren gratis bij jou thuis! </h2>
+</div>
+{{/if}}
+
+{{#unless media.isS}}
+  {{#md-btn class="btn-back" text='back' action=(route-action 'back')}}{{/md-btn}}
+{{/unless}}
+
 {{outlet}}
