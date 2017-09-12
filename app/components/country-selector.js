@@ -10,6 +10,10 @@ export default MaterializeInputField.extend({
   optionLabelPath: 'content',
   optionValuePath: 'content',
 
+  contentObserver: Ember.observer('content.[]', function() {
+    Ember.run.once(this, this._setupSelect);
+  }),
+
   didInsertElement() {
     this._super(...arguments);
     this._setupSelect();

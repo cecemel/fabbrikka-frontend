@@ -1,6 +1,7 @@
  <div class="container">
 <div class="row">
 <h2 class="header center-align">{{t "templates.shopping-cart.index.title"}}</h2>
+  {{fabb-max-free-tries-reached-modal status=displayModalMaxFreeTriesReached locale=locale}}
   {{#if hasItems}}
     <div class="col s12 l6">
             <table>
@@ -15,7 +16,7 @@
                 </thead>
                 <tbody>
                     {{#each cartService.cart.shoppingCartItems as |row|}}
-                      {{shopping-cart-overview-row item=row}}
+                      {{shopping-cart-overview-row item=row handleMaxFreeTriesReached=(action 'handleMaxFreeTriesReached')}}
                     {{/each}}
                 </tbody>
 

@@ -9,6 +9,7 @@ export default {
     "components.product-details.add-to-cart": "Add to cart",
     "components.product-details.go-to-cart": "Go to cart",
     "components.product-details.choose-size-error": "Please select a size",
+    "components.product-details.free-try-first": "I want a free try out",
 
     "components.bancontact-payment.account-holders-name": "Card holder's name",
     "components.bancontact-payment.start-payment": "Start payment",
@@ -23,9 +24,11 @@ export default {
 
     "components.shopping-cart-overview-item.size": "Size",
     "components.shopping-cart-overview-item.amount": "Amount",
+    "components.shopping-cart-overview-item.free-try": "free try",
 
     "components.shopping-cart-overview-row.size": "Size",
     "components.shopping-cart-overview-row.amount": "Amount",
+    "components.shopping-cart-overview-row.free-try": "free try",
 
     "components.error-modal.the-error-message-is":"The error message is",
     "components.error-modal.if-you-dont-know": "If you are not sure how to fix the issue, you can always contact hello@fabbrikka.com. We're nice :)",

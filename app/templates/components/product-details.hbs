@@ -22,7 +22,7 @@
         {{#md-select class="select-size-box" optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
 
         <div class="row">
-            {{md-check class="col s6" isSelected=isTryOut text="I want first a free try" disabled=maxFreeTriesReached}}
+            {{md-check class="col s6" isSelected=isTryOut text=(t "components.product-details.free-try-first") disabled=maxFreeTriesReached}}
             {{#link-to 'free-try-out-rules' class="green-text text-darken-2"}}<i class="material-icons">help_outline</i>{{/link-to}}
         </div>
         <br>

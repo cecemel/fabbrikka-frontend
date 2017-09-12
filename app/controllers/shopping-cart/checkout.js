@@ -47,21 +47,38 @@ export default Ember.Controller.extend({
     totalFreeTries: Ember.computed.reads('cartService.totalFreeTries'),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
+
+    displayFreeTryOutDeliveryLogicWarning: false,
+    displayFreeTryOutDeliveryLogicWarningObserver: Ember.observer('totalFreeTries', function(){
+      if(this.get('totalFreeTries') > 0){
+        Ember.run.once(this, () => {this.set('displayFreeTryOutDeliveryLogicWarning', true);});
+      }
+    }),
+
     availibleCountries: Ember.computed(function() {
         let countries = [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')},
                          {"name": this.get("i18n").t('controllers.shopping-cart.countries.france')},
                          {"name": this.get("i18n").t('controllers.shopping-cart.countries.spain')},
                          {"name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')},
                          {"name": this.get("i18n").t('controllers.shopping-cart.countries.germany')}];
+
+        if(this.get('cartService.totalFreeTries') > 0 ){
+          return [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')}];
+        }
         return countries.sort((a,b) => {
             return (a.name > b.name);
         });
-    }),
+    }).property('cartService.totalFreeTries'),
 
-    paymentMethods: [{name: "visa/mastercard", value: "visa"},
-                     {name: "bancontact", value: "bancontact"},
-                     {name: "ideal", value: "ideal"}
-                    ],
+    paymentMethods: Ember.computed(function(){
+      let paymentMethods = [{name: "visa/mastercard", value: "visa"},
+                            {name: "bancontact", value: "bancontact"},
+                            {name: "ideal", value: "ideal"}];
+      if(this.get('cartService.totalFreeTries') > 0 ){
+        return [{name: "visa/mastercard", value: "visa"}];
+      }
+      return paymentMethods;
+    }).property('cartService.totalFreeTries'),
 
     emailDidChange: Ember.observer('model.email', function() {
         let messages = [];

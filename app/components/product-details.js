@@ -94,7 +94,6 @@ export default Ember.Component.extend({
     actions: {
         addToCart(){
             if(!this.get('selectedVariantId')){
-
                 return;
             }
             this.get('cartService').addItem(this.get('selectedVariantId'), 1, this.get('isTryOut')).then(() => {

@@ -9,6 +9,7 @@ export default {
     "components.product-details.add-to-cart": "Toevoegen",
     "components.product-details.go-to-cart": "Naar mandje",
     "components.product-details.choose-size-error": "Gelieve een maat te kiezen",
+    "components.product-details.free-try-first": "Ik wil gratis passen",
 
     "components.bancontact-payment.account-holders-name": "Naam op kaart",
     "components.bancontact-payment.start-payment": "Start betaling",
@@ -23,9 +24,11 @@ export default {
 
     "components.shopping-cart-overview-item.size": "Maat",
     "components.shopping-cart-overview-item.amount": "Aantal",
+    "components.shopping-cart-overview-item.free-try": "gratis uitproberen",
 
     "components.shopping-cart-overview-row.size": "Maat",
     "components.shopping-cart-overview-row.amount": "Aantal",
+    "components.shopping-cart-overview-row.free-try": "gratis uitproberen",
 
     "components.error-modal.the-error-message-is":"Het foutbericht is",
     "components.error-modal.if-you-dont-know": "Indien je niet zeker bent hoe je verder moet, stuur ons even een e-mail: hello@fabbrikka.com",

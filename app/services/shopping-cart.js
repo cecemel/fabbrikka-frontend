@@ -14,8 +14,8 @@ export default Ember.Service.extend({
      total: 0,
      totalFreeTries: 0,
      maxFreeTries: 4,
-     maxFreeTriesReached: false,
      totalItems: 0,
+     maxFreeTriesReached: false,
 
      getItem(id){
        return this.get('store').findRecord('shopping-cart-item', id, {include: 'product-variant'});

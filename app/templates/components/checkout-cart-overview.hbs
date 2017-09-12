@@ -1,9 +1,10 @@
+{{fabb-max-free-tries-reached-modal status=displayModalMaxFreeTriesReached locale=locale}}
 <ul class="collapsible" data-collapsible="accordion">
     <li>
         <div class="collapsible-header"><i class="material-icons">shopping_basket</i>{{t "components.checkout-cart-overview.items-overview"}}</div>
         <div class="collapsible-body">
             {{#each cartService.cart.shoppingCartItems as |row|}}
-                {{shopping-cart-overview-item item=row}}
+                {{shopping-cart-overview-item item=row handleMaxFreeTriesReached=(action 'handleMaxFreeTriesReached')}}
                 <div class="row">
                   <div class="divider"></div>
                 </div>

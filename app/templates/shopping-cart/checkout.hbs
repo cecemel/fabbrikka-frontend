@@ -1,4 +1,5 @@
 {{#unless orderConfirmed}}
+    {{fabb-warning-modal-limitations-free-try-out status=displayFreeTryOutDeliveryLogicWarning locale=locale}}
     <h2 class="header">{{t "templates.shopping-cart.checkout.checkout"}}</h2>
     {{currentURL}}
 
@@ -31,15 +32,16 @@
                         validate=true errors=errors.country icon="public"}} {{/country-selector}}
             (*) {{t "templates.shopping-cart.checkout.country-not-in-list"}} <a href="mailto:hello@fabbrikka.com" target="_blank"> hello@fabbrikka.com </a>.
         </div>
-
         <div class="col s12 l6 m12">
             <h3 class="header">{{t "templates.shopping-cart.checkout.order-summary"}}</h3>
             {{checkout-cart-overview}}
 
             <h3 class="header">{{t "templates.shopping-cart.checkout.payment"}} <a href="http://www.stripe.com" target="_blank">Stripe</a></h3>
-            {{#md-select optionLabelPath="content.name" optionValuePath="content.value" value=chosenPaymentMethod
+
+            {{!--TODO: rename component!!!  --}}
+            {{#country-selector optionLabelPath="content.name" optionValuePath="content.value" value=chosenPaymentMethod
                 content=paymentMethods prompt=(t "templates.shopping-cart.checkout.payment-prompt") }}
-            {{/md-select}}
+            {{/country-selector}}
 
             {{#if (equal-strings chosenPaymentMethod "visa")}}
                 {{credit-card-payment onPay=(action 'onSubmitPayment')

@@ -1,4 +1,3 @@
-{{fabb-max-free-tries-reached-modal status=displayModalMaxFreeTriesReached}}
 <div class="row">
     {{#if isPageReady}}
     	<div class="col s12 m12 l12">
@@ -28,7 +27,8 @@
           <div class="row">
             <div>
               <div class="col s6 m6 l6">
-                {{md-check text="free try" isSelected=isTryOut change=(action 'updateIsTryOut')}}
+                {{md-check text=(t "components.shopping-cart-overview-row.free-try")
+                isSelected=isTryOut change=(action 'updateIsTryOut')}}
               </div>
             </div>
             <div class="col s6 m6 l6">

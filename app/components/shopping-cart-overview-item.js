@@ -20,11 +20,6 @@ export default Ember.Component.extend({
     }),
 
     isTryOut: Ember.computed.reads('item.isTryOut'),
-    maxFreeTriesReached: Ember.computed.reads('cartService.maxFreeTriesReached'),
-    displayModalMaxFreeTriesReached: false,
-    isDisbledDueToMaxTryOutReached: Ember.computed('isTryOut', 'maxFreeTriesReached', function(){
-      return !this.get('isTryOut') && this.get('maxFreeTriesReached');
-    }),
 
     image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
     size: Ember.computed.reads('item.productVariant.size.id'),
@@ -101,7 +96,7 @@ export default Ember.Component.extend({
 
     _handleItemUpdateError(error){
       if(error === "maxFreeTriesReached"){
-        this.set('displayModalMaxFreeTriesReached', true);
+        this.sendAction('handleMaxFreeTriesReached');
         this.get('cartService').getItem(this.get('item.id'))
         .then(item => {
           this.set('quantity', item.get('quantity'));
