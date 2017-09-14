@@ -64,6 +64,9 @@ export default {
     "controllers.shopping-cart.countries.france" : "France",
     "controllers.shopping-cart.countries.netherlands" : "Netherlands",
     "controllers.shopping-cart.countries.germany" : "Germany",
+    "controllers.shopping-cart.countries.italy" : "Italy",
+    "controllers.shopping-cart.countries.uk" : "United Kingdom",
+    "controllers.shopping-cart.countries.spain" : "Spain",
 
     "templates.shopping-cart.index.title": "Shopping cart",
     "templates.shopping-cart.index.item": "Item",
