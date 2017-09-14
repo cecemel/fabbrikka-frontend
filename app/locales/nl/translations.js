@@ -61,6 +61,9 @@ export default {
     "controllers.shopping-cart.countries.france" : "Frankrijk",
     "controllers.shopping-cart.countries.netherlands" : "Nederland",
     "controllers.shopping-cart.countries.germany" : "Duitsland",
+    "controllers.shopping-cart.countries.italy" : "Italie",
+    "controllers.shopping-cart.countries.spain" : "Spanje",
+    "controllers.shopping-cart.countries.uk" : "Verenigd Koninkrijk",
 
     "templates.shopping-cart.index.title": "Winkelmandje",
     "templates.shopping-cart.index.item": "Artikel",
