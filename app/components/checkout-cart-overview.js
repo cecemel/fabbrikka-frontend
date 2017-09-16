@@ -10,6 +10,7 @@ export default Ember.Component.extend({
 
     didInsertElement(){
          this.$('.collapsible').collapsible();
+         this.set('displayModalMaxFreeTriesReached', false);
     },
 
     actions: {
