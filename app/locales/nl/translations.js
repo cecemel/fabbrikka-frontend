@@ -58,6 +58,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.back": "Terug naar het begin",
     "templates.shopping-cart.checkout.choose-country": "Land",
     "templates.shopping-cart.checkout.country-not-in-list": "Vragen over je maat, onze werkwijze of het weer: ",
+    "templates.shopping-cart.checkout.delivery-time": "Verwacht je aan je pakketje binnen de 5 dagen.",
 
     "controllers.shopping-cart.countries.belgium" : "Belgie",
     "controllers.shopping-cart.countries.spain" : "Spanje",
