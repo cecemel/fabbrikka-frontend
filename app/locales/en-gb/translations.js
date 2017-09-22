@@ -10,7 +10,7 @@ export default {
     "components.product-details.add-to-cart": "Add to cart",
     "components.product-details.go-to-cart": "Go to cart",
     "components.product-details.choose-size-error": "Please select a size",
-    "components.product-details.free-try-first": "I want a free try out",
+    "components.product-details.free-try-first": "I want a free try out<br>(BE & NL only)",
 
     "components.bancontact-payment.account-holders-name": "Card holder's name",
     "components.bancontact-payment.start-payment": "Start payment",
@@ -30,7 +30,7 @@ export default {
 
     "components.shopping-cart-overview-row.size": "Size",
     "components.shopping-cart-overview-row.amount": "Amount",
-    "components.shopping-cart-overview-row.free-try": "free try",
+    "components.shopping-cart-overview-row.free-try": "free try<br>(BE & NL only)",
 
     "components.error-modal.the-error-message-is":"The error message is",
     "components.error-modal.if-you-dont-know": "If you are not sure how to fix the issue, you can always contact hello@fabbrikka.com. We're nice :)",
@@ -60,7 +60,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.back": "Back to start",
     "templates.shopping-cart.checkout.choose-country": "Country",
     "templates.shopping-cart.checkout.country-not-in-list": "Any questions about your size, shipping to other countries or the weather:",
-    "templates.shopping-cart.checkout.delivery-time": "Normally, you should expect your package within 5 days.",
+    "templates.shopping-cart.checkout.delivery-time": "You can expect your package within 5 business days.",
     "templates.shopping-cart.checkout.free-try-warning": "For free try outs, only credit card and delivery in BE and NL allowed.",
 
     "controllers.shopping-cart.countries.belgium" : "Belgium",

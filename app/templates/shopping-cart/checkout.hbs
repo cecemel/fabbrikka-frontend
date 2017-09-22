@@ -24,7 +24,7 @@
                                     class="col s4 m4 right" validate=true errors=errors.zip}}
             {{#country-selector extraClass="countrySelector"
                         optionLabelPath="content.name"
-                        optionValuePath="content.name"
+                        optionValuePath="content.code"
                         value=model.country
                         content=availibleCountries
                         prompt=(t "templates.shopping-cart.checkout.choose-country")
@@ -98,3 +98,4 @@
 
 {{/unless}}
 {{outlet}}
+

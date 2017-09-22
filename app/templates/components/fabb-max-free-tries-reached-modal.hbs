@@ -1,20 +1,26 @@
 <div id={{id}} class="modal">
-<div class="modal-content  light-blue darken-3 white-text">
+<div class="modal-content grey lighten-5 black-text">
   {{#if (equal-strings locale "en-gb")}}
-    <h4>Maxim free try outs reached</h4>
+    <h4>Maximum items for free try out reached</h4>
     <h3>Thank you for being so enthousiastic <i class="material-icons prefix">mood</i> </h3>
     <p> We currently allow a maximum of 4 items to be tried out for free </p>
-    <p> Please refer to
-        {{#link-to 'free-try-out-rules' class="red-text"}}
+    <p> Please check
+        {{#link-to 'free-try-out-rules' class="blue-text"}}
         the rules
         {{/link-to}}
         for more information.
     </p>
-    <p> We <i class="material-icons prefix">favorite_border</i> you </p>
   {{/if}}
   {{#if (equal-strings locale "nl-be")}}
-    <h4>MEG FIX THIS!</h4>
-    <p> We <i class="material-icons prefix">favorite_border</i> you </p>
+    <h4>Maximum items voor "gratis passen" bereikt</h4>
+    <h3>Fijn dat je zo enthousiast bent <i class="material-icons prefix">mood</i> </h3>
+    <p> Je kan maar 4 items gratis proberen </p>
+    <p> Kijk even naar
+        {{#link-to 'free-try-out-rules' class="blue-text"}}
+        de spelregels
+        {{/link-to}}
+        voor meer info.
+    </p>
   {{/if}}
 </div>
 <div class="modal-footer">

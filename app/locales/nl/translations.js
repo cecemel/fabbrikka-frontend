@@ -33,7 +33,7 @@ export default {
     "components.shopping-cart-overview-row.free-try": "gratis passen",
 
     "components.error-modal.the-error-message-is":"Het foutbericht is",
-    "components.error-modal.if-you-dont-know": "Indien je niet zeker bent hoe je verder moet, stuur ons even een e-mail: hello@fabbrikka.com",
+    "components.error-modal.if-you-dont-know": "Als je niet zeker bent hoe je verder moet, stuur ons even een e-mail: hello@fabbrikka.com",
 
     "components.cookies-dialog.this-site-uses-cookies": "De EU vraagt ons om je even te melden dat onze website cookies gebruikt.",
     "components.cookies-dialog.for-more-info-click": "Voor meer info over onze lekkere cookies, klik",
@@ -60,7 +60,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.back": "Terug naar het begin",
     "templates.shopping-cart.checkout.choose-country": "Land",
     "templates.shopping-cart.checkout.country-not-in-list": "Vragen over je maat, onze werkwijze of het weer: ",
-    "templates.shopping-cart.checkout.delivery-time": "Verwacht je aan je pakketje binnen de 5 dagen.",
+    "templates.shopping-cart.checkout.delivery-time": "Je pakketje komt binnen de 5 werkdagen aan.",
     "templates.shopping-cart.checkout.free-try-warning": "Bij gratis passen alleen betaling per credit card mogelijk.",
 
     "controllers.shopping-cart.countries.belgium" : "Belgie",
