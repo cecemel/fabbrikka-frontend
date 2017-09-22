@@ -48,24 +48,52 @@ export default Ember.Controller.extend({
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
 
+    //FREE TRY OUT LIMITATIONS WARNING
     displayFreeTryOutDeliveryLogicWarning: false,
+    previousTotalItems: Ember.computed.reads('cartService.totalFreeTries'), //init value
     displayFreeTryOutDeliveryLogicWarningObserver: Ember.observer('totalFreeTries', function(){
-      if(this.get('totalFreeTries') > 0){
-        Ember.run.once(this, () => {this.set('displayFreeTryOutDeliveryLogicWarning', true);});
-      }
+        Ember.run.once(this._setDisplayFreeTryOutWarning.bind(this));
     }),
+    _setDisplayFreeTryOutWarning(){
+      if(this.get('totalFreeTries') === 1 && this.get('previousTotalItems') === 0){
+        this.set('displayFreeTryOutDeliveryLogicWarning', true);
+      }
+      this.set('previousTotalItems', this.get('totalFreeTries'));
+    },
+    //END
 
     availibleCountries: Ember.computed(function() {
-        let countries = [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.france')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.germany')}, 
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.italy')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.uk')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.spain')}];
+        let countries = [{
+                          "code": "BE",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')
+                        },
+                        {
+                          "code": "FR",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.france')
+                        },
+                        {
+                          "code": "ES",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.spain')
+                        },
+                        {
+                          "code": "NL",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')
+                        },
+                        {
+                          "code": "DE",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.germany')
+                        }];
 
         if(this.get('cartService.totalFreeTries') > 0 ){
-          return [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')}];
+          return [{
+            "code": "BE",
+            "name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')
+          },
+          {
+            "code": "NL",
+            "name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')
+          }
+        ];
         }
 
         return countries.sort((a,b) => {

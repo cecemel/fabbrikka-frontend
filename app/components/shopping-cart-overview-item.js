@@ -50,11 +50,6 @@ export default Ember.Component.extend({
       }
     }),
 
-    init(){
-      this._super(...arguments);
-      this.set('displayModalMaxFreeTriesReached', false);
-    },
-
     didRender() {
         this._super(...arguments);
         this.$('select').material_select();

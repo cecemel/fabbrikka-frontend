@@ -16,9 +16,7 @@ export default Ember.Component.extend({
     didInsertElement(){
       let self = this;
       this._initModal(function() {
-        if(self.get('status')){
           self.set('status', false);
-        }
       });
     },
 
@@ -36,6 +34,7 @@ export default Ember.Component.extend({
 
     willDestroyElement(){
       this._super(...arguments);
+      this.set('status', false);
       this._initModal(null); //hackish...
       this.$('#' + this.get('id')).modal('close');
     },

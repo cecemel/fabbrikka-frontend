@@ -8,6 +8,11 @@ export default Ember.Controller.extend({
     hasItems:  Ember.computed.reads('cartService.totalItems'),
     displayModalMaxFreeTriesReached: false,
 
+    init(){
+      this._super(...arguments);
+      this.set('displayModalMaxFreeTriesReached', false);
+    },
+
     actions: {
       handleMaxFreeTriesReached(){
         this.set("displayModalMaxFreeTriesReached", true);

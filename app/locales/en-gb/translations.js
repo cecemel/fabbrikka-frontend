@@ -1,6 +1,7 @@
 export default {
     "components.navbar-mat-fabb.shop": "Shop",
     "components.navbar-mat-fabb.about": "About",
+    "components.navbar-mat-fabb.free-try": "free try",
 
     "components.product-card.free-shipping": "Free shipping & return within europe",
 
@@ -58,6 +59,7 @@ export default {
     "templates.shopping-cart.checkout.order-confirmation.back": "Back to start",
     "templates.shopping-cart.checkout.choose-country": "Country",
     "templates.shopping-cart.checkout.country-not-in-list": "Any questions about your size, shipping to other countries or the weather:",
+    "templates.shopping-cart.checkout.delivery-time": "Normally, you should expect your package within 5 days.",
 
     "controllers.shopping-cart.countries.belgium" : "Belgium",
     "controllers.shopping-cart.countries.spain" : "Spain",
