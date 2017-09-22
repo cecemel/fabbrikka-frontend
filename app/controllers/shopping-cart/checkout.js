@@ -56,14 +56,37 @@ export default Ember.Controller.extend({
     }),
 
     availibleCountries: Ember.computed(function() {
-        let countries = [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.france')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.spain')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')},
-                         {"name": this.get("i18n").t('controllers.shopping-cart.countries.germany')}];
+        let countries = [{
+                          "code": "BE",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')
+                        },
+                        {
+                          "code": "FR",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.france')
+                        },
+                        {
+                          "code": "ES",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.spain')
+                        },
+                        {
+                          "code": "NL",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')
+                        },
+                        {
+                          "code": "DE",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.germany')
+                        }];
 
         if(this.get('cartService.totalFreeTries') > 0 ){
-          return [{"name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')}];
+          return [{
+            "code": "BE",
+            "name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')
+          },
+          {
+            "code": "NL",
+            "name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')
+          }
+        ];
         }
         return countries.sort((a,b) => {
             return (a.name > b.name);
