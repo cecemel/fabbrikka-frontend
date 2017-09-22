@@ -100,7 +100,7 @@ export default Ember.Component.extend({
                 let thanksText = this.get("i18n").t('components.product-details.plusonesweater');
                 Materialize.toast(thanksText, 2000, 'rounded');
                 this.$('.detail-go-to-cart').addClass('scale-in');
-            }).catch(() => alert('error adding to cart...'));
+            }).catch(() => alert('Oeps, je kan maximum 4 stuks gratis passen...'));
         }
     }
 

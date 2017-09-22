@@ -146,6 +146,11 @@ p{
   padding-right: 0.5rem;
 }
 
+.freetrypadding{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .row .bottomrectangle{
   height: 50px;
   position: absolute;
@@ -153,6 +158,10 @@ p{
 }
 
 .select-size-box{
+}
+
+.freeflowicon {
+  height: 100px;
 }
 
 
@@ -203,6 +212,18 @@ nav .brand-logo {
     margin-top: 10px;
 }
 
+.brand-logo img{
+    width: 70px;
+}
+
+.fblogo {
+    left: 60%;
+}
+
+.instalogo {
+    left: 60%;
+}
+
 .nav-wrapper{
     font-family: 'Raleway';
     text-transform: uppercase;
@@ -210,10 +231,6 @@ nav .brand-logo {
 
 .countrySelector{
     color:#9e9e9e;
-}
-
-.brand-logo img{
-    width: 70px;
 }
 
 .row .textarea{
