@@ -1,6 +1,7 @@
 export default {
     "components.navbar-mat-fabb.shop": "Winkel",
     "components.navbar-mat-fabb.about": "Over ons",
+    "components.navbar-mat-fabb.free-try": "gratis passen",
 
     "components.product-card.free-shipping": "Gratis levering binnen Europa",
 

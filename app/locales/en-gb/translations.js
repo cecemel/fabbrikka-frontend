@@ -1,6 +1,7 @@
 export default {
     "components.navbar-mat-fabb.shop": "Shop",
     "components.navbar-mat-fabb.about": "About",
+    "components.navbar-mat-fabb.free-try": "free try",
 
     "components.product-card.free-shipping": "Free shipping & return within europe",
 
