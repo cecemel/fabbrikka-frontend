@@ -18,6 +18,7 @@ export default {
 
     "components.checkout-cart-overview.items-overview": "Klik voor overzicht",
     "components.checkout-cart-overview.shipping": "Levering",
+    "components.checkout-cart-overview.free-try": "Gratis passen",
     "components.checkout-cart-overview.shipping-amount": "Gratis",
     "components.checkout-cart-overview.total": "Totaal",
 
@@ -25,11 +26,11 @@ export default {
 
     "components.shopping-cart-overview-item.size": "Maat",
     "components.shopping-cart-overview-item.amount": "Aantal",
-    "components.shopping-cart-overview-item.free-try": "gratis uitproberen",
+    "components.shopping-cart-overview-item.free-try": "gratis passen",
 
     "components.shopping-cart-overview-row.size": "Maat",
     "components.shopping-cart-overview-row.amount": "Aantal",
-    "components.shopping-cart-overview-row.free-try": "gratis uitproberen",
+    "components.shopping-cart-overview-row.free-try": "gratis passen",
 
     "components.error-modal.the-error-message-is":"Het foutbericht is",
     "components.error-modal.if-you-dont-know": "Indien je niet zeker bent hoe je verder moet, stuur ons even een e-mail: hello@fabbrikka.com",
@@ -60,6 +61,7 @@ export default {
     "templates.shopping-cart.checkout.choose-country": "Land",
     "templates.shopping-cart.checkout.country-not-in-list": "Vragen over je maat, onze werkwijze of het weer: ",
     "templates.shopping-cart.checkout.delivery-time": "Verwacht je aan je pakketje binnen de 5 dagen.",
+    "templates.shopping-cart.checkout.free-try-warning": "Bij gratis passen alleen betaling per credit card mogelijk.",
 
     "controllers.shopping-cart.countries.belgium" : "Belgie",
     "controllers.shopping-cart.countries.spain" : "Spanje",
