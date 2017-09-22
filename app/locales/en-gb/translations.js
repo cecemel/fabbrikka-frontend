@@ -18,6 +18,7 @@ export default {
 
     "components.checkout-cart-overview.items-overview": "Click for item overview",
     "components.checkout-cart-overview.shipping": "Shipping",
+    "components.checkout-cart-overview.free-try": "Free try outs (NL & BE)",
     "components.checkout-cart-overview.shipping-amount": "Free",
     "components.checkout-cart-overview.total": "Total",
 
@@ -60,6 +61,7 @@ export default {
     "templates.shopping-cart.checkout.choose-country": "Country",
     "templates.shopping-cart.checkout.country-not-in-list": "Any questions about your size, shipping to other countries or the weather:",
     "templates.shopping-cart.checkout.delivery-time": "Normally, you should expect your package within 5 days.",
+    "templates.shopping-cart.checkout.free-try-warning": "For free try outs, only credit card and delivery in BE and NL allowed.",
 
     "controllers.shopping-cart.countries.belgium" : "Belgium",
     "controllers.shopping-cart.countries.spain" : "Spain",

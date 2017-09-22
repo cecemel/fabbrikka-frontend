@@ -45,22 +45,11 @@ export default Ember.Controller.extend({
     i18n: Ember.inject.service(),
     totalAmount: Ember.computed.reads('cartService.total'),
     totalFreeTries: Ember.computed.reads('cartService.totalFreeTries'),
+    hasFreeTries: Ember.computed.reads('cartService.totalFreeTries', () => {
+      return this.get('totalFreeTries') > 0 ? true : false;
+    }),
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
-
-    //FREE TRY OUT LIMITATIONS WARNING
-    displayFreeTryOutDeliveryLogicWarning: false,
-    previousTotalItems: Ember.computed.reads('cartService.totalFreeTries'), //init value
-    displayFreeTryOutDeliveryLogicWarningObserver: Ember.observer('totalFreeTries', function(){
-        Ember.run.once(this._setDisplayFreeTryOutWarning.bind(this));
-    }),
-    _setDisplayFreeTryOutWarning(){
-      if(this.get('totalFreeTries') === 1 && this.get('previousTotalItems') === 0){
-        this.set('displayFreeTryOutDeliveryLogicWarning', true);
-      }
-      this.set('previousTotalItems', this.get('totalFreeTries'));
-    },
-    //END
 
     availibleCountries: Ember.computed(function() {
         let countries = [{
