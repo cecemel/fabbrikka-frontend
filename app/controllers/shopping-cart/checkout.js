@@ -48,12 +48,19 @@ export default Ember.Controller.extend({
     model: {name:"", email:"", street:"", houseNumber:"",  city:"", zip:"", country: ""},
     errors: {},
 
+    //FREE TRY OUT LIMITATIONS WARNING
     displayFreeTryOutDeliveryLogicWarning: false,
+    previousTotalItems: Ember.computed.reads('cartService.totalFreeTries'), //init value
     displayFreeTryOutDeliveryLogicWarningObserver: Ember.observer('totalFreeTries', function(){
-      if(this.get('totalFreeTries') > 0){
-        Ember.run.once(this, () => {this.set('displayFreeTryOutDeliveryLogicWarning', true);});
-      }
+        Ember.run.once(this._setDisplayFreeTryOutWarning.bind(this));
     }),
+    _setDisplayFreeTryOutWarning(){
+      if(this.get('totalFreeTries') === 1 && this.get('previousTotalItems') === 0){
+        this.set('displayFreeTryOutDeliveryLogicWarning', true);
+      }
+      this.set('previousTotalItems', this.get('totalFreeTries'));
+    },
+    //END
 
     availibleCountries: Ember.computed(function() {
         let countries = [{
