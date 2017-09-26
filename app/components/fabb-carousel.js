@@ -2,18 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   fastboot: Ember.inject.service(),
-  imageSources: ["https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar1-min.jpg?alt=media&token=766bb252-3392-4e32-be9c-49f19494591d"],
+  imageSources: ["https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCarousel1.png?alt=media&token=07672d73-1560-42f0-8e61-8b94ce60ee2b"],
 
   _loadCarouselImages(){
     let imageSources = this.get("imageSources");
 
     if (!this.get("fastboot.isFastBoot")) {
       return imageSources.concat([
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar2-min.jpg?alt=media&token=880b459f-4e74-49c7-b6ab-695bf03d38a5",
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar2-min.jpg?alt=media&token=880b459f-4e74-49c7-b6ab-695bf03d38a5",
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar5-min.jpg?alt=media&token=2e07b79c-5be2-418c-b7ca-f0930ef5378e",
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar6-min.jpg?alt=media&token=df4ba17f-a754-4189-af85-72999e530cf1",
-        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCar3-min.jpg?alt=media&token=1fd2e43b-7b5f-4018-80bf-c09dbc148db7",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCarousel2.png?alt=media&token=efbc3e92-4a08-4c8b-9431-a413248df7a0",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCarousel3.png?alt=media&token=d6fc36f9-8a3e-4240-93eb-2e027ccc56d4",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2Fcarousel4.png?alt=media&token=9e760d92-5eff-406c-bdac-55f1d134baf9",
+        "https://firebasestorage.googleapis.com/v0/b/fabbrikka.appspot.com/o/carouselimages%2FCarousel5.png?alt=media&token=4dbf306c-1949-4af3-b823-fe7563de4058",
 
       ]);
     }
