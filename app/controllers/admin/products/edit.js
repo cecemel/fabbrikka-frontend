@@ -4,7 +4,7 @@ import config from 'fabbrikka-frontend/config/environment';
 export default Ember.Controller.extend({
     fileUploadHost: config.APP.backendHost,
     fileUploadEndpoint: config.APP.backendHost + "/files",
-    localesList: [{"value": "en-gb"}, {"value": "nl-be"}],
+    localesList: [{"value": "en-gb"}, {"value": "nl-be"}, {"value": "de-de"}],
     productTypesList: [{"value": "sweater"}, {"value": "pants"}, {"value": "shirt"}],
     imageTypesList: [{"value": "primary"}, {"value": "detail"}, {"value": "facebook-share"}],
 
