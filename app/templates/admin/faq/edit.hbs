@@ -1,0 +1,52 @@
+<div class="row">
+    <h3>select a language</h3>
+    <div class="input-field col s12">
+    {{#md-select optionLabelPath="content.value"
+      optionValuePath="content.value" value=locale
+      content=locales prompt="select language..." }} {{/md-select}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+       <h3>question</h3>
+       {{md-textarea label='add your question here' value=question class="input-field col s12 m6"}}
+   </div>
+ </div>
+
+ <div class="row">
+   <div class="col s12">
+      <h3>response</h3>
+      {{md-textarea label='add your response here' value=answer class="input-field col s12 m6"}}
+  </div>
+</div>
+<div class="row">
+  {{md-btn class='teal white-text' text='save' action='save'}}
+</div>
+
+
+<div class="row">
+  {{#md-card-collapsible }}
+      {{#md-collapsible icon="mdi-image-filter-drama" title="FAQ translations"}}
+      <table>
+        <tr>
+          <th>question</th>
+          <th>answer</th>
+          <th>locale</th>
+          <th>action</th>
+        </tr>
+        {{#each faqContents as |faqContentEntry|}}
+          <tr>
+            <td>{{faqContentEntry.question}}</td>
+            <td>{{faqContentEntry.answer}}</td>
+            <td>{{faqContentEntry.locale}}</td>
+            <td>{{md-btn class='teal white-text' text='delete' action='delete' actionArg=faqContentEntry.id}}</td>
+          </tr>
+        {{/each}}
+      </table>
+      {{/md-collapsible}}
+  {{/md-card-collapsible }}
+</div>
+
+
+{{outlet}}

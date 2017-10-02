@@ -1,0 +1,22 @@
+<h1>manage faqs</h1>
+{{#link-to 'admin.faq.new'}}{{md-btn text='add faq'}}{{/link-to}}
+
+<div class="row">
+    <table>
+      <tr>
+        <th>question</th>
+        <th>actions</th>
+        <th>&nbsp;</th>
+      </tr>
+      {{#each filteredFaqEntries as |faqEntry|}}
+        <tr>
+          <td>{{faqEntry.faqContents.firstObject.question}}</td>
+          <td>{{md-btn class='teal white-text' text='delete' action='delete' actionArg=faqEntry}}</td>
+          <td>{{md-btn class='teal white-text' text='edit' action='edit' actionArg=faqEntry}}</td>
+        </tr>
+      {{/each}}
+    </table>
+</div>
+
+
+{{outlet}}

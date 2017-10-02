@@ -45,6 +45,11 @@ Router.map(function() {
     this.route('stock-items', function() {
       this.route('new');
     });
+    this.route('faq', function() {
+      this.route('new');
+      this.route('edit', { path: '/:id/edit' });
+    });
+    this.route('faq-content');
   });
   this.route('shopping-cart', function() {
     this.route('checkout', function() {});
