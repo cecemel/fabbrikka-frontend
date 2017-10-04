@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
         let faqContentEntry = this.store.createRecord('faq-content', {
           locale: this.get('locale'),
           question: this.get('question'),
-          answer: this.get('answer'),
+          response: this.get('response'),
         });
         this.get("model").get("faqContents").pushObject(faqContentEntry);
         return faqContentEntry.save().then(() => this.get("model").save());

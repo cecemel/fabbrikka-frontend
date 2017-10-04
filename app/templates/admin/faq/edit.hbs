@@ -17,7 +17,7 @@
  <div class="row">
    <div class="col s12">
       <h3>response</h3>
-      {{md-textarea label='add your response here' value=answer class="input-field col s12 m6"}}
+      {{md-textarea label='add your response here' value=response class="input-field col s12 m6"}}
   </div>
 </div>
 <div class="row">
@@ -38,7 +38,7 @@
         {{#each faqContents as |faqContentEntry|}}
           <tr>
             <td>{{faqContentEntry.question}}</td>
-            <td>{{faqContentEntry.answer}}</td>
+            <td>{{faqContentEntry.response}}</td>
             <td>{{faqContentEntry.locale}}</td>
             <td>{{md-btn class='teal white-text' text='delete' action='delete' actionArg=faqContentEntry.id}}</td>
           </tr>

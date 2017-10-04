@@ -1,0 +1,8 @@
+<ul class="collapsible popout" data-collapsible="accordion">
+  {{#each faqEntries as |faqEntry|}}
+    <li>
+      <div class="collapsible-header"><i class="material-icons">help</i>{{faqEntry.question}}</div>
+      <div class="collapsible-body"><span>{{faqEntry.response}}</span></div>
+    </li>
+  {{/each}}
+</ul>
