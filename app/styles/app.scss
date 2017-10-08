@@ -597,8 +597,13 @@ i.locale-selector-arrow.material-icons.right{
   }
 
   .fabb-carousel h1 {
-    font-size: 15px;
+    font-size: 12px;
+    font-family: raleway;
   }
+
+  .fabb-carousel-overlay-subscript{
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
 }
 
