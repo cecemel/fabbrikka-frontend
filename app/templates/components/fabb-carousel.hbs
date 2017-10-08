@@ -1,4 +1,19 @@
 <div class="fabb-carousel">
+  <div class="fabb-carousel-overlay">
+    <div class="row fabb-carousel-push-down"></div>
+    {{#unless media.isSm}}
+    <div class="row">
+      <div class="col s5 push-s7 fabb-carousel-overlay-title center-align">
+        <h1>sustainanble fashion</h1>
+      </div>
+    </div>
+    {{/unless}}
+    <div class="row">
+      <div class="col s12 xl8 push-xl4 center-align fabb-carousel-overlay-subscript">
+        <h1>with respect for the world and its people</h1>
+      </div>
+    </div>
+  </div>
   {{#swiper-container updateFor=imageSources autoplay=true pagination=false onlyExternal=true followFinger=false speed=5000 effect='fade' slidesPerView=1 spaceBetween=0 centered=true loop=true breakpoints=false}}
     {{#each imageSources as |imageSource|}}
       {{#swiper-slide}}<img class="carouselimage" src={{imageSource}}>{{/swiper-slide}}
