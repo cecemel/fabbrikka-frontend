@@ -4,5 +4,6 @@ export function initialize(application) {
 
 export default {
   name: 'start-locale-tracker',
+  before: 'shopping-cart',
   initialize
 };

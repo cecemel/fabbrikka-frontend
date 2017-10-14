@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from 'fabbrikka-frontend/config/environment';
 
 export default Ember.Service.extend({
+    localeTracker: Ember.inject.service(),
     fastboot: Ember.inject.service(),
     store: Ember.inject.service('store'),
     ajax: Ember.inject.service(),
@@ -12,10 +13,22 @@ export default Ember.Service.extend({
                                       Ember.run.once(this, this._setTotals);
                                   }),
      total: 0,
+     isFreeTryOutAllowed: Ember.computed("localeTracker.countryCode", function(){
+       //we work with black-list. This is a safer path, as if no decent locale is provided
+       //then we have fallback
+       let blackList = ['de'];
+       let countryCode = this.get("localeTracker.countryCode");
+       if(blackList.indexOf(countryCode) > -1) {
+         return false;
+       }
+       return true;
+     }),
+
      totalFreeTries: 0,
      maxFreeTries: 4,
      totalItems: 0,
      maxFreeTriesReached: false,
+     isFreeTryCountry: true,
 
      getItem(id){
        return this.get('store').findRecord('shopping-cart-item', id, {include: 'product-variant'});

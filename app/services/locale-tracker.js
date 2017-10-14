@@ -11,10 +11,13 @@ export default Ember.Service.extend({
     fastboot: Ember.inject.service(),
 
     locale: Ember.computed.reads('i18n.locale'),
+    countryCode: "gb",
 
     init(){
         //first check if was set previously
         this._super(...arguments);
+
+        this._setCountry();
 
         if(this._hasUserSetLocale()){
             this.setLocale(this._fetchLocaleFromCookie());
@@ -126,6 +129,16 @@ export default Ember.Service.extend({
             }
 
             this.setLocale(locales[0]);
+        });
+    },
+
+    _setCountry(){
+        this._fetchLocaleFromRemote()
+        .then((locales) => {
+          if(locales.length === 0) {
+              return;
+          }
+          this.set('countryCode', locales[0].split('-')[1] || 'gb');
         });
     }
 

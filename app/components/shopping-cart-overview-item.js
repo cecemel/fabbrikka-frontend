@@ -19,6 +19,7 @@ export default Ember.Component.extend({
       return !Ember.isEmpty(productName) && productName.get("name");
     }),
 
+    isFreeTryOutAllowed: Ember.computed.reads('cartService.isFreeTryOutAllowed'),
     isTryOut: Ember.computed.reads('item.isTryOut'),
 
     image: Ember.computed.reads('primaryImages.firstObject.accessURL'),
