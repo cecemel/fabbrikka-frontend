@@ -13,30 +13,15 @@ export default Ember.Service.extend({
 
     stripeInstance: null,
 
-    initBCNPayment(type, accountHolderName, amount, redirectUrl, optionalData){
+    //TODO: rename this as this is more then BCN supported here
+    initPayment(sourceData){
         return new Ember.RSVP.Promise((resolve, reject) => {
             if(!this._stripeExists()){
                 return reject({"message": "issue initiating payment, please try again"});
             }
 
             Stripe.setPublishableKey(config.stripe.key);
-
-            //TODO: this is a temporary workaround, the model should not be passed around through queries. But no time sorry
-            if(optionalData){
-                redirectUrl = redirectUrl +  "?" + Ember.$.param(optionalData);
-            }
-
-            Stripe.source.create({
-                type: type,
-                amount: Math.floor(amount*100),
-                currency: 'eur',
-                owner: {
-                    name: accountHolderName,
-                  },
-                  redirect: {
-                      return_url: redirectUrl,
-                  },
-              }, (status, sourceInstance) => {
+            Stripe.source.create(sourceData, (status, sourceInstance) => {
                   if(status !== 200){
                       reject({"message": "something went wrong during bancontact payment"});
                   }
@@ -46,7 +31,7 @@ export default Ember.Service.extend({
         });
     },
 
-    finishBCNPayment(source, clientSecret){
+    finishPayment(source, clientSecret){
         return new Ember.RSVP.Promise((resolve, reject) => {
 
             if(!this._stripeExists()){

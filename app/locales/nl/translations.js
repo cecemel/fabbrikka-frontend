@@ -16,6 +16,8 @@ export default {
     "components.bancontact-payment.start-payment": "Start betaling",
     "components.bancontact-payment.payment-ok-wait": "Ok, even geduld aub...",
 
+    "components.sofort-payment.next": "volgende",
+
     "components.checkout-cart-overview.items-overview": "Klik voor overzicht",
     "components.checkout-cart-overview.shipping": "Levering",
     "components.checkout-cart-overview.free-try": "Gratis passen",
@@ -69,8 +71,8 @@ export default {
     "controllers.shopping-cart.countries.netherlands" : "Nederland",
     "controllers.shopping-cart.countries.germany" : "Duitsland",
     "controllers.shopping-cart.countries.italy" : "Italie",
-    "controllers.shopping-cart.countries.spain" : "Spanje",
     "controllers.shopping-cart.countries.uk" : "Verenigd Koninkrijk",
+      "controllers.shopping-cart.countries.austria" : "Oostenrijk",
 
     "templates.shopping-cart.index.title": "Winkelmandje",
     "templates.shopping-cart.index.item": "Artikel",
