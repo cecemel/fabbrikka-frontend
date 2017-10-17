@@ -33,11 +33,13 @@
                 <div class="section">
                 <span class="checkout-total-hd">{{t "templates.shopping-cart.index.subtotal"}}</span>: <span class="checkout-total-d">{{total}}  &euro;</span>
                 </div>
-            <div class="divider"></div>
-                <div class="section">
-                    <span class="checkout-total-hd"> {{t "components.checkout-cart-overview.free-try"}} </span>: {{#link-to 'free-try-out-rules' class="green-text text-darken-2"}}<i class="material-icons">help_outline</i>{{/link-to}}
-                    <span class="checkout-total-d"> {{totalFreeTries}}</span>
-                </div>
+            {{#if isFreeTryOutAllowed}}
+              <div class="divider"></div>
+                  <div class="section">
+                      <span class="checkout-total-hd"> {{t "components.checkout-cart-overview.free-try"}} </span>: {{#link-to 'free-try-out-rules' class="green-text text-darken-2"}}<i class="material-icons">help_outline</i>{{/link-to}}
+                      <span class="checkout-total-d"> {{totalFreeTries}}</span>
+                  </div>
+            {{/if}}
             <div class="divider"></div>
             <div class="section">
                 <span class="checkout-total-hd">{{t "templates.shopping-cart.index.shipping"}} </span>:

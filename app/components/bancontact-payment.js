@@ -55,7 +55,7 @@ export default Ember.Component.extend({
     },
 
     submitPaymentToPaymentService(tokenData){
-        tokenData['card'] = {'brand': 'bancontact'};
+        tokenData['card'] = {'brand': this.get('paymentType')};
         let checkoutData = {'tokenData': {'token' : tokenData}, "billingData": this.get("billingData")};
         return this.get('ajax').request(config.APP.checkoutService + '/checkouts', {
             method: 'POST',
@@ -71,7 +71,7 @@ export default Ember.Component.extend({
         self.get('onPay')()
         .then((billingData) => {
             self.set('billingData', billingData);
-            return self.get('stripeService').finishBCNPayment(self.get('source'), self.get('clientSecret'));
+            return self.get('stripeService').finishPayment(self.get('source'), self.get('clientSecret'));
         })
         .then(self.submitPaymentToPaymentService.bind(self))
         .then((data)=> {
@@ -109,15 +109,25 @@ export default Ember.Component.extend({
 
                 billingData['paymentType'] = self.get("paymentType");
 
+                //TODO: this is a temporary workaround, the model should not be passed around through queries. But no time sorry
                 let redirectUrl = config.APP.publicHostName + Ember.getOwner(self).lookup('controller:application').target.currentURL;
+                redirectUrl = redirectUrl +  "?" + Ember.$.param(billingData);
 
-                return self.get('stripeService').initBCNPayment(
-                    self.get('paymentType'),
-                    self.get('model.accountHolderName'),
-                    self.get('totalAmount'),
-                    redirectUrl,
-                    billingData
-                );
+                //set data object
+                let paymentData =
+                {
+                  type: self.get('paymentType'),
+                  amount: Math.floor(self.get('totalAmount')*100),
+                  currency: 'eur',
+                  owner: {
+                    name: self.get('model.accountHolderName'),
+                  },
+                  redirect: {
+                      return_url: redirectUrl,
+                    },
+                  };
+
+                return self.get('stripeService').initPayment(paymentData);
             })
             .catch(error => {
                 self.set('isSubmittingPayment', false);

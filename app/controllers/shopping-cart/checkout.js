@@ -15,6 +15,7 @@ export default Ember.Controller.extend({
          streetQP: 'deliveryAddress[street]',
          zipQP: 'deliveryAddress[zip]',
          paymentTypeQP: 'paymentType',
+         sofortCountryQP: 'sofortCountry'
      },
      clientSecretQP: null,
      sourceQP: null,
@@ -26,15 +27,22 @@ export default Ember.Controller.extend({
      zipQP: null,
      countryQP: null,
      paymentTypeQP: null,
+     sofortCountryQP: null,
 
      clientSecretObserver:  Ember.observer('clientSecretQP', function() {
          if(! this.get('clientSecretQP')){
              return;
          }
-         this.set('model', {name: this.get('nameQP'), email: this.get('emailQP'),
-                           street: this.get('streetQP'), houseNumber: this.get('houseNumberQP'),
-                           city:this.get('cityQP'),
-                           zip: this.get('zipQP'), country: this.get('countryQP')});
+         this.set('model', {
+           name: this.get('nameQP'),
+           email: this.get('emailQP'),
+           street: this.get('streetQP'),
+           houseNumber: this.get('houseNumberQP'),
+           city:this.get('cityQP'),
+           zip: this.get('zipQP'),
+           country: this.get('countryQP'),
+           sofortCountry: this.get('sofortCountryQP'),
+         });
          this.set('chosenPaymentMethod', this.get('paymentTypeQP'));
      }),
 
@@ -93,6 +101,7 @@ export default Ember.Controller.extend({
     paymentMethods: Ember.computed(function(){
       let paymentMethods = [{name: "visa/mastercard", value: "visa"},
                             {name: "bancontact", value: "bancontact"},
+                            {name: "sofort", value: "sofort"},
                             {name: "ideal", value: "ideal"}];
       if(this.get('cartService.totalFreeTries') > 0 ){
         return [{name: "visa/mastercard", value: "visa"}];

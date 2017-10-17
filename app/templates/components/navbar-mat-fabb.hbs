@@ -29,7 +29,9 @@
             </a>
           </li>
           <li>{{#link-to 'index'}}{{t "components.navbar-mat-fabb.shop"}} {{/link-to}}</li>
-          <li>{{#link-to 'free-try-out-rules'}} {{t "components.navbar-mat-fabb.free-try"}} {{/link-to}}</li>
+          {{#if isFreeTryOutAllowed}}
+            <li>{{#link-to 'free-try-out-rules'}} {{t "components.navbar-mat-fabb.free-try"}} {{/link-to}}</li>
+          {{/if}}
           <li>{{#link-to 'faq'}} faq {{/link-to}}</li>
           <li>{{#link-to 'about'}}{{t "components.navbar-mat-fabb.about"}} {{/link-to}}</li>
           {{#if session.isAuthenticated}}
@@ -39,7 +41,9 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="/"> {{t "components.navbar-mat-fabb.shop"}} </a></li>
-          <li>{{#link-to 'free-try-out-rules'}} {{t "components.navbar-mat-fabb.free-try"}} {{/link-to}}</li>
+          {{#if isFreeTryOutAllowed}}
+            <li>{{#link-to 'free-try-out-rules'}} {{t "components.navbar-mat-fabb.free-try"}} {{/link-to}}</li>
+          {{/if}}
           <li>{{#link-to 'faq'}} faq {{/link-to}}</li>
           <li>{{#link-to 'about'}}{{t "components.navbar-mat-fabb.about"}} {{/link-to}}</li>
           <li>

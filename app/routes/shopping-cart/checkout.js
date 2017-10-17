@@ -23,6 +23,7 @@ export default Ember.Route.extend({
             controller.set('zipQP', null);
             controller.set('countryQP', null);
             controller.set('paymentTypeQP', null);
+            controller.set('sofortCountryQP', null);
         }
     },
 

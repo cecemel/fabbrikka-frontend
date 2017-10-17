@@ -25,12 +25,14 @@
     				</div>
           </div>
           <div class="row">
-            <div>
-              <div class="col s6 m6 l6">
-                {{md-check text=(t "components.shopping-cart-overview-row.free-try")
-                isSelected=isTryOut change=(action 'updateIsTryOut')}}
+            {{#if isFreeTryOutAllowed}}
+              <div>
+                <div class="col s6 m6 l6">
+                  {{md-check text=(t "components.shopping-cart-overview-row.free-try")
+                  isSelected=isTryOut change=(action 'updateIsTryOut')}}
+                </div>
               </div>
-            </div>
+            {{/if}}
             <div class="col s6 m6 l6">
              <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
               <i class="material-icons">delete</i>

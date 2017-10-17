@@ -21,10 +21,12 @@
                errors=validationError
                focusOut=(action 'updateQuantity')}}
 </td>
-<td>
-  {{md-check text=(t "components.shopping-cart-overview-item.free-try")
-    isSelected=isTryOut change=(action 'updateIsTryOut')}}
-</td>
+{{#if isFreeTryOutAllowed}}
+  <td>
+    {{md-check text=(t "components.shopping-cart-overview-item.free-try")
+      isSelected=isTryOut change=(action 'updateIsTryOut')}}
+  </td>
+{{/if}}
 <td>
     <a class="btn-floating btn-small waves-effect waves-light red" {{action 'delete' item.id}}>
        <i class="material-icons">delete</i>

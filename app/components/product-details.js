@@ -10,6 +10,7 @@ export default Ember.Component.extend({
 
     i18n: Ember.inject.service(),
     cartService: Ember.inject.service('shopping-cart'),
+    isFreeTryOutAllowed: Ember.computed.reads('cartService.isFreeTryOutAllowed'),
     localeTracker: Ember.inject.service(),
     locale: Ember.computed.reads("localeTracker.locale"),
 

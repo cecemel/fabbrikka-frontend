@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="row">
+      {{#country-selector extraClass="countrySelector"
+                  optionLabelPath="content.name"
+                  optionValuePath="content.code"
+                  value=model.selectedCountry
+                  content=availibleCountries
+                  prompt=(t "templates.shopping-cart.checkout.choose-country")
+                  validate=true errors=errors.country icon="public"}} {{/country-selector}}
+    </div>
+</div>
+<div class="row" style="min-height: 30px">
+    <div class='col s3'>
+        {{#if isSubmittingPayment}}
+            {{fabb-spinner}}
+            {{waitMessage}}
+        {{/if}}
+    </div>
+    {{#if model.selectedCountry}}
+      <div class='col s9 bcn-button'>
+          <a class="waves-effect waves-light btn right" {{action 'submitPayment'}}>{{t "components.sofort-payment.next"}}</a>
+      </div>
+    {{/if}}
+</div>
+
+{{yield}}

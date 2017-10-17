@@ -62,6 +62,12 @@
                  accountHolderName=model.name totalAmount=totalAmount paymentType="bancontact"}}
             {{/if}}
 
+            {{#if (equal-strings chosenPaymentMethod "sofort")}}
+                {{sofort-payment onPay=(action 'onSubmitPayment') clientSecret=clientSecretQP source=sourceQP
+                 onPayError=(action 'onSubmitPaymentError') onPaySuccess=(action 'onSubmitPaymentSuccess')
+                 totalAmount=totalAmount selectedCountry=model.sofortCountry}}
+            {{/if}}
+
             {{#if (equal-strings chosenPaymentMethod "ideal")}}
                 {{bancontact-payment onPay=(action 'onSubmitPayment') clientSecret=clientSecretQP source=sourceQP
                  onPayError=(action 'onSubmitPaymentError') onPaySuccess=(action 'onSubmitPaymentSuccess')

@@ -16,6 +16,8 @@ export default {
   "components.bancontact-payment.start-payment": "Start payment XXX",
   "components.bancontact-payment.payment-ok-wait": "Ok, please hold on... XXX",
 
+  "components.sofort-payment.next": "weiter XXX",
+
   "components.checkout-cart-overview.items-overview": "Klicke hier, um Deine Artikel anzusehen",
   "components.checkout-cart-overview.shipping": "Versand",
   "components.checkout-cart-overview.free-try": "Gratis-Anprobe (BE + NL)",
@@ -70,6 +72,7 @@ export default {
   "controllers.shopping-cart.countries.germany" : "Deutschland",
   "controllers.shopping-cart.countries.italy" : "Italien",
   "controllers.shopping-cart.countries.uk" : "Vereinigtes Königreich",
+  "controllers.shopping-cart.countries.austria" : "Österreich",
 
   "templates.shopping-cart.index.title": "Warenkorb",
   "templates.shopping-cart.index.item": "Artikel",
