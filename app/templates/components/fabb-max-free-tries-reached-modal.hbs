@@ -11,6 +11,7 @@
         for more information.
     </p>
   {{/if}}
+
   {{#if (equal-strings locale "nl-be")}}
     <h4>Maximum items voor "gratis passen" bereikt</h4>
     <h3>Fijn dat je zo enthousiast bent <i class="material-icons prefix">mood</i> </h3>
@@ -20,6 +21,18 @@
         de spelregels
         {{/link-to}}
         voor meer info.
+    </p>
+  {{/if}}
+
+  {{#if (equal-strings locale "nl-be")}}
+    <h4>Maximale Anzahl an Artikeln für die Gratis-Anprobe erreicht</h4>
+    <h3>Danke für Deine Begeisterung <i class="material-icons prefix">mood</i> </h3>
+    <p> Derzeit können maximal 4 Artikeln gratis anprobiert werden </p>
+    <p> Für weitere Infos kannst Du Dir
+        {{#link-to 'free-try-out-rules' class="blue-text"}}
+        die Regeln
+        {{/link-to}}
+        ansehen
     </p>
   {{/if}}
 </div>

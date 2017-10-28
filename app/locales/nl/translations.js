@@ -1,9 +1,20 @@
 export default {
+
     "components.navbar-mat-fabb.shop": "Winkel",
     "components.navbar-mat-fabb.about": "Over ons",
     "components.navbar-mat-fabb.free-try": "gratis passen",
 
     "components.product-card.free-shipping": "Gratis levering binnen Europa",
+
+    "component.overlay.upper": "duurzame kleiding",
+    "component.overlay.lower": "met respect voor mens en omgeving",
+
+    "component.title.upper": "Collectie één",
+    "component.title.lower": '"Fur for people"',
+
+    "component.footer.tandc": "Algemene Voorwaarden",
+
+    "components.buttons.back": "Terug",
 
     "components.product-details.plusonesweater": "Toegevoegd aan mandje",
     "components.product-details.choose-size": "Kies een maat",
@@ -11,6 +22,13 @@ export default {
     "components.product-details.go-to-cart": "Naar mandje",
     "components.product-details.choose-size-error": "Gelieve een maat te kiezen",
     "components.product-details.free-try-first": "Ik wil gratis passen",
+
+    "component.sizetable.menu": "Maattabel",
+    "component.sizetable.size": "Maat",
+    "component.sizetable.chest": "Borst",
+    "component.sizetable.waist": "Taille",
+    "component.sizetable.hip": "Heupen",
+
 
     "components.bancontact-payment.account-holders-name": "Naam op kaart",
     "components.bancontact-payment.start-payment": "Start betaling",
@@ -40,6 +58,8 @@ export default {
     "components.cookies-dialog.this-site-uses-cookies": "De EU vraagt ons om je even te melden dat onze website cookies gebruikt.",
     "components.cookies-dialog.for-more-info-click": "Voor meer info over onze lekkere cookies, klik",
     "components.cookies-dialog.here": "hier.",
+
+    "templates.application.headbanner": "DUURZAME KLEDING - GRATIS VERZENDING",
 
     "templates.shopping-cart.checkout.checkout": "Betaling",
     "templates.shopping-cart.checkout.delivery-address": "Leveradres",
@@ -72,7 +92,9 @@ export default {
     "controllers.shopping-cart.countries.germany" : "Duitsland",
     "controllers.shopping-cart.countries.italy" : "Italie",
     "controllers.shopping-cart.countries.uk" : "Verenigd Koninkrijk",
-      "controllers.shopping-cart.countries.austria" : "Oostenrijk",
+    "controllers.shopping-cart.countries.austria" : "Oostenrijk",
+
+    "templates.about.disclaimer": "Fabbrikka is eigendom van bvba Megenfelixendekat - Witte Patersstraat 4 - 1040 Brussel - btw: BE0675410010",
 
     "templates.shopping-cart.index.title": "Winkelmandje",
     "templates.shopping-cart.index.item": "Artikel",

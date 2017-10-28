@@ -15,9 +15,9 @@
         {{/if}}
   	</div>
   	<div class="col s12 m12 l4">
+
         <h1>{{name}}</h1>
-        <p> {{{description}}} </p>
-        <h4>{{price}}</h4>
+        <h5>{{price}}</h5>
         {{fabb-size-table}}
         {{#md-select class="select-size-box" optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
 
@@ -35,10 +35,9 @@
             {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
             {{#md-btn text='delete' action=onDelete actionArg=data}}{{/md-btn}}
         {{/if}}
+        <p> {{{description}}} </p>
         <br>
-        {{#unless media.isS}}
-          {{#md-btn class="btn-back" text='back' action=onBack}}{{/md-btn}}
-        {{/unless}}
+
 
 	</div>
   </div>

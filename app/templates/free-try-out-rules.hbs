@@ -240,7 +240,11 @@ Ja, der Webshop schaut gut aus. Aber bevor ich meine Kreditkarte heraushole, wü
 {{/if}}
 
 {{#unless media.isS}}
-  {{#md-btn class="btn-back" text='terug' action=(route-action 'back')}}{{/md-btn}}
+  <div class="row">
+    <div class="col s12">
+      {{#md-btn class="btn-back" text=(t "components.buttons.back") action=(route-action 'back')}}{{/md-btn}}
+    </div>
+  </div>
 {{/unless}}
 
 {{outlet}}

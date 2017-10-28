@@ -65,7 +65,16 @@ h6 {
 
 p{
   text-transform: none;
-  font-size: 17px;
+  font-size: 15px;
+}
+
+.partitle{
+  font-size: 16px;
+  font-family: 'Raleway-Medium';
+}
+
+ul.kutlijst li{
+  list-style-type: disc;
 }
 
 .progress{
@@ -106,11 +115,11 @@ p{
 }
 
 .btn.right{
-  background-color: #2196f3;
+  background-color: #004772;
 }
 
 .btn{
-  background-color: #039be5;
+  background-color: #004772;
 }
 
 .btn:hover{
@@ -118,7 +127,7 @@ p{
 }
 
 .btn-large{
-  background-color: #0277bd;
+  background-color: #004772;
 }
 
 .btn-back{

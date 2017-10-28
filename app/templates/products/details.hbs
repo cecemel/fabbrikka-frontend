@@ -2,3 +2,11 @@
                                onEdit=(route-action 'edit')
                                onBack=(route-action 'back')}} {{/product-details}}
 {{outlet}}
+
+{{#unless media.isS}}
+  <div class="row">
+    <div class="col s12">
+      {{#md-btn class="btn-back" text=(t "components.buttons.back") action=(route-action 'back')}}{{/md-btn}}
+    </div>
+  </div>
+{{/unless}}

@@ -5,12 +5,28 @@ export default {
 
     "components.product-card.free-shipping": "Free shipping & return within europe",
 
+    "component.overlay.upper": "sustainable fashion",
+    "component.overlay.lower": "with respect for the world and its people",
+
+    "component.title.upper": "Collection One",
+    "component.title.lower": "Fur for people",
+
+    "component.footer.tandc": "Terms &amp; Conditions",
+
+    "components.buttons.back": "Back",
+
     "components.product-details.plusonesweater": "Added to cart",
     "components.product-details.choose-size": "Choose your size...",
     "components.product-details.add-to-cart": "Add to cart",
     "components.product-details.go-to-cart": "Go to cart",
     "components.product-details.choose-size-error": "Please select a size",
-    "components.product-details.free-try-first": "I want a free try out<br>(BE & NL only)",
+    "components.product-details.free-try-first": "I want a free try out (BE & NL only)",
+
+    "component.sizetable.menu": "Size details",
+    "component.sizetable.size": "Size",
+    "component.sizetable.chest": "Chest",
+    "component.sizetable.waist": "Waist",
+    "component.sizetable.hip": "hip",
 
     "components.bancontact-payment.account-holders-name": "Card holder's name",
     "components.bancontact-payment.start-payment": "Start payment",
@@ -32,7 +48,7 @@ export default {
 
     "components.shopping-cart-overview-row.size": "Size",
     "components.shopping-cart-overview-row.amount": "Amount",
-    "components.shopping-cart-overview-row.free-try": "free try<br>(BE & NL only)",
+    "components.shopping-cart-overview-row.free-try": "free try (BE & NL only)",
 
     "components.error-modal.the-error-message-is":"The error message is",
     "components.error-modal.if-you-dont-know": "If you are not sure how to fix the issue, you can always contact hello@fabbrikka.com. We're nice :)",
@@ -41,10 +57,12 @@ export default {
     "components.cookies-dialog.for-more-info-click": "For more info on our delicious cookies, click",
     "components.cookies-dialog.here": "here",
 
+    "templates.application.headbanner": "SUSTAINABLE FASHION - FREE SHIPPING EUROPE",
+
     "templates.shopping-cart.checkout.checkout": "Checkout",
     "templates.shopping-cart.checkout.delivery-address": "Delivery address",
     "templates.shopping-cart.checkout.name": "Full name",
-    "templates.shopping-cart.checkout.email": "Email",
+    "templates.shopping-cart.checkout.email": "E-mail",
     "templates.shopping-cart.checkout.street": "Street",
     "templates.shopping-cart.checkout.number-bus": "Number",
     "templates.shopping-cart.checkout.city-country": "City",
@@ -56,7 +74,7 @@ export default {
     "templates.shopping-cart.checkout.error-title": "Oooops, an error...",
     "templates.shopping-cart.checkout.order-confirmation.title": "Thank you for your order",
     "templates.shopping-cart.checkout.order-confirmation.order-id-title": "Your order ID",
-    "templates.shopping-cart.checkout.order-confirmation.email-sent-to": "An email has been sent to",
+    "templates.shopping-cart.checkout.order-confirmation.email-sent-to": "An e-mail has been sent to",
     "templates.shopping-cart.checkout.order-confirmation.in-case-of-issues": "In case of any issues, please contact",
     "templates.shopping-cart.checkout.order-confirmation.love-helping": "We love helping you",
     "templates.shopping-cart.checkout.order-confirmation.back": "Back to start",
@@ -74,6 +92,8 @@ export default {
     "controllers.shopping-cart.countries.uk" : "United Kingdom",
     "controllers.shopping-cart.countries.austria" : "Austria",
 
+    "templates.about.disclaimer": "Fabbrikka is owned by bvba Megenfelixendekat - Witte Patersstraat 4 - 1040 Brussels - Belgium - vat: BE0675410010",
+
     "templates.shopping-cart.index.title": "Shopping cart",
     "templates.shopping-cart.index.item": "Item",
     "templates.shopping-cart.index.size": "Size",
@@ -86,7 +106,7 @@ export default {
     "templates.shopping-cart.index.checkout": "Check out",
     "templates.shopping-cart.index.empty-cart": "Oooh, seems you haven't added any items... yet",
 
-    "controllers.shopping-cart.index.errors.wrong-email": "Thanks for providing a valid email :-)",
+    "controllers.shopping-cart.index.errors.wrong-email": "Thanks for providing a valid e-mail :-)",
     "controllers.shopping-cart.index.errors.required": "Required...",
 
     "controllers.shopping-cart.checkout.errors.general": "The address contains errors...",
