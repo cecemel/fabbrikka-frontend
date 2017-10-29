@@ -23,6 +23,14 @@ export default Ember.Component.extend({
        });
     }),
 
+    isSmallScreen: Ember.computed.reads('media.isS'),
+    isGermanMobileDisplayComputed: Ember.computed('locale', 'isSmallScreen', function(){
+      if(this.get('locale') === 'de-de' && this.get('isSmallScreen')){
+        return true;
+      }
+      return false;
+    }),
+
     isTryOut: false,
     maxFreeTriesReached: Ember.computed.reads('cartService.maxFreeTriesReached'),
 

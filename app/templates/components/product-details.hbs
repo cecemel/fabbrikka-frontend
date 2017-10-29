@@ -14,7 +14,7 @@
       		{{/swiper-container}}
         {{/if}}
   	</div>
-  	<div class="col s12 m12 l4">
+  	<div class="col s12 m12 l5">
 
         <h1>{{name}}</h1>
         <h5>{{price}}</h5>
@@ -29,8 +29,19 @@
         {{/if}}
 
         <br>
-        <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
-        {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+
+        {{#if isGermanMobileDisplayComputed}}
+          <div class="row">
+            <a id={{addToCartId}} class="col s12 waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
+          </div>
+          <div class="row">
+            {{#link-to 'shopping-cart' class="col s12 detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+          </div>
+        {{else}}
+          <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
+          {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+        {{/if}}
+
         {{#if session.isAuthenticated}}
             {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
             {{#md-btn text='delete' action=onDelete actionArg=data}}{{/md-btn}}
