@@ -41,6 +41,7 @@ export default Ember.Controller.extend({
            city:this.get('cityQP'),
            zip: this.get('zipQP'),
            country: this.get('countryQP'),
+           paymentType: this.get('paymentTypeQP'),
            sofortCountry: this.get('sofortCountryQP'),
          });
          this.set('chosenPaymentMethod', this.get('paymentTypeQP'));
@@ -166,10 +167,6 @@ export default Ember.Controller.extend({
         let hasErrors = false;
         let thisModel = this.get('model');
 
-        //TODO: rethink this. Their should be component validation. And there should be general validation
-        //bubble this up to implementation
-        delete thisModel.sofortCountry;
-
         if(!thisModel[key]){
             this.set(`errors.${key}`, [this.get("i18n").t('controllers.shopping-cart.index.errors.required')]);
             hasErrors = true;
@@ -202,8 +199,13 @@ export default Ember.Controller.extend({
         //check all required fields are there
         let hasErrors = false;
         let thisModel = this.get('model');
-        let keys = Object.keys(thisModel);
 
+        //TODO: REFACTOR THIS NASTY SHIT
+        if(thisModel.paymentType==='bancontact'){
+          delete thisModel.sofortCountry;
+        }
+
+        let keys = Object.keys(thisModel);
 
         for (var i = 0; i < keys.length; i++) {
             hasErrors = this.validateEmptyField(keys[i]);
