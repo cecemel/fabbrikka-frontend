@@ -149,6 +149,10 @@ export default Ember.Controller.extend({
         let hasErrors = false;
         let thisModel = this.get('model');
 
+        //TODO: rethink this. Their should be component validation. And there should be general validation
+        //bubble this up to implementation
+        delete thisModel.sofortCountry;
+
         if(!thisModel[key]){
             this.set(`errors.${key}`, [this.get("i18n").t('controllers.shopping-cart.index.errors.required')]);
             hasErrors = true;
