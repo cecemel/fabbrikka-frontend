@@ -91,6 +91,7 @@ export default {
   "controllers.shopping-cart.countries.italy" : "Italien",
   "controllers.shopping-cart.countries.uk" : "Vereinigtes Königreich",
   "controllers.shopping-cart.countries.austria" : "Österreich",
+  "controllers.shopping-cart.countries.switzerland" : "Schweiz",
 
   "templates.about.disclaimer": "Fabbrikka gehört der GmbH Megenfelixendekat - Witte Patersstraat 4 - 1040 Brüssel - Belgien - USt-IdNr: BE0675410010",
 

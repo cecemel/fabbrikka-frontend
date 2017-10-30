@@ -91,6 +91,7 @@ export default {
     "controllers.shopping-cart.countries.italy" : "Italy",
     "controllers.shopping-cart.countries.uk" : "United Kingdom",
     "controllers.shopping-cart.countries.austria" : "Austria",
+    "controllers.shopping-cart.countries.switzerland" : "Switzerland",
 
     "templates.about.disclaimer": "Fabbrikka is owned by bvba Megenfelixendekat - Witte Patersstraat 4 - 1040 Brussels - Belgium - vat: BE0675410010",
 

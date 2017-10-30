@@ -14,25 +14,38 @@ export default BancontactPayment.extend({
     this.set('model.selectedCountry', this.get('selectedCountry'));
     this.set('availibleCountries',
     [{
+      "code": "BE",
+      "name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')
+      },
+      {
       "code": "DE",
       "name": this.get("i18n").t('controllers.shopping-cart.countries.germany')
       },
       {
-        "code": "AT",
-        "name": this.get("i18n").t('controllers.shopping-cart.countries.austria')
-      },
-      {
-        "code": "BE",
-        "name": this.get("i18n").t('controllers.shopping-cart.countries.belgium')
+        "code": "IT",
+        "name": this.get("i18n").t('controllers.shopping-cart.countries.italy')
       },
       {
         "code": "NL",
         "name": this.get("i18n").t('controllers.shopping-cart.countries.netherlands')
       },
       {
+        "code": "AT",
+        "name": this.get("i18n").t('controllers.shopping-cart.countries.austria')
+      },
+      {
+        "code": "CH",
+        "name": this.get("i18n").t('controllers.shopping-cart.countries.switzerland')
+      },
+      {
         "code": "ES",
         "name": this.get("i18n").t('controllers.shopping-cart.countries.spain')
-      }]);
+      },
+      {
+        "code": "GB",
+        "name": this.get("i18n").t('controllers.shopping-cart.countries.uk')
+      }
+    ]);
   },
 
   actions: {

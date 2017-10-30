@@ -79,7 +79,24 @@ export default Ember.Controller.extend({
                         {
                           "code": "DE",
                           "name": this.get("i18n").t('controllers.shopping-cart.countries.germany')
-                        }];
+                        },
+                        {
+                          "code": "AT",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.austria')
+                        },
+                        {
+                          "code": "GB",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.uk')
+                        },
+                        {
+                          "code": "IT",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.italy')
+                        },
+                        {
+                          "code": "CH",
+                          "name": this.get("i18n").t('controllers.shopping-cart.countries.switzerland')
+                        }
+                      ];
 
         if(this.get('cartService.totalFreeTries') > 0 ){
           return [{
