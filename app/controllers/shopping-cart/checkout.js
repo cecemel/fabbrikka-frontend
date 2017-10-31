@@ -201,7 +201,7 @@ export default Ember.Controller.extend({
         let thisModel = this.get('model');
 
         //TODO: REFACTOR THIS NASTY SHIT
-        if(thisModel.paymentType==='bancontact'){
+        if(thisModel.paymentType !=='sofort'){
           delete thisModel.sofortCountry;
         }
 

@@ -34,16 +34,8 @@ export default BancontactPayment.extend({
         "name": this.get("i18n").t('controllers.shopping-cart.countries.austria')
       },
       {
-        "code": "CH",
-        "name": this.get("i18n").t('controllers.shopping-cart.countries.switzerland')
-      },
-      {
         "code": "ES",
         "name": this.get("i18n").t('controllers.shopping-cart.countries.spain')
-      },
-      {
-        "code": "GB",
-        "name": this.get("i18n").t('controllers.shopping-cart.countries.uk')
       }
     ]);
   },
