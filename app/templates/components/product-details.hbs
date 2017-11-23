@@ -1,54 +1,69 @@
-  <div class="row">
-  	<div class="col s12 m12 l7">
-        {{#if media.isS}}
-            {{#swiper-container updateFor=sortedImages pagination=true effect='fade' speed=200 slidesPerView=1 spaceBetween=0 centered=true loop=true}}
-                {{#each sortedImages as |image|}}
-                    {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
-                {{/each}}
-            {{/swiper-container}}
-        {{else}}
-    	  	{{#swiper-container updateFor=images navigation=true pagination=true slidesPerView=2 grabCursor=true spaceBetween=3 centered=true loop=true}}
-    	  		{{#each images as |image|}}
-    	  			{{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
-        		{{/each}}
-      		{{/swiper-container}}
-        {{/if}}
-  	</div>
-  	<div class="col s12 m12 l5">
+<div class="row">
+  <div class="col s12 m12 l7">
+    {{#if media.isS}}
+      {{#swiper-container updateFor=sortedImages pagination=true effect='fade' speed=200 slidesPerView=1 spaceBetween=0 centered=true loop=true}}
+        {{#each sortedImages as |image|}}
+          {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
+        {{/each}}
+      {{/swiper-container}}
+      {{else}}
+      {{#unless (equal-strings productType 'voucher')}}
 
-        <h1>{{name}}</h1>
-        <h5>{{price}}</h5>
-        {{fabb-size-table}}
-        {{#md-select class="select-size-box" optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
+        {{#swiper-container updateFor=images navigation=true pagination=true slidesPerView=2 grabCursor=true spaceBetween=3 centered=true loop=true}}
+          {{#each images as |image|}}
+            {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
+          {{/each}}
+        {{/swiper-container}}
 
-        {{#if isFreeTryOutAllowed}}
-          <div class="row">
-              {{md-check class="col s6" isSelected=isTryOut text=(t "components.product-details.free-try-first") disabled=maxFreeTriesReached}}
-              {{#link-to 'free-try-out-rules' class="green-text text-darken-2"}}<i class="material-icons">help_outline</i>{{/link-to}}
-          </div>
-        {{/if}}
+      {{else}}
 
-        <br>
+        {{#swiper-container updateFor=images navigation=true pagination=true slidesPerView=1 grabCursor=true spaceBetween=3 centered=true loop=true}}
+          {{#each images as |image|}}
+            {{#swiper-slide }}<img  class='product-details-caroussel' src={{image.accessURL}}/>{{/swiper-slide}}
+          {{/each}}
+        {{/swiper-container}}
 
-        {{#if isGermanMobileDisplayComputed}}
-          <div class="row">
-            <a id={{addToCartId}} class="col s12 waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
-          </div>
-          <div class="row">
-            {{#link-to 'shopping-cart' class="col s12 detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
-          </div>
-        {{else}}
-          <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
-          {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
-        {{/if}}
-
-        {{#if session.isAuthenticated}}
-            {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
-            {{#md-btn text='delete' action=onDelete actionArg=data}}{{/md-btn}}
-        {{/if}}
-        <p> {{{description}}} </p>
-        <br>
-
-
-	</div>
+      {{/unless}}
+      {{/if}}
   </div>
+  <div class="col s12 m12 l5">
+    <h1>{{name}}</h1>
+    <h5>{{price}}</h5>
+
+    {{# unless (equal-strings productType 'voucher') }}
+      {{fabb-size-table}}
+
+      {{#md-select class="select-size-box" optionLabelPath="content.name" optionValuePath="content.id" value=selectedVariantId  content=selectBoxDisplay prompt=(t "components.product-details.choose-size")}} {{/md-select}}
+
+      {{#if isFreeTryOutAllowed}}
+        <div class="row">
+            {{md-check class="col s6" isSelected=isTryOut text=(t "components.product-details.free-try-first") disabled=maxFreeTriesReached}}
+            {{#link-to 'free-try-out-rules' class="green-text text-darken-2"}}<i class="material-icons">help_outline</i>{{/link-to}}
+        </div>
+      {{/if}}
+
+    {{/unless}}
+      <br>
+
+      {{#if isGermanMobileDisplayComputed}}
+        <div class="row">
+          <a id={{addToCartId}} class="col s12 waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
+        </div>
+        <div class="row">
+          {{#link-to 'shopping-cart' class="col s12 detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+        </div>
+      {{else}}
+        <a id={{addToCartId}} class="waves-effect waves-light btn" {{action 'addToCart'}}>{{t "components.product-details.add-to-cart"}}</a>
+        {{#link-to 'shopping-cart' class="detail-go-to-cart right waves-effect waves-light btn scale-transition scale-out"}}{{t "components.product-details.go-to-cart"}}{{/link-to}}
+      {{/if}}
+      
+      {{#if session.isAuthenticated}}
+          {{#md-btn text='edit' action=onEdit actionArg=data}}{{/md-btn}}
+          {{#md-btn text='delete' action=onDelete actionArg=data}}{{/md-btn}}
+      {{/if}}
+      <p> {{{description}}} </p>
+      <br>
+
+
+</div>
+</div>
