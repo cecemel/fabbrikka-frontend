@@ -120,7 +120,8 @@ export default Ember.Controller.extend({
       let paymentMethods = [{name: "visa/mastercard", value: "visa"},
                             {name: "bancontact", value: "bancontact"},
                             {name: "sofort", value: "sofort"},
-                            {name: "ideal", value: "ideal"}];
+                            {name: "ideal", value: "ideal"},
+                            {name: this.get('i18n').t('components.voucher-payment.voucher-name'), value: "voucher"}];
       if(this.get('cartService.totalFreeTries') > 0 ){
         return [{name: "visa/mastercard", value: "visa"}];
       }

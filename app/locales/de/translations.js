@@ -57,6 +57,9 @@ export default {
   "components.cookies-dialog.for-more-info-click": "Für weitere Infos zu unseren leckeren Cookies, klick ",
   "components.cookies-dialog.here": "hier",
 
+  "components.voucher-payment.voucher-name": "voucher",
+  "components.voucher-payment.voucher-code": "please insert voucher code",
+  
   "templates.application.headbanner": "NACHHALTIGE MODE - KOSTENLOSER VERSAND IN EUROPA",
 
   "templates.shopping-cart.checkout.checkout": "Bezahlung",
